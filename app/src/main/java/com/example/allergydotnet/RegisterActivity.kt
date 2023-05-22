@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
+import android.view.MenuItem;
 
 
 public class RegisterActivity : AppCompatActivity() {
