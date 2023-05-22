@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/notification"
+        android:title="Doctors"
+        android:icon="@drawable/baseline_medical_services_24"/>
+    <item android:id="@+id/home"
+        android:title="Map"
+        android:icon="@drawable/baseline_map_24"/>
+    <item android:id="@+id/settings"
+        android:title="Consultations"
+        android:icon="@drawable/baseline_speaker_notes_24"/>
+
+</menu>
