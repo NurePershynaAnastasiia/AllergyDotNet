@@ -25,7 +25,7 @@ CREATE TABLE UserAllergens (
 CREATE TABLE Notes (
   note_id int Not Null IDENTITY (1, 1),
   note_name nvarchar(50) Not Null,
-  note_text nvarchar(150) NULL,
+  note_text nvarchar(300) NULL,
   user_id int Not Null REFERENCES Users(user_id) ON DELETE CASCADE,
   PRIMARY KEY (note_id)
 );
