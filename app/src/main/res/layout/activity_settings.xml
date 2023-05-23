@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_with_logo"
+    tools:context=".NewMarkActivity">
+
+    <TextView
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/gilroy_heavy"
+        android:text="Налаштування"
+        android:textColor="@color/white"
+        android:textSize="40dp" />
+
+    <TextView
+        android:id="@+id/hotline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/settings"
+        android:textColor="@color/black"
+        android:text="Горяча лінія"
+        android:textSize="25dp"
+        android:fontFamily="@font/gilroy_extrabold"
+        android:layout_marginTop="160dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/phones"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hotline"
+        android:textColor="@color/black"
+        android:text="+38 (067) 938 38 38 пн-пт 06:00 - 21:00"
+        android:textSize="20dp"
+        android:fontFamily="@font/gilroy_regular"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phones"
+        android:textColor="#6A6A6A"
+        android:text="У випадку виникнення проблем або питань звертайтеся до нашої служби підтримки."
+        android:textSize="15dp"
+        android:fontFamily="@font/gilroy_regular"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/terms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text1"
+        android:textColor="@color/black"
+        android:text="Умови користування додатком"
+        android:textSize="25dp"
+        android:fontFamily="@font/gilroy_extrabold"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/terms"
+        android:textColor="#6A6A6A"
+        android:text="Користувачі додатку зобов’язані дотримуватися правил, зазначених в умовах користування додатком. Також умови користування додатком зазначають умови та зміст послуг, які будуть надані користувачам."
+        android:textSize="15dp"
+        android:fontFamily="@font/gilroy_regular"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        />
+
+    <TextView
+        android:id="@+id/btnTerms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text2"
+        android:textColor="#404040"
+        android:text="Ознайомитися з умовами та обов’язками."
+        android:textSize="15dp"
+        android:fontFamily="@font/gilroy_regular"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnTerms"
+        android:textColor="@color/black"
+        android:text="Вихід з облікового запису"
+        android:textSize="25dp"
+        android:fontFamily="@font/gilroy_extrabold"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quit"
+        android:textColor="#6A6A6A"
+        android:text="Щоб вийти з особистого облікового запису натисніть на кнопку нижче. Зауважте, що для нового входу у цей акаунт вам буде потрібно ввести адресу поштової скриньки та пароль від облікового запису."
+        android:textSize="15dp"
+        android:fontFamily="@font/gilroy_regular"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/quitbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text3"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="#407A61"
+        android:text="Вийти з акаунту"
+        app:icon="@drawable/baseline_exit_to_app_24"
+        android:textSize="20dp" />
+
+
+</RelativeLayout>
