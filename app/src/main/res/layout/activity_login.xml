@@ -19,22 +19,32 @@
         android:drawablePadding="20dp"
         android:hint="Адреса електронної пошти"
         android:padding="20dp"
-        android:textColor="#8FA2AB"
+        android:textColor="#27353C"
         android:textColorHint="#8FA2AB" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/password"
         android:layout_below="@id/email"
-        android:background="#F8F1F4"
-        android:hint="Пароль"
-        android:textColorHint="#8FA2AB"
-        android:textColor="#8FA2AB"
         android:layout_margin="10dp"
-        android:padding="20dp"
+        android:background="#F8F1F4"
         android:drawablePadding="20dp"
-        android:inputType="textPassword"/>
+        android:hint="Пароль"
+        android:inputType="textPassword"
+        android:padding="20dp"
+        android:textColor="#27353C"
+        android:textColorHint="#8FA2AB" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signupbtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:text="Вперше з нами? Створити новий акаунт"
+        android:textSize="20dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/signupbtn"
@@ -49,15 +59,5 @@
         android:backgroundTint="#275362"
         android:text="Увійти"
         android:textSize="25dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/info"
-        android:layout_below="@id/signupbtn"
-        android:text="Вперше з нами? Створити новий акаунт"
-        android:layout_marginTop="200dp"
-        android:textSize="20dp"
-        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
