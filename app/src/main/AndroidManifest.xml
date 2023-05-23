@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AllergyDotNet"
         tools:targetApi="31">
         <activity
+            android:name=".NewNotationActivity"
+            android:exported="true" />
+        <activity
             android:name=".NewMarkActivity"
             android:exported="true" />
         <activity
