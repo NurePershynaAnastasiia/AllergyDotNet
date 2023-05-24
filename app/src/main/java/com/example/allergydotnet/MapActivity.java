@@ -56,8 +56,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         addDraggableMarker = (Button)findViewById(R.id.addbtn);
-        setPosition       = (Button)findViewById(R.id.choose_marker_position);
-        cancel            = (Button)findViewById(R.id.cancel_position);
+        setPosition = (Button)findViewById(R.id.choose_marker_position);
+        cancel = (Button)findViewById(R.id.cancel_position);
     }
 
 
