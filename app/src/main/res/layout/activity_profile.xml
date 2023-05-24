@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity"
+    android:background="@drawable/bg_profile">
+
+    <ImageView
+        android:id="@+id/settingsbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_settings_24"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ім'я Прізвище"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/gilroy_semibold"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"/>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/layout1"
+        android:layout_width="380dp" android:layout_height="120dp" android:layout_marginTop="330dp"
+        android:layout_centerHorizontal="true" android:background="@drawable/backgroud_border">
+
+        <TextView
+            android:id="@+id/mysub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Моя підписка"
+            android:fontFamily="@font/gilroy_extrabold"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/subscrtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Преміум"
+            android:fontFamily="@font/gilroy_regular"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/mysub"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/createbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/subscrtype"
+            android:backgroundTint="#407A61"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Персоналізовані рекомендації"
+            android:textSize="15dp"
+            android:fontFamily="@font/gilroy_regular"/>
+
+        <TextView
+            android:id="@+id/activtill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Активовано до 01.07.2023"
+            android:fontFamily="@font/gilroy_regular"
+            android:textSize="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/layout2"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="380dp" android:layout_height="120dp" android:layout_below="@id/layout1"
+        android:layout_centerHorizontal="true" android:background="@drawable/backgroud_border"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/myalerg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Мої алергени"
+            android:fontFamily="@font/gilroy_extrabold"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/layout3"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="380dp" android:layout_height="120dp" android:layout_below="@id/layout2"
+        android:layout_centerHorizontal="true" android:background="@drawable/backgroud_border"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/mynot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Мої нотатки"
+            android:fontFamily="@font/gilroy_extrabold"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

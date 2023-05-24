@@ -15,6 +15,16 @@
         tools:context=".MapsActivity"
         android:layout_marginTop="70dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Мапа алергенів"
+        android:fontFamily="@font/gilroy_extrabold"
+        android:textSize="30dp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addbtn"
         android:onClick="addDraggableMarker"

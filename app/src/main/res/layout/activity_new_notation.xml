@@ -8,6 +8,16 @@
     tools:context=".NewMarkActivity">
     <include layout="@layout/top_menu"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Додати нотатку"
+        android:fontFamily="@font/gilroy_extrabold"
+        android:textSize="30dp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
     <EditText
         android:id="@+id/newNotationName"
         android:layout_width="wrap_content"
