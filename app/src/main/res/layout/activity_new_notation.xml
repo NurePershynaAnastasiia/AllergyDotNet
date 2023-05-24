@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_with_logo"
     tools:context=".NewMarkActivity">
+    <include layout="@layout/top_menu"/>
 
     <EditText
         android:id="@+id/newNotationName"

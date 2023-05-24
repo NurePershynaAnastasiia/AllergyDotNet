@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_new_marker"
     tools:context=".NewMarkActivity">
+    <include layout="@layout/top_menu"/>
 
     <TextView
         android:id="@+id/newMarkText"

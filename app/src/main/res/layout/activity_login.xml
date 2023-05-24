@@ -56,14 +56,14 @@
         />
 
     <TextView
-        android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/signupbtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
+        android:id="@+id/info"
         android:text="Вперше з нами? Створити новий акаунт"
+        android:layout_marginBottom="20dp"
         android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
         android:fontFamily="@font/gilroy_regular"
         android:textColor="#023C16"/>
 
