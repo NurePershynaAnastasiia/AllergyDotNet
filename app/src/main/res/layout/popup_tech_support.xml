@@ -22,16 +22,11 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="50dp"
             android:fontFamily="@font/gilroy_heavy"
-            android:text="Дякуємо що обрали преміум підписку!"
+            android:text="Лист до технічної підримки додатку"
             android:textColor="@color/white"
+            android:layout_gravity="center"
             android:textSize="25dp"
             android:textAlignment="center" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_star_24"
-            android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,37 +34,43 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/white"
-            android:text="Преміум підписка є платною та містить у собі повний функціонал додатку. Ви можете змінити тип підписки у будь-який час."
+            android:text="Ваша заявка до технічної підтримки буде оброблена та розглянута протягом трьох робочих днів."
             android:fontFamily="@font/gilroy_regular"
             android:textAlignment="center"
             android:textSize="14dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/spinner"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:textColor="@color/white"
-            android:text="До сплати: XXX грн."
-            android:fontFamily="@font/gilroy_medium"
-            android:textAlignment="center"
-            android:layout_gravity="center"
-            android:textSize="20dp"/>
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#F8F1F4"
+            android:drawablePadding="20dp"
+            android:hint="Текст..."
+            android:padding="20dp"
+            android:textColor="#27353C"
+            android:textColorHint="#8FA2AB"
+            android:fontFamily="@font/gilroy_regular"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/paybtn"
+            android:id="@+id/sendbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/gilroy_regular"
-            android:text="Сплатити гугл пей"
+            android:text="Надіслати"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:layout_gravity="center"

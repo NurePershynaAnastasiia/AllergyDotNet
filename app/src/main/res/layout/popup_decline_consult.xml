@@ -20,18 +20,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/gilroy_heavy"
-            android:text="Дякуємо що обрали преміум підписку!"
+            android:text="Ви впевнені, що хочете відмінити консультацію?"
             android:textColor="@color/white"
+            android:layout_gravity="center"
             android:textSize="25dp"
             android:textAlignment="center" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_star_24"
-            android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,37 +34,38 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/white"
-            android:text="Преміум підписка є платною та містить у собі повний функціонал додатку. Ви можете змінити тип підписки у будь-який час."
+            android:text="За умовами Allergy.net гроші за відмінену консультацію повертаються лише у тому випадку, коли до заплановіної консультації залишилось не менш ніж 24 години. В усіх інших випадках гроші повернено не буде!"
             android:fontFamily="@font/gilroy_regular"
             android:textAlignment="center"
             android:textSize="14dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/temp_img"/>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
             android:textColor="@color/white"
-            android:text="До сплати: XXX грн."
-            android:fontFamily="@font/gilroy_medium"
-            android:textAlignment="center"
-            android:layout_gravity="center"
-            android:textSize="20dp"/>
+            android:text="Я прочитав правила повернення коштів і цілком згоден з ними"
+            android:fontFamily="@font/gilroy_regular" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/paybtn"
+            android:id="@+id/sendbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/gilroy_regular"
-            android:text="Сплатити гугл пей"
+            android:text="Підтвердити"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:layout_gravity="center"

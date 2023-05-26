@@ -20,18 +20,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/gilroy_heavy"
-            android:text="Дякуємо що обрали преміум підписку!"
+            android:text="Додати новий алерген"
             android:textColor="@color/white"
+            android:layout_gravity="center"
             android:textSize="25dp"
             android:textAlignment="center" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_star_24"
-            android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,37 +34,56 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/white"
-            android:text="Преміум підписка є платною та містить у собі повний функціонал додатку. Ви можете змінити тип підписки у будь-який час."
+            android:text="Оберіть алерген з наведених у списку нижче та натисніть “додати” для того, щоб додати цей алерген до вашого списку"
             android:fontFamily="@font/gilroy_regular"
             android:textAlignment="center"
             android:textSize="14dp"/>
 
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="370dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/image_add"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="#F8F1F4"
+            android:textColor="#27353C"
+            android:textColorHint="#8FA2AB"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/temp_img"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/white"
-            android:text="До сплати: XXX грн."
-            android:fontFamily="@font/gilroy_medium"
+            android:text="Увага! Додані алергени будуть доступні лікарям. Також якщо ви маєте преміум-підписку на Allergy.net, то додані алергени будуть відображатися на вашій персоналізованій карті алергенів"
+            android:fontFamily="@font/gilroy_regular"
             android:textAlignment="center"
-            android:layout_gravity="center"
-            android:textSize="20dp"/>
+            android:textSize="14dp"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/paybtn"
+            android:id="@+id/addbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/gilroy_regular"
-            android:text="Сплатити гугл пей"
+            android:text="Додати алерген"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:layout_gravity="center"
