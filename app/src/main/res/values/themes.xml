@@ -3,6 +3,16 @@
     <style name="Base.Theme.AllergyDotNet" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    </style>
+
+    <style name="BottomNavigation">
+        <item name="itemBackground">@color/light_green</item>
+        <item name="itemTextColor">@color/white</item>
+        <item name="android:background">@color/light_green</item>
+        <item name="colorPrimary">@color/light_green</item>
+        <item name="colorOnPrimary">@color/light_green</item>
+        <item name="android:backgroundTint">@color/light_green</item>
     </style>
 
     <style name="Theme.AllergyDotNet" parent="Base.Theme.AllergyDotNet" />
