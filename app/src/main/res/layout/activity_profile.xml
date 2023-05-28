@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity"
-    >
+    android:id="@+id/profile_relative">
 
 
     <ScrollView
@@ -51,7 +51,7 @@
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/layout1"
+                android:id="@+id/layout1_profile"
                 android:layout_width="380dp" android:layout_height="120dp" android:layout_marginTop="330dp"
                 android:layout_centerHorizontal="true" android:background="@drawable/backgroud_border">
 
@@ -107,7 +107,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/layout2"
                 xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="380dp" android:layout_height="120dp" android:layout_below="@id/layout1"
+                android:layout_width="380dp" android:layout_height="120dp" android:layout_below="@id/layout1_profile"
                 android:layout_centerHorizontal="true" android:background="@drawable/backgroud_border"
                 android:layout_marginTop="15dp">
 
