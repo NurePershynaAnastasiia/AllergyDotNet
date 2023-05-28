@@ -24,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        TextView login= findViewById(R.id.login);
+        TextView login = findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

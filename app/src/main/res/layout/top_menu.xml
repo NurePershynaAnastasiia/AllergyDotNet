@@ -2,11 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#B3CD98">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="1dp">
+    android:background="#B3CD98"
+    android:id="@+id/top_menu">
         <ImageButton
             android:id="@+id/profilebtn"
             android:layout_width="wrap_content"
@@ -15,6 +12,5 @@
             android:background="@color/light_green"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"/>
-    </RelativeLayout>
 
 </RelativeLayout>
