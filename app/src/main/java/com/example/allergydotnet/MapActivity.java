@@ -63,9 +63,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         BottomNavigationView bottomNavMenu = findViewById(R.id.bottom_navigation);
         bottomNavMenu.setSelectedItemId(R.id.map);
-        bottomNavMenu.setOnItemReselectedListener(new BottomNavigationView.OnItemReselectedListener() {
+
+        bottomNavMenu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Intent myint;
                 if (item.getItemId() == R.id.consultations) {
                     myint = new Intent(getApplicationContext(), ConsultationsActivity.class);
@@ -76,9 +77,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 } else if (item.getItemId() == R.id.doctors) {
                     myint = new Intent(getApplicationContext(), DoctorsActivity.class);
                     startActivity(myint);
-                } else {
-                    bottomNavMenu.setSelectedItemId(R.id.invisible);
                 }
+                return false;
             }
         });
 
