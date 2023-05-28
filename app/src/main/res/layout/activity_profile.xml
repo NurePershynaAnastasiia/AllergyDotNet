@@ -12,7 +12,8 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="80dp">
+        android:paddingBottom="80dp"
+        android:background="@color/white">
 
         <RelativeLayout
             android:id="@+id/scroll_layout"
