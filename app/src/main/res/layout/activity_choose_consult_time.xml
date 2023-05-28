@@ -63,4 +63,13 @@
         android:layout_marginTop="250dp">
 
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        style="@style/BottomNavigation"
+        app:itemIconTint="@color/nav_bar"
+        app:menu="@menu/bottom_nav_menu" />
 </RelativeLayout>

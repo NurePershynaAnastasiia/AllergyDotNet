@@ -88,9 +88,9 @@
         android:fontFamily="@font/gilroy_semibold"/>
 
     <TextView
+        android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/info"
         android:text="Уже маєте акаунт? Увійти"
         android:layout_marginBottom="20dp"
         android:textSize="25dp"

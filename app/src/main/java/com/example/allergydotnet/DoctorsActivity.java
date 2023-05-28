@@ -9,15 +9,16 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class RecommendationsActivity extends AppCompatActivity {
+public class DoctorsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recommendations);
+        setContentView(R.layout.activity_doctors);
 
         BottomNavigationView bottomNavMenu = findViewById(R.id.bottom_navigation);
-        bottomNavMenu.setSelectedItemId(R.id.invisible);
+        bottomNavMenu.setSelectedItemId(R.id.doctors);
+
         bottomNavMenu.setOnItemReselectedListener(new BottomNavigationView.OnItemReselectedListener() {
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem item) {

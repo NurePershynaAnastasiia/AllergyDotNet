@@ -18,6 +18,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import org.json.JSONException;
 
@@ -55,7 +57,28 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_map);
 
         BottomNavigationView bottomNavMenu = findViewById(R.id.bottom_navigation);
-        bottomNavMenu.setSelectedItemId(R.id.invisible);
+        bottomNavMenu.setSelectedItemId(R.id.map);
+        bottomNavMenu.setOnItemReselectedListener(new BottomNavigationView.OnItemReselectedListener() {
+            @Override
+            public void onNavigationItemReselected(@NonNull MenuItem item) {
+                Intent myint;
+                if (item.getItemId() == R.id.consultations){
+                    myint = new Intent(getApplicationContext(), ConsultationsActivity.class);
+                    startActivity(myint);
+                }
+                else if (item.getItemId() == R.id.map){
+                    myint = new Intent(getApplicationContext(), MapActivity.class);
+                    startActivity(myint);
+                }
+                else if (item.getItemId() == R.id.doctors){
+                    myint = new Intent(getApplicationContext(), DoctorsActivity.class);
+                    startActivity(myint);
+                }
+                else {
+                    bottomNavMenu.setSelectedItemId(R.id.invisible);
+                }
+            }
+        });
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);

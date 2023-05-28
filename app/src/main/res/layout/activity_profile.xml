@@ -7,7 +7,7 @@
     tools:context=".ProfileActivity"
     android:background="@drawable/bg_profile">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/settingsbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,6 +16,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
+        android:background="@color/light_green"
         android:layout_alignParentRight="true"/>
 
     <TextView
@@ -124,6 +125,15 @@
             />
 
     </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        style="@style/BottomNavigation"
+        app:itemIconTint="@color/nav_bar"
+        app:menu="@menu/bottom_nav_menu" />
 
 
 
