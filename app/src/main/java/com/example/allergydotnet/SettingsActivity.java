@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -62,5 +63,8 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(myint);
             }
         });
+
+        TextView writeToSupport = findViewById(R.id.supportLetter);
+
     }
 }

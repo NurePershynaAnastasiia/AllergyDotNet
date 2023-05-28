@@ -2,10 +2,13 @@ package com.example.allergydotnet;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import android.annotation.SuppressLint;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -64,19 +67,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem item) {
                 Intent myint;
-                if (item.getItemId() == R.id.consultations){
+                if (item.getItemId() == R.id.consultations) {
                     myint = new Intent(getApplicationContext(), ConsultationsActivity.class);
                     startActivity(myint);
-                }
-                else if (item.getItemId() == R.id.map){
+                } else if (item.getItemId() == R.id.map) {
                     myint = new Intent(getApplicationContext(), MapActivity.class);
                     startActivity(myint);
-                }
-                else if (item.getItemId() == R.id.doctors){
+                } else if (item.getItemId() == R.id.doctors) {
                     myint = new Intent(getApplicationContext(), DoctorsActivity.class);
                     startActivity(myint);
-                }
-                else {
+                } else {
                     bottomNavMenu.setSelectedItemId(R.id.invisible);
                 }
             }
@@ -95,9 +95,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        addDraggableMarker = (Button)findViewById(R.id.addbtn);
-        setPosition = (Button)findViewById(R.id.choose_marker_position);
-        cancel = (Button)findViewById(R.id.cancel_position);
+        addDraggableMarker = (Button) findViewById(R.id.addbtn);
+        setPosition = (Button) findViewById(R.id.choose_marker_position);
+        cancel = (Button) findViewById(R.id.cancel_position);
     }
 
 
@@ -122,6 +122,38 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 toast.show();
             }
         });
+
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+        criteria.setSpeedRequired(true);
+        criteria.setBearingAccuracy(Criteria.ACCURACY_HIGH);
+
+        if (locationManager != null && locationManager.getBestProvider(criteria, false) != null) {
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            locationManager.requestSingleUpdate(locationManager.getBestProvider(criteria, false), this, null);
+        } else {
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            locationManager.requestSingleUpdate("passive", this, null);
+        }
     }
 
     @Override
