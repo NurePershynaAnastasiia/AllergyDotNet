@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 // Обробник POST-запиту на реєстрацію користувача
-app.post('/register', (req, res) => {
+app.post('/index_name.html', (req, res) => {
     const { user_name, user_email, user_password } = req.body;
 
     // Вставка даних у базу даних
