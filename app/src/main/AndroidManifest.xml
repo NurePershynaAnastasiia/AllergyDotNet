@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AllergyDotNet"
         tools:targetApi="31">
+        <activity
+            android:name=".NotationsActivity"
+            android:exported="false" />
         <activity
             android:name=".ConsultationsActivity"
             android:exported="true" />
@@ -63,5 +65,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAPS_WdCqjdInXnFmrJdlq2kq2sZj-kAsg" />
     </application>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>
