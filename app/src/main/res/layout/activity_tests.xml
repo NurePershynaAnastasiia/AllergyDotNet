@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".TestsActivity"
     android:background="@drawable/bg_register_login"
-    android:id="@+id/relative">
+    android:id="@+id/tests_relative">
         <com.google.android.material.button.MaterialButton
             android:id="@+id/test_button"
             android:layout_width="wrap_content"

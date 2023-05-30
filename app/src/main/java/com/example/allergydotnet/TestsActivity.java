@@ -20,7 +20,7 @@ Button button;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tests);
-        layout = findViewById(R.id.relative);
+        layout = findViewById(R.id.tests_relative);
         button = findViewById(R.id.test_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
