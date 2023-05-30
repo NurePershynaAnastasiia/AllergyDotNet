@@ -26,8 +26,9 @@ app.post('/register', (req, res) => {
     const { user_name, user_email, user_password } = req.body;
 
     // Вставка даних у базу даних
-    const query = `INSERT INTO Users (user_name, user_email, user_password) VALUES (?, ?, ?)`;
-    db.run(query, [user_name, user_email, user_password], function (err) {
+
+    const query = `INSERT INTO Users (user_name, user_email, user_password) VALUES ($user_name, $user_email, $user_password)`;
+    db.run(query, { $user_name: user_name, $user_email: user_email, $user_password: user_password }, function (err) {
         if (err) {
             console.error(err);
             return res.status(500).send('Помилка сервера');
