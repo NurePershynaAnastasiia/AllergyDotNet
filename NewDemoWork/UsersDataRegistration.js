@@ -12,6 +12,11 @@ app.use(express.json());
 // Підключення до бази даних SQLite
 const db = new sqlite3.Database('database.db');
 
+// Обробник GET-запиту на кореневий шлях
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index_name.html');
+});
+
 // Обробник POST-запиту на реєстрацію користувача
 app.post('/register', (req, res) => {
     const { user_name, user_email, user_password } = req.body;
