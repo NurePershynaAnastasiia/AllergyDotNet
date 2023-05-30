@@ -18,6 +18,116 @@
         android:layout_marginTop="20dp"/>
 
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="80dp">
+
+        <RelativeLayout
+            android:id="@+id/scroll_layout"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/layout1_profile"
+                android:layout_width="380dp" android:layout_height="200dp" android:layout_marginTop="100dp"
+                android:layout_centerHorizontal="true" android:background="@drawable/backgroud_border">
+
+                <ImageView
+                    android:id="@+id/photoImg"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/temp_img"/>
+
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/photoImg"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBotom="10dp"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:text="Ім'я Прізвище"/>
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Дата:"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="100dp"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/gilroy_heavy"/>
+
+                <TextView
+                    android:id="@+id/dateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/date"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="60dp"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:text="01.06.2023"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Час:"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/dateTextView"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="100dp"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/gilroy_heavy"/>
+
+                <TextView
+                    android:id="@+id/timeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/time"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="40dp"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:text="13:00-14:00"
+                    android:textSize="20dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/addbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/timeTextView"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="#407A61"
+                    android:text="Скасувати"
+                    app:cornerRadius="100dp"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="15dp" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"

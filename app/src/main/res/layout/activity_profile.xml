@@ -78,7 +78,7 @@
                     />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/createbtn"
+                    android:id="@+id/recommendationsbtn"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_below="@id/subscrtype"
