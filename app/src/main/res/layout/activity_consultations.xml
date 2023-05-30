@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/photoImg"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginBotom="10dp"
+                    android:layout_marginBottom="10dp"
                     android:textSize="15dp"
                     android:fontFamily="@font/gilroy_semibold"
                     android:text="Ім'я Прізвище"/>
