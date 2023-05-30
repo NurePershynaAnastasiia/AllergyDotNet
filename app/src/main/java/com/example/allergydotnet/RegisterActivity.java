@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String textPassword = passwordEditText.getText().toString();
                 String textRepassword = repasswordEditText.getText().toString();
 
-                //Check if the fields aren't empty
+                //Check input fields
                 if (TextUtils.isEmpty(textName)){
                     Toast.makeText(RegisterActivity.this, "Будь ласка, введіть ім'я", Toast.LENGTH_SHORT).show();
                     usernameEditText.setError("Ви не ввели ім'я");
@@ -41,9 +41,9 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Будь ласка, введіть пошту", Toast.LENGTH_SHORT).show();
                     emailEditText.setError("Ви не ввели пошту");
                     emailEditText.requestFocus();
-                } else if (TextUtils.isEmpty(textPassword)){
-                    Toast.makeText(RegisterActivity.this, "Будь ласка, введіть пароль", Toast.LENGTH_SHORT).show();
-                    passwordEditText.setError("Ви не ввели пароль");
+                } else if (TextUtils.isEmpty(textPassword) || textPassword.length() < 8){
+                    Toast.makeText(RegisterActivity.this, "Будь ласка, введіть пароль, який не менше 8 символів", Toast.LENGTH_SHORT).show();
+                    passwordEditText.setError("Ви не ввели коректний пароль");
                     passwordEditText.requestFocus();
                 } else if (TextUtils.isEmpty(textRepassword) || !TextUtils.equals(textPassword, textRepassword)){
                     Toast.makeText(RegisterActivity.this, "Будь ласка, підтвердіть пароль", Toast.LENGTH_SHORT).show();
