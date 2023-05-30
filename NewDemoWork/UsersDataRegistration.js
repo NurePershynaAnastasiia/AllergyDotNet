@@ -30,6 +30,7 @@ app.post('/register', (req, res) => {
 });
 
 // Запуск сервера
+app.use(express.static('public'));
 app.listen(3000, () => {
     console.log('Сервер запущено на порті 3000');
 });
