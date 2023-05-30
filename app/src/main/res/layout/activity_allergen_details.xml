@@ -60,6 +60,7 @@
         android:layout_alignParentBottom="true"
         style="@style/BottomNavigation"
         app:itemIconTint="@color/nav_bar"
+        app:itemBackground="@drawable/selector_bottom_nav"
         app:menu="@menu/bottom_nav_menu" />
 
 

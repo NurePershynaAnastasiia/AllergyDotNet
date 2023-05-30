@@ -1,0 +1,16 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <!-- Transparent background for selected state -->
+            <solid android:color="@android:color/transparent" />
+            <item android:color="@color/white"/>
+        </shape>
+    </item>
+    <item>
+        <!-- Background for default state (e.g., a solid color or drawable) -->
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <item android:color="@color/white"/>
+        </shape>
+    </item>
+</selector>
