@@ -10,10 +10,14 @@ const app = express();
 app.use(express.json());
 
 // Підключення до бази даних SQLite
-const db = new sqlite3.Database('database.db');
+const db = new sqlite3.Database('AllergyDorNet.db');
 
 // Обробник GET-запиту на кореневий шлях
 app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index_name.html');
+});
+
+app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/index_name.html');
 });
 
@@ -35,7 +39,7 @@ app.post('/index_name.html', (req, res) => {
 });
 
 // Запуск сервера
-app.use(express.static('public'));
+app.use(express.static('__dirname'));
 app.listen(3000, () => {
     console.log('Сервер запущено на порті 3000');
 });
