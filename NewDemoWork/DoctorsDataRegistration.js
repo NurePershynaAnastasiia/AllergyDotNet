@@ -4,8 +4,15 @@ const sqlite3 = require('sqlite3').verbose();
 const app = express();
 app.use(express.json());
 
-const db = new sqlite3.Database('database.db');
+const db = new sqlite3.Database('database.db', sqlite3.OPEN_READWRITE, (err) => {
+    if (err) {
+        console.error(err.message);
+    } else {
+        console.log('Підключено до бази даних SQLite');
+    }
+});
 
+// Обробник POST-запиту для реєстрації лікаря
 app.post('/register/doctor', (req, res) => {
     const { doctor_name, doctor_email, doctor_password, doctor_IBAN, doctor_photo, doctor_documents, doctor_status } = req.body;
 
