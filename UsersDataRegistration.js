@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 // Підключення до бази даних SQLite
-const db = new sqlite3.Database('AllergyDorNet.db');
+const db = new sqlite3.Database('AllergyDotNet.db');
 
 // Обробник GET-запиту на кореневий шлях
 app.get('/', (req, res) => {
@@ -22,7 +22,7 @@ app.get('/register', (req, res) => {
 });
 
 // Обробник POST-запиту на реєстрацію користувача
-app.post('/index_name.html', (req, res) => {
+app.post('/register', (req, res) => {
     const { user_name, user_email, user_password } = req.body;
 
     // Вставка даних у базу даних
@@ -39,7 +39,7 @@ app.post('/index_name.html', (req, res) => {
 });
 
 // Запуск сервера
-app.use(express.static('__dirname'));
+app.use(express.static(__dirname));
 app.listen(3000, () => {
     console.log('Сервер запущено на порті 3000');
 });
