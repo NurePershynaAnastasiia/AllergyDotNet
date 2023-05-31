@@ -1,0 +1,11 @@
+{
+  "point_name": "My allergy",
+  "note_text": "some text about my allergy",
+  "user_id": "1"
+}
+
+point_name: pointData.point_name,
+$point_photo: pointData.point_photo,
+$point_info: pointData.point_info,
+$point_coordinates_latitude: pointData.point_coordinates_latitude,
+$point_coordinates_longitude: pointData.point_coordinates_longitude
