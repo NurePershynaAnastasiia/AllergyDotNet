@@ -20,7 +20,7 @@ app.post('/', (req, res) => {
         }
         try {
             const doctorData = JSON.parse(data);
-            if (doctorData.doctor_password == doctorData.doctor_password1) {//pass comp
+            if (doctorData.doctor_password == doctorData.doctor_password1) {//remove
                 // Insert the data into the Users table
                 db.run(query, {
                     $doctor_name: doctorData.doctor_name,
