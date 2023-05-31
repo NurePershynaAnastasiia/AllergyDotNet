@@ -26,7 +26,7 @@ app.post('/', (req, res) => {
 
                 if (row) {
                     if (row.doctor_password === doctorData.doctor_password) {
-                        if(doctorData.isAdmin){
+                        if(row.isAdmin){
                             res.status(200).json({ doctor_id: row.doctor_id, isAdmin: true});
 
                         }else{
