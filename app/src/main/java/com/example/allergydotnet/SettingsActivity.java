@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 
 public class SettingsActivity extends AppCompatActivity {
     RelativeLayout layout;
@@ -74,15 +75,14 @@ public class SettingsActivity extends AppCompatActivity {
         writeToSupport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CreatepopUpwindow();
+                 CreateTechSupportPopup();
             }
         });
     }
 
-    private void CreatepopUpwindow() {
+    private void CreateTechSupportPopup() {
         LayoutInflater inflater= (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popUpView=inflater.inflate(R.layout.popup_tech_support,null);
-
         int width = ViewGroup.LayoutParams.MATCH_PARENT;
         int height = ViewGroup.LayoutParams.MATCH_PARENT;
         boolean focusable = true;
@@ -95,17 +95,14 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
         TextView SendButton;
-
         SendButton = popUpView.findViewById(R.id.sendbtn);
 
         SendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // !write message about status of sending the letter to support!
+                popupWindow.dismiss();
             }
         });
-
-        // and if you want to close popup when touch Screen
         popUpView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

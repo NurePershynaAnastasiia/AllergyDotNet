@@ -22,6 +22,14 @@ Button button;
         setContentView(R.layout.activity_tests);
         layout = findViewById(R.id.tests_relative);
         button = findViewById(R.id.test_button);
+        LayoutInflater inflater= (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View.OnClickListener clickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        };
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,7 +38,7 @@ Button button;
         });
     }
 
-    private void CreatepopUpwindow() {
+     private void CreatepopUpwindow() {
         LayoutInflater inflater= (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popUpView=inflater.inflate(R.layout.popup_standart,null);
 
