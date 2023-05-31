@@ -20,7 +20,7 @@ app.post('/', (req, res) => {
         }
         try {
             const noteData = JSON.parse(data);
-            if (noteData.user_password == noteData.user_password1) {//pass comp
+
                 // Insert the data into the Users table
                 db.run(query, {
                     $note_name: noteData.note_name,
@@ -33,9 +33,7 @@ app.post('/', (req, res) => {
                     }
                 });
                 res.json({message: 'Data downloaded and inserted successfully'});
-            } else {
-                res.status(400).json({error: 'Invalid password'});
-            }
+
 
         } catch (error) {
             res.status(400).json({error: 'Invalid JSON file'});
