@@ -26,11 +26,11 @@ app.post('/', (req, res) => {
 
                 if (row) {
                     if (row.doctor_password === doctorData.doctor_password) {
-                        if(!doctorData.isAdmin){
-                            res.status(200).json({ doctor_id: row.doctor_id, isAdmin: false });
+                        if(row.isAdmin){
+                            res.status(200).json({ doctor_id: row.doctor_id, isAdmin: true});
 
                         }else{
-                            res.status(200).json({ doctor_id: row.doctor_id, isAdmin: true });
+                            res.status(200).json({ doctor_id: row.doctor_id, isAdmin: false });
                         }
                     } else {
                         res.status(400).json({ error: 'Invalid password' });
