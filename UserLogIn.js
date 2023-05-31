@@ -4,7 +4,7 @@ const fs = require('fs');
 const app = express();
 const bodyParser = require('body-parser');
 const db = new sqlite3.Database('AllergyDotNet.db');// Підключення до бази даних SQLite
-const query = `SELECT user_email, user_password FROM USERS 
+const query = `SELECT user_id, user_email, user_password FROM USERS 
                                  WHERE (user_email = $user_email AND user_password = $user_password)`;
 
 // Розбір даних у форматі JSON
