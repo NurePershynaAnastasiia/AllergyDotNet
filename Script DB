@@ -59,5 +59,5 @@ consultation_date DATE NOT NULL,
 consultation_time TIME NOT NULL,
 user_id INTEGER REFERENCES Users(user_id) ON DELETE CASCADE,
 doctor_id INTEGER NOT NULL REFERENCES Doctors(doctor_id) ON DELETE CASCADE,
-consultation_status INTEGER NOT NULL
+consultation_status INTEGER NOT NULL REFERENCES ConsStatus(consultation_status_id) ON DELETE CASCADE
 );
