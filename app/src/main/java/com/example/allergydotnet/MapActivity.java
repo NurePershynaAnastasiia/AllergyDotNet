@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import com.example.allergydotnet.util.MarkerInfo;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -50,6 +51,8 @@ import java.util.List;
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener {
 
     private GoogleMap mMap;
+
+    private HashMap<Marker, MarkerInfo> MarkersInfo = new HashMap<>();
 
     private Button addDraggableMarker;
     private Button setPosition;
@@ -105,6 +108,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
 
+        mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(new LatLng(50.015942834701185,36.226407489713274) , 14.0f) );
+
+
         mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
             @Override
             public void onMarkerDragStart(Marker marker) {
@@ -116,10 +122,24 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             @Override
             public void onMarkerDragEnd(Marker marker) {
+
                 LatLng pos = marker.getPosition();
                 Toast toast = Toast.makeText(getApplicationContext(),
                         pos.latitude + " " + pos.longitude, Toast.LENGTH_SHORT);
                 toast.show();
+            }
+        });
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                MarkerInfo markerInfo = MarkersInfo.get(marker);
+                if(markerInfo != null) {
+                    Intent intent = new Intent(MapActivity.this, MapActivity.class);
+                    intent.putExtra("markerInfo",markerInfo);
+                    startActivity(intent);
+                }
+                return true;
             }
         });
 
@@ -172,7 +192,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         cancel.setVisibility(View.VISIBLE);
         setPosition.setVisibility(View.VISIBLE);
 
-        LatLng pos = new LatLng(10, 10);
+        LatLng pos = new LatLng(50.015942834701185, 36.226407489713274);
         draggableMarker = mMap.addMarker(new MarkerOptions()
                 .position(pos)
                 .draggable(true)

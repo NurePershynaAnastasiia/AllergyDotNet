@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+    <include layout="@layout/top_menu"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Мої нотатки"
+        android:fontFamily="@font/gilroy_extrabold"
+        android:textSize="26dp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="100dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/scroll_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:id="@+id/dateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_green"
+                    android:text="Дата"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    />
+
+                <TextView
+                    android:id="@+id/headerTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dateTextView"
+                    android:text="Заголовок"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="25dp"
+                    />
+
+                <TextView
+                    android:id="@+id/notationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/headerTextView"
+                    android:layout_marginTop="10dp"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis massa sit amet magna luctus tincidunt. Proin rutrum semper nisi, vitae finibus est suscipit vel.  "
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="15dp"
+                    android:textColor="#2E2E2E"
+                    />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="#407A61"
+        android:text="+"
+        app:cornerRadius="100dp"
+        android:fontFamily="@font/gilroy_semibold"
+        android:textSize="25dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        style="@style/BottomNavigation"
+        app:itemIconTint="@color/nav_bar"
+        app:itemBackground="@drawable/selector_bottom_nav"
+        app:menu="@menu/bottom_nav_menu" />
+</RelativeLayout>

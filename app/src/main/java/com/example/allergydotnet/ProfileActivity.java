@@ -57,6 +57,15 @@ RelativeLayout layout;
             }
         });
 
+        Button recommendBtn = findViewById(R.id.recommendationsbtn);
+        recommendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myint = new Intent(getApplicationContext(), RecommendationsActivity.class);
+                startActivity(myint);
+            }
+        });
+
         RelativeLayout subscription_layout = findViewById(R.id.layout1_profile);
         layout = findViewById(R.id.profile_relative);
         subscription_layout.setOnClickListener(new View.OnClickListener() {
