@@ -21,10 +21,10 @@ app.post('/', (req, res) => {
         try {
             const notesData = JSON.parse(data);
 
-            const $user_id = notesData.user_id;
-            const query = 'SELECT * FROM Notes WHERE user_id = $user_id';
+            const user_id = notesData.user_id;
+            const query = 'SELECT * FROM Notes WHERE user_id = ?';
 
-            db.each(query, (err, rows) => {
+            db.each(query, [user_id], (err, rows) => {
                 if (err) {
                     console.error(err);
                     return res.status(500).send('Error retrieving notes from the database');
