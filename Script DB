@@ -9,6 +9,7 @@ CREATE TABLE Notes (
 note_id INTEGER PRIMARY KEY AUTOINCREMENT,
 note_name TEXT NOT NULL,
 note_text TEXT,
+note_date,
 user_id INTEGER NOT NULL REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
