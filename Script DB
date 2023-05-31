@@ -38,7 +38,7 @@ doctor_password TEXT NOT NULL,
 doctor_IBAN TEXT,
 doctor_photo BLOB,
 doctor_documents BLOB,
-doctor_status BOOLEAN NOT NULL,
+doctor_status BOOLEAN DEFAULT 0,
 isAdmin BOOLEAN DEFAULT 0
 );
 
