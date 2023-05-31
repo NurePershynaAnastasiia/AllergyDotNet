@@ -14,30 +14,15 @@ app.use(bodyParser.json());
 
 
 app.post('/', (req, res) => {
-    fs.readFile(`ListNotes.json`, 'utf8', async (err, data) => {
+    const user_id = req.body.user_id; // Отримання user_id з тіла запиту
+    const query = 'SELECT * FROM Notes WHERE user_id = ?';
+
+    db.all(query, [user_id], (err, rows) => { // Використовуйте db.all замість db.each для отримання всіх рядків
         if (err) {
-            return res.status(500).json({error: 'Error reading the file'});
+            console.error(err);
+            return res.status(500).send('Error retrieving notes from the database');
         }
-        try {
-            const notesData = JSON.parse(data);
-
-            const user_id = notesData.user_id;
-            const query = 'SELECT * FROM Notes WHERE user_id = ?';
-
-            db.each(query, [user_id], (err, rows) => {
-                if (err) {
-                    console.error(err);
-                    return res.status(500).send('Error retrieving notes from the database');
-                }
-                res.json(rows);
-            });
-
-            res.json({message: 'Data viewed'});
-
-
-        } catch (error) {
-            res.status(400).json({error: 'Invalid JSON file'});
-        }
+        res.json(rows);
     });
 });
 
