@@ -7,6 +7,13 @@ const db = new sqlite3.Database('AllergyDotNet.db');// Підключення д
 const query = `INSERT INTO Notes (note_name, note_text, user_id)
                VALUES ($note_name, $note_text, $user_id)`;
 
+/*//якщо передають user_name а не user_id
+INSERT INTO Notes (note_name, note_text, user_id)
+SELECT $note_name, $note_text, user_id
+FROM Users
+WHERE user_name = $user_name;
+*/
+
 // Розбір даних у форматі JSON
 app.use(express.json());
 app.use(bodyParser.urlencoded());
