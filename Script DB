@@ -57,7 +57,7 @@ CREATE TABLE Consultations (
 consultation_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 consultation_date DATE NOT NULL,
 consultation_time TIME NOT NULL,
-user_id INTEGER NOT NULL REFERENCES Users(user_id) ON DELETE CASCADE,
+user_id INTEGER REFERENCES Users(user_id) ON DELETE CASCADE,
 doctor_id INTEGER NOT NULL REFERENCES Doctors(doctor_id) ON DELETE CASCADE,
-consultation_status BOOLEAN NOT NULL
+consultation_status INTEGER NOT NULL
 );
