@@ -2,8 +2,7 @@ CREATE TABLE Users (
 user_id INTEGER PRIMARY KEY AUTOINCREMENT,
 user_name TEXT NOT NULL,
 user_email TEXT NOT NULL,
-user_password TEXT NOT NULL,
-user_isAdmin BOOLEAN DEFAULT 0
+user_password TEXT NOT NULL
 );
 
 CREATE TABLE Notes (
@@ -39,7 +38,8 @@ doctor_password TEXT NOT NULL,
 doctor_IBAN TEXT,
 doctor_photo BLOB,
 doctor_documents BLOB,
-doctor_status BOOLEAN NOT NULL
+doctor_status BOOLEAN NOT NULL,
+isAdmin BOOLEAN DEFAULT 0
 );
 
 CREATE TABLE Points (
