@@ -11,16 +11,33 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Route to get all notes for a specific user
-app.post('/notes/:userId', (req, res) => {
-    const userId = req.params.userId;
-    const query = 'SELECT * FROM Notes WHERE user_id = ?';
 
-    db.all(query, [userId], (err, rows) => {
+
+app.post('/', (req, res) => {
+    fs.readFile(`ListNotes.json`, 'utf8', async (err, data) => {
         if (err) {
-            console.error(err);
-            return res.status(500).send('Error retrieving notes from the database');
+            return res.status(500).json({error: 'Error reading the file'});
         }
-        res.json(rows);
+        try {
+            const notesData = JSON.parse(data);
+
+            const $userId = notesData.userId;
+            const query = 'SELECT * FROM Notes WHERE user_id = $userId';
+
+            db.all(query, [$userId], (err, rows) => {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).send('Error retrieving notes from the database');
+                }
+                res.json(rows);
+            });
+
+            res.json({message: 'Data viewed'});
+
+
+        } catch (error) {
+            res.status(400).json({error: 'Invalid JSON file'});
+        }
     });
 });
 
