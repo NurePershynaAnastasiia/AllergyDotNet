@@ -5,7 +5,7 @@ const db = new sqlite3.Database('AllergyDotNet.db');
 
 router.post('/loadPersonalRecomendations', (req, res) => {
     const user_id = req.body.user_id; // Отримання user_id з тіла запиту
-    const query = 'SELECT allergen_name, allergen_info FROM Allergens ' +
+    const query = 'SELECT allergen_name, allergen_info, allergen_photo FROM Allergens ' +
         'inner join UserAllergens on Allergens.allergen_id = UserAllergens.allergen_id ' +
         'inner join Users on UserAllergens.user_id = Users.user_id WHERE Users.user_id = ?;';
 
