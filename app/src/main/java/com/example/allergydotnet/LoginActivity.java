@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myint = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(myint);
-                //handleLoginDialog
             }
         });
 
@@ -50,18 +49,15 @@ public class LoginActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
         //View view = getLayoutInflater().inflate(R.layout.activity_login, null);
-
         //AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //builder.setView(view).show();
 
         signinBtn = findViewById(R.id.signupbtn);
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
-
 
         signinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +89,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                 LoginInfo result = response.body();
                                 int user_id = result.getId();
-
                                 //AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
                                 //builder1.setTitle(result.getName());
                                 //builder1.setMessage(result.getEmail());
@@ -118,22 +113,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
 
-
-
-                    //
                 }
-
-
-
             }
         });
-
-    }
-
-    //// methods for work with server ////
-    private void handleLoginInfo() {
-
-
-
     }
 }

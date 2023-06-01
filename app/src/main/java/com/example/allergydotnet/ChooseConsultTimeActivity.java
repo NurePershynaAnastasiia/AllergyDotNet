@@ -7,15 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.google.android.gms.wallet.IsReadyToPayRequest;
+import com.google.android.gms.wallet.PaymentsClient;
+import com.google.android.gms.wallet.Wallet;
+import com.google.android.gms.wallet.WalletConstants;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class ChooseConsultTimeActivity extends AppCompatActivity {
-
-
+    PaymentsClient paymentsClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,5 +55,20 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
                 startActivity(myint);
             }
         });
+
+//        Button paybtn = findViewById(R.id.paybtn);
+//
+//        Wallet.WalletOptions walletOptions = new Wallet.WalletOptions.Builder()
+//                .setEnvironment(WalletConstants.ENVIRONMENT_TEST)
+//                .build();
+//        paymentsClient = Wallet.getPaymentsClient(this, walletOptions);
+//
+//        //IsReadyToPayRequest readyToPayRequest = IsReadyToPayRequest.fromJson(configurationJs)
+//        paybtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 }
