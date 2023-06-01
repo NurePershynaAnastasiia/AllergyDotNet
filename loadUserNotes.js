@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.post('/loadUserNotes', (req, res) => {
     const user_id = req.body.user_id; // Отримання user_id з тіла запиту
-    const query = 'SELECT note_name, note_text, note_date FROM Notes WHERE user_id = ? ' +
+    const query = 'SELECT note_name, note_text, note_date FROM Notes WHERE user_id = ? '
 
     db.all(query, [user_id], (err, rows) => { // Використовуйте db.all замість db.each для отримання всіх рядків
         if (err) {
