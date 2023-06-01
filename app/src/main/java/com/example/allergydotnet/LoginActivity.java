@@ -25,45 +25,11 @@ import retrofit2.Retrofit;
 public class LoginActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://localhost:3000/userLogin";
+    private String BASE_URL = "http://localhost:3000";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-    //// new code for work with sever
-        /*retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();*/
-        //handleLoginInfo();
-    ///// new code for work with sever
-        //EditText emailEditText = findViewById(R.id.emailEditText);
-        //EditText passwordEditText = findViewById(R.id.passwordEditText);
-        //Button btn = findViewById(R.id.signupbtn);
-        /*
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String textEmail = emailEditText.getText().toString();
-                String textPassword = passwordEditText.getText().toString();
-
-
-                if (TextUtils.isEmpty(textEmail)){
-                    Toast.makeText(LoginActivity.this, "Будь ласка, введіть пошту", Toast.LENGTH_SHORT).show();
-                    emailEditText.setError("Ви не ввели пошту");
-                    emailEditText.requestFocus();
-                } else if (TextUtils.isEmpty(textPassword)){
-                    Toast.makeText(LoginActivity.this, "Будь ласка, введіть пароль", Toast.LENGTH_SHORT).show();
-                    passwordEditText.setError("Ви не ввели пароль");
-                    passwordEditText.requestFocus();
-                } else {
-                    Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
-                    startActivity(myint);
-                    //
-                }
-            }
-        });*/
 
         TextView createNew = findViewById(R.id.createnew);
         createNew.setOnClickListener(new View.OnClickListener() {
@@ -74,19 +40,30 @@ public class LoginActivity extends AppCompatActivity {
                 //handleLoginDialog
             }
         });
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
+
+        handleLoginInfo();
+
     }
 
     //// methods for work with server ////
     private void handleLoginInfo() {
 
-        View view = getLayoutInflater().inflate(R.layout.activity_login, null);
+        //View view = getLayoutInflater().inflate(R.layout.activity_login, null);
 
         //AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //builder.setView(view).show();
 
-        Button signipBtn = view.findViewById(R.id.signupbtn);
-        final EditText emailEditText = view.findViewById(R.id.emailEditText);
-        final EditText passwordEditText = view.findViewById(R.id.passwordEditText);
+        Button signipBtn = findViewById(R.id.signupbtn);
+        EditText emailEditText = findViewById(R.id.emailEditText);
+        EditText passwordEditText = findViewById(R.id.passwordEditText);
         String textEmail = emailEditText.getText().toString();
         String textPassword = passwordEditText.getText().toString();
 
