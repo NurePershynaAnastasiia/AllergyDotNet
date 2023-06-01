@@ -23,7 +23,7 @@ app.post('/listOfPoints', (req, res) => {
     db.all(query, [user_id], (err, rows) => { // Використовуйте db.all замість db.each для отримання всіх рядків
         if (err) {
             console.error(err);
-            return res.status(500).send('Error retrieving notes from the database');
+            return res.status(500).send('Error retrieving points from the database');
         }
         res.status(200).json(rows);
     });
