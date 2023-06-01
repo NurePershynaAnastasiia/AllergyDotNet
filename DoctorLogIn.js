@@ -11,36 +11,28 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.post('/', (req, res) => {
-    fs.readFile('doctorLogin.json', 'utf8', async (err, data) => {
+app.post('/doctorLogin', (req, res) => {
+    const doctor_email = req.body.doctor_email;
+    const doctor_password = req.body.doctor_email;
+
+    db.get('SELECT doctor_id, doctor_password, isAdmin FROM Doctors WHERE doctor_email = ?', [doctor_email], (err, row) => {
         if (err) {
-            return res.status(500).json({ error: 'Error reading the file' });
+            console.error(err);
+            return res.status(500).send('Error retrieving data from the database');
         }
-        try {
-            const doctorData = JSON.parse(data);
-            db.get('SELECT doctor_id, doctor_password, isAdmin FROM Doctors WHERE doctor_email = ?', [doctorData.doctor_email], (err, row) => {
-                if (err) {
-                    console.error(err);
-                    return res.status(500).send('Error retrieving data from the database');
-                }
+        if (row) {
+            if (row.doctor_password === doctor_password) {
+                if (row.isAdmin) {
+                    res.status(200).json({doctor_id: row.doctor_id, isAdmin: true});
 
-                if (row) {
-                    if (row.doctor_password === doctorData.doctor_password) {
-                        if(row.isAdmin){
-                            res.status(200).json({ doctor_id: row.doctor_id, isAdmin: true});
-
-                        }else{
-                            res.status(200).json({ doctor_id: row.doctor_id, isAdmin: false });
-                        }
-                    } else {
-                        res.status(400).json({ error: 'Invalid password' });
-                    }
                 } else {
-                    res.status(200).json({ doctor_id: false });
+                    res.status(200).json({doctor_id: row.doctor_id, isAdmin: false});
                 }
-            });
-        } catch (error) {
-            res.status(400).json({ error: 'Invalid JSON file' });
+            } else {
+                res.status(400).json({error: 'Invalid password'});
+            }
+        } else {
+            res.status(200).json({doctor_id: false});//людини з таким емайлом нема
         }
     });
 });
