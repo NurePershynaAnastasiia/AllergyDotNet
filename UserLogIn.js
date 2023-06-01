@@ -13,21 +13,23 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.post('/', (req, res) => {
-    fs.readFile('userLogin.json', 'utf8', async (err, data) => {
+app.post('/userLogin', (req, res) => {
+    //fs.readFile('userLogin.json', 'utf8', async (err, data) => {
         if (err) {
             return res.status(500).json({ error: 'Error reading the file' });
         }
         try {
-            const userData = JSON.parse(data);
-            db.get('SELECT user_id, user_password FROM Users WHERE user_email = ?', [userData.user_email], (err, row) => {
+            const user_email = req.body.user_email;
+            const user_password = req.body.user_password;
+
+            db.get('SELECT user_id, user_password FROM Users WHERE user_email = ?', [user_email], (err, row) => {
                 if (err) {
                     console.error(err);
                     return res.status(500).send('Error retrieving data from the database');
                 }
 
                 if (row) {
-                    if (row.user_password === userData.user_password) {
+                    if (row.user_password === [user_password]){
                         res.status(200).json({ user_id: row.user_id });
                     } else {
                         res.status(400).json({ error: 'Invalid password' });
@@ -39,7 +41,7 @@ app.post('/', (req, res) => {
         } catch (error) {
             res.status(400).json({ error: 'Invalid JSON file' });
         }
-    });
+    //});
 });
 
 // Запуск сервера
