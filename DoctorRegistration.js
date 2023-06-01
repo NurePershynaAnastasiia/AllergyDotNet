@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.post('/', (req, res) => {
-    fs.readFile(`newDoctor.json`, 'utf8', async (err, data) => {
+    //fs.readFile(`newDoctor.json`, 'utf8', async (err, data) => {
         if (err) {
             return res.status(500).json({error: 'Error reading the file'});
         }
