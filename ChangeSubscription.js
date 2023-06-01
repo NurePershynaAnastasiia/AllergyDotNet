@@ -11,7 +11,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const querySelect = `SELECT user_sub FROM Users WHERE user_id = ?`;
-const queryUpdate = `UPDATE Users SET user_sub = 1 WHERE user_id = ? AND user_sub = 0`;
+const queryUpdateToPremium = `UPDATE Users SET user_sub = 1 WHERE user_id = ? AND user_sub = 0`;
+const queryUpdateToFree = `UPDATE Users SET user_sub = 0 WHERE user_id = ? AND user_sub = 1`;
 
 app.post('/changeUserSub', (req, res) => {
     const user_id = req.body.user_id;
@@ -30,18 +31,26 @@ app.post('/changeUserSub', (req, res) => {
         const userSub = row.user_sub;
 
         if (userSub === 1) {
-            return res.status(200).json({ message: 'Subscription is already active' });
+            //return res.status(200).json({ message: 'Subscription is already active' });
+            db.run(queryUpdateToFree, [user_id], function (err) {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).send('Error updating data in the database');
+                }
+
+                res.status(200).json({ message: 'User subscription changed to free successfully!' });
+            });
+        }else if(userSub === 0){
+            // Update the user_sub value
+            db.run(queryUpdateToPremium, [user_id], function (err) {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).send('Error updating data in the database');
+                }
+
+                res.status(200).json({ message: 'User subscription changed successfully!' });
+            });
         }
-
-        // Update the user_sub value
-        db.run(queryUpdate, [user_id], function (err) {
-            if (err) {
-                console.error(err);
-                return res.status(500).send('Error updating data in the database');
-            }
-
-            res.status(200).json({ message: 'User subscription changed successfully!' });
-        });
     });
 });
 
