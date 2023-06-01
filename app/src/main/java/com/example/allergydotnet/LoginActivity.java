@@ -23,6 +23,10 @@ import java.util.HashMap;
 import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private Button signinBtn;
+    EditText emailEditText;
+    EditText passwordEditText;
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://localhost:3000";
@@ -49,27 +53,21 @@ public class LoginActivity extends AppCompatActivity {
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
-        handleLoginInfo();
-
-    }
-
-    //// methods for work with server ////
-    private void handleLoginInfo() {
-
         //View view = getLayoutInflater().inflate(R.layout.activity_login, null);
 
         //AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //builder.setView(view).show();
 
-        Button signipBtn = findViewById(R.id.signupbtn);
-        EditText emailEditText = findViewById(R.id.emailEditText);
-        EditText passwordEditText = findViewById(R.id.passwordEditText);
-        String textEmail = emailEditText.getText().toString();
-        String textPassword = passwordEditText.getText().toString();
+        signinBtn = findViewById(R.id.signupbtn);
+        emailEditText = findViewById(R.id.emailEditText);
+        passwordEditText = findViewById(R.id.passwordEditText);
 
-        signipBtn.setOnClickListener(new View.OnClickListener() {
+
+        signinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String textEmail = emailEditText.getText().toString();
+                String textPassword = passwordEditText.getText().toString();
                 //Check input fields
                 if (TextUtils.isEmpty(textEmail)){
                     Toast.makeText(LoginActivity.this, "Будь ласка, введіть пошту", Toast.LENGTH_SHORT).show();
@@ -126,6 +124,13 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    //// methods for work with server ////
+    private void handleLoginInfo() {
+
+
 
     }
 }
