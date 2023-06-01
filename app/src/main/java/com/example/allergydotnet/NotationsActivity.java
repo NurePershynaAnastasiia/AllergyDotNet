@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
@@ -14,6 +15,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class NotationsActivity extends AppCompatActivity {
+
+    Intent intent = getIntent();
+    int user_id = intent.getIntExtra("user_id", 0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,5 +53,17 @@ public class NotationsActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        Button add_notationBtn = findViewById(R.id.addbtn);
+        add_notationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myint = new Intent(getApplicationContext(), NewNotationActivity.class);
+                myint.putExtra("user_id", user_id);
+                startActivity(myint);
+            }
+        });
+
+
     }
 }

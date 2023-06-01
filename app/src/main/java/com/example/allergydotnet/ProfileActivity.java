@@ -44,6 +44,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     private TextView all_notaionsTextView = findViewById(R.id.allnotaions);
 
+    Intent intent = getIntent();
+    int user_id = intent.getIntExtra("user_id", 0);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +103,8 @@ public class ProfileActivity extends AppCompatActivity {
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myint = new Intent(getApplicationContext(), NewNotationActivity.class);
+                Intent myint = new Intent(getApplicationContext(), NotationsActivity.class);
+                myint.putExtra("user_id", user_id);
                 startActivity(myint);
             }
         });
@@ -191,8 +195,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = getIntent();
-        int user_id = intent.getIntExtra("user_id", 0);
+        /*
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -210,7 +213,6 @@ public class ProfileActivity extends AppCompatActivity {
         call.enqueue(new Callback<UserProfileInfo>() {
             @Override
             public void onResponse(Call<UserProfileInfo> call, Response<UserProfileInfo> response) {
-
 
                 if (response.code() == 200) {
 
@@ -246,5 +248,7 @@ public class ProfileActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         });
+
+         */
     }
 }

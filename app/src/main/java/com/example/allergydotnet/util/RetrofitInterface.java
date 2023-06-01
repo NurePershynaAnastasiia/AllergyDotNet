@@ -13,4 +13,7 @@ public interface RetrofitInterface {
 
     @POST("/userProfile")
     Call<UserProfileInfo> executeProfile (@Body HashMap<String, String> map);
+
+    @POST("/noteInfo")
+    Call<NoteInfo> executeNote (@Body HashMap<String, String> map);
 }
