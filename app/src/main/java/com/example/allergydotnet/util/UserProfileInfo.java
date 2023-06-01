@@ -27,5 +27,7 @@ public class UserProfileInfo {
 
     public String[] getAllergens() { return allergens; };
 
+    public String[] getNote_names() { return note_names; };
+
     public String[] getNote_texts() { return note_texts; };
 }

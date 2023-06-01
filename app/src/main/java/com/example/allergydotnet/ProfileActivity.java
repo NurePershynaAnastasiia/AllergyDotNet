@@ -42,6 +42,8 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView nameTextView = findViewById(R.id.name);
     private TextView sub_typeTextView = findViewById(R.id.subscrtype);
 
+    private TextView all_notaionsTextView = findViewById(R.id.allnotaions);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +93,15 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CreateSubscriptionPopup();
+            }
+        });
+
+        Button notationsbtn = findViewById(R.id.notationsbtn);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myint = new Intent(getApplicationContext(), NewNotationActivity.class);
+                startActivity(myint);
             }
         });
     }
@@ -145,6 +156,7 @@ public class ProfileActivity extends AppCompatActivity {
                 });
             }
         });
+
 
         premiumButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,9 +217,16 @@ public class ProfileActivity extends AppCompatActivity {
                     UserProfileInfo result = response.body();
                     String user_name = result.getName();
                     String user_sub = (result.getSub()? "Преміум" : "Стандартна");
-                    
+                    String[] notation_names = result.getNote_names();
+
+                    String all_notation_names = "";
+                    for (int i = 0; i < notation_names.length; i++)
+                        all_notation_names += "- " + notation_names[i] + "\n";
+
                     nameTextView.setText(user_name);
                     sub_typeTextView.setText(user_sub);
+                    all_notaionsTextView.setText(all_notation_names);
+
 
                     //AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
                     //builder1.setTitle(result.getName());

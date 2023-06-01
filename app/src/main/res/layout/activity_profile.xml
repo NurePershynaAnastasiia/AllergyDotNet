@@ -144,6 +144,31 @@
                     android:layout_marginTop="10dp"
                     />
 
+                <TextView
+                    android:id="@+id/allnotaions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Мої нотатки"
+                    android:layout_below="@id/mynot"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/notationsbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/allnotaions"
+                    android:backgroundTint="#407A61"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentRight="true"
+                    android:text="Детальніше"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/gilroy_regular"/>
+
             </RelativeLayout>
 
 
