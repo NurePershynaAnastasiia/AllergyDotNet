@@ -26,6 +26,7 @@ const loadFullNotes = require('./routes/loadFullNotes');
 const userLogin = require('./routes/userLogin');
 const userRegistration = require('./routes/userRegistration');
 
+/*
 app.use(changeSub);
 app.use(createNote);
 app.use(createPoint);
@@ -40,10 +41,25 @@ app.use(loadUserAllergens);
 app.use(loadUserNameSub);
 app.use(loadFullNotes);
 app.use(userLogin);
-app.use(userRegistration);
+app.use(userRegistration);*/
+
+app.use('/', changeSub);
+app.use('/', createNote);
+app.use('/', createPoint);
+app.use('/', doctorLogIn);
+app.use('/', doctorRegistration);
+app.use('/', loadAllCheckedPoints);
+app.use('/', loadDoctors);
+app.use('/', loadNotesName);
+app.use('/', loadPersonalPoints);
+app.use('/', loadPersonalRecomendations);
+app.use('/', loadUserAllergens);
+app.use('/', loadUserNameSub);
+app.use('/', loadFullNotes);
+app.use('/', userLogin);
+app.use('/', userRegistration);
 
 
-const app = require('./app');
 // Start the server
 app.listen(3000, () => {
     console.log('Server is running on port 3000');

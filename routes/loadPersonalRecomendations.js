@@ -1,16 +1,9 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
-const fs = require('fs');
-const app = express();
-const bodyParser = require('body-parser');
+const router = express.Router();
 const db = new sqlite3.Database('AllergyDotNet.db');
 
-// Parse request bodies
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-app.post('/loadPersonalRecomendations', (req, res) => {
+router.post('/loadPersonalRecomendations', (req, res) => {
     const user_id = req.body.user_id; // Отримання user_id з тіла запиту
     const query = 'SELECT allergen_name, allergen_info FROM Allergens ' +
         'inner join UserAllergens on Allergens.allergen_id = UserAllergens.allergen_id ' +
@@ -26,7 +19,4 @@ app.post('/loadPersonalRecomendations', (req, res) => {
     });
 });
 
-// Start the server
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+module.exports = router;
