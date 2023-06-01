@@ -1,16 +1,9 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
-const fs = require('fs');
-const app = express();
-const bodyParser = require('body-parser');
+const router = express.Router();
 const db = new sqlite3.Database('AllergyDotNet.db');
 
-// Parse request bodies
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-app.post('/userLogin', (req, res) => {
+router.post('/userLogin', (req, res) => {
     const user_email = req.body.user_email;
     const user_password = req.body.user_password;
 
@@ -32,7 +25,4 @@ app.post('/userLogin', (req, res) => {
     });
 });
 
-// Start the server
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+module.exports = router;

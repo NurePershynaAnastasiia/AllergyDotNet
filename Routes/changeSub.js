@@ -1,20 +1,13 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
-const fs = require('fs');
-const app = express();
-const bodyParser = require('body-parser');
 const db = new sqlite3.Database('AllergyDotNet.db');
-
-// Parse request bodies
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+const router = express.Router();
 
 const querySelect = `SELECT user_sub FROM Users WHERE user_id = ?`;
 const queryUpdateToPremium = `UPDATE Users SET user_sub = 1 WHERE user_id = ? AND user_sub = 0`;
 const queryUpdateToFree = `UPDATE Users SET user_sub = 0 WHERE user_id = ? AND user_sub = 1`;
 
-app.post('/changeUserSub', (req, res) => {
+router.post('/changeUserSub', (req, res) => {
     const user_id = req.body.user_id;
 
     // Check the current user_sub value
@@ -54,7 +47,5 @@ app.post('/changeUserSub', (req, res) => {
     });
 });
 
-// Start the server
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+module.exports = router;
+

@@ -1,18 +1,12 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
-const fs = require('fs');
-const app = express();
-const bodyParser = require('body-parser');
+const router = express.Router();
 const db = new sqlite3.Database('AllergyDotNet.db'); // Підключення до бази даних SQLite
+
 const query = `INSERT INTO Notes (note_name, note_text, note_date, user_id)
                VALUES ($note_name, $note_text, $note_date, $user_id)`;
 
-// Розбір даних у форматі JSON
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-app.post('/', (req, res) => {
+router.post('/', (req, res) => {
     try {
         const noteData = req.body;
 
@@ -34,7 +28,4 @@ app.post('/', (req, res) => {
     }
 });
 
-// Запуск сервера
-app.listen(3000, () => {
-    console.log('Сервер запущено на порті 3000');
-});
+module.exports = router;
