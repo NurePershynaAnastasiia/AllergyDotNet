@@ -12,11 +12,12 @@ app.use(bodyParser.json());
 
 app.post('/listOfPoints', (req, res) => {
     const user_id = req.body.user_id; // Отримання user_id з тіла запиту
-    //const query1 = 'SELECT note_id, note_name, note_text, note_date FROM Notes WHERE user_id = ?';
 
-    const query = 'SELECT allergen_name, allergen_photo FROM Allergens ' +
-        'inner join UsersAllergens on Allergens.allergen_id = UsersAllergens.allergen_id ' +
-        'where UsersAllergens.user_id = ?';
+    const query = 'SELECT a.allergen_name, a.allergen_photo, p.point_coordinates_latitude, p.point_coordinates_longitude\n' +
+            'FROM Users u\n' +
+            'JOIN UserAllergens ua ON u.user_id = ua.user_id\n' +
+            'JOIN Allergens a ON ua.allergen_id = a.allergen_id\n' +
+            'JOIN Points p ON a.allergen_id = p.allergen_id WHERE u.user_id = ?';
 
 
     //это работает или нет? просто тут ДБ ОЛЛ это странно
