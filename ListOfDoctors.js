@@ -11,17 +11,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //
-app.post('/', (req, res) => {
-   // const user_id = req.body.user_id; // Отримання user_id з тіла запиту
+app.post('/listOfDoctors', (req, res) => {
     const query = 'SELECT doctor_id, doctor_name, doctor_photo, doctor_price, doctor_info FROM Doctors';
 
     db.all(query,  (err, rows) => {
         if (err) {
             console.error(err);
-            return res.status(500).send('Error retrieving docotrs from the database');
+            return res.status(500).send('Error retrieving doctors from the database');
         }
         res.json(rows);
     });
+
 });
 
 // Start the server

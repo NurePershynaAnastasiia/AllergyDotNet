@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 const query = `INSERT INTO Users (user_name, user_email, user_password)
                VALUES (?, ?, ?)`;
 
-app.post('/', (req, res) => {
+app.post('/userRegistration', (req, res) => {
     const user_name = req.body.user_name;
     const user_email = req.body.user_email;
     const user_password = req.body.user_password;
@@ -28,8 +28,9 @@ app.post('/', (req, res) => {
             res.json({ message: 'Data downloaded and inserted successfully' });
         });
     } else {
-        res.status(404).json({ error: 'Invalid password' });
+        res.status(404).json({ error: 'Passwords don`t match' });
     }
+
 });
 
 // Start the server

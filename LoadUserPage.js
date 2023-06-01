@@ -12,8 +12,7 @@ app.use(bodyParser.json());
 
 // Route to get all notes for a specific user
 
-
-app.post('/', (req, res) => {
+app.post('/loadUserData', (req, res) => {
     const user_id = req.body.user_id; // Отримання user_id з тіла запиту
     const query = 'SELECT Users.user_name, Users.user_sub, Notes.note_name, Notes.note_text, Allergens.allergen_name\n' +
         'FROM Users\n' +
