@@ -21,6 +21,7 @@
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
         android:paddingBottom="80dp">
 
         <RelativeLayout
@@ -33,7 +34,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/layout1_profile"
-                android:layout_width="380dp" android:layout_height="200dp" android:layout_marginTop="100dp"
+                android:layout_width="380dp" android:layout_height="200dp"
                 android:layout_centerHorizontal="true" android:background="@drawable/backgroud_border">
 
                 <ImageView

@@ -15,10 +15,12 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class ChooseConsultTimeActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_consult_time);
+
 
         BottomNavigationView bottomNavMenu = findViewById(R.id.bottom_navigation);
         bottomNavMenu.setSelectedItemId(R.id.invisible);

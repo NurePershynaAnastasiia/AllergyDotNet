@@ -64,6 +64,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAPS_WdCqjdInXnFmrJdlq2kq2sZj-kAsg" />
+
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

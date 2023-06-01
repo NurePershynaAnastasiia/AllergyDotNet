@@ -19,6 +19,7 @@
 
     <ScrollView
         android:paddingBottom="80dp"
+        android:layout_marginTop="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <RelativeLayout
@@ -28,8 +29,10 @@
             <RelativeLayout
                 android:id="@+id/layout2"
                 android:layout_alignParentRight="true"
-                android:layout_width="380dp" android:layout_height="150dp" android:layout_marginTop="100dp"
+                android:layout_width="380dp" android:layout_height="150dp"
                 android:layout_centerHorizontal="true" >
+
+
                 <ImageView
                     android:id="@+id/doctor_photo"
                     android:layout_width="150dp"
