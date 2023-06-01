@@ -2,10 +2,13 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const fs = require('fs');
 const app = express();
-const db = new sqlite3.Database('AllergyDotNet.db');// Підключення до бази даних SQLite
+const bodyParser = require('body-parser');
+const db = new sqlite3.Database('AllergyDotNet.db');
 
-// Розбір даних у форматі JSON
+// Parse request bodies
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.post('/userLogin', (req, res) => {
     const user_email = req.body.user_email;
@@ -18,7 +21,7 @@ app.post('/userLogin', (req, res) => {
         }
 
         if (row) {
-            if (row.user_password === user_password){
+            if (row.user_password === user_password) {
                 res.status(200).json({ user_id: row.user_id });
             } else {
                 res.status(400).json({ error: 'Invalid password' });
@@ -29,8 +32,7 @@ app.post('/userLogin', (req, res) => {
     });
 });
 
-// Запуск сервера
-app.use(express.static(__dirname));
+// Start the server
 app.listen(3000, () => {
-    console.log('Сервер запущено на порті 3000');
+    console.log('Server is running on port 3000');
 });
