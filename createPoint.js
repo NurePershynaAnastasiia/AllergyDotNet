@@ -37,7 +37,7 @@ app.post('/', (req, res) => {
 
 
         } catch (error) {
-            res.status(400).json({error: 'Invalid JSON file'});
+            res.status(404).json({error: 'Invalid JSON file'});
         }
     });
 });

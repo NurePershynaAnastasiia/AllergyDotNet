@@ -30,7 +30,7 @@ app.post('/', (req, res) => {
             res.json({ message: 'Data downloaded and inserted successfully' });
         });
     } else {
-        res.status(400).json({ error: 'Invalid password' });
+        res.status(404).json({ error: 'Invalid password' });
     }
 });
 

@@ -29,7 +29,7 @@ app.post('/doctorLogin', (req, res) => {
                     res.status(200).json({doctor_id: row.doctor_id, isAdmin: false});//адмін
                 }
             } else {
-                res.status(400).json({error: 'Invalid password'});//якщо пароль невірний
+                res.status(404).json({error: 'Invalid password'});//якщо пароль невірний
             }
         } else {
             res.status(200).json({doctor_id: false});//людини з таким емайлом нема

@@ -24,10 +24,10 @@ app.post('/userLogin', (req, res) => {
             if (row.user_password === user_password) {
                 res.status(200).json({ user_id: row.user_id });
             } else {
-                res.status(400).json({ error: 'Invalid password' });
+                res.status(404).json({ error: 'Invalid password' });
             }
         } else {
-            res.status(200).json({ user_id: false });//there isn`t user with this email
+            res.status(404).json({ user_id: false });//there isn`t user with this email
         }
     });
 });
