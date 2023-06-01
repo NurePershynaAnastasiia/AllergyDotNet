@@ -27,7 +27,7 @@ app.post('/userLogin', (req, res) => {
                 res.status(400).json({ error: 'Invalid password' });
             }
         } else {
-            res.status(200).json({ user_id: false });
+            res.status(200).json({ user_id: false });//there isn`t user with this email
         }
     });
 });
