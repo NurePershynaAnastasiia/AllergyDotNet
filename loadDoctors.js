@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //
-app.post('/listOfDoctors', (req, res) => {
+app.post('/loadDoctors', (req, res) => {
     const query = 'SELECT doctor_id, doctor_name, doctor_photo, doctor_price, doctor_info FROM Doctors';
 
     db.all(query,  (err, rows) => {
