@@ -2,15 +2,15 @@ package com.example.allergydotnet.util;
 
 public class LoginInfo {
 
-    private String name;
+    private String user_name;
 
-    private String email;
+    private String user_email;
 
     public String getName() {
-        return name;
+        return user_name;
     }
 
     public String getEmail() {
-        return email;
+        return user_email;
     }
 }

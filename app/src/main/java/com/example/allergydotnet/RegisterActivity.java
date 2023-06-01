@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegisterActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://localhost:3000/userLogIn/";
+    private String BASE_URL = "http://localhost:3000/userLogin/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,9 +128,9 @@ public class RegisterActivity extends AppCompatActivity {
 
                 HashMap<String, String> map = new HashMap<>();
 
-                map.put("name", nameEdit.getText().toString());
-                map.put("email", emailEdit.getText().toString());
-                map.put("password", passwordEdit.getText().toString());
+                map.put("user_name", nameEdit.getText().toString());
+                map.put("user_email", emailEdit.getText().toString());
+                map.put("user_password", passwordEdit.getText().toString());
 
                 Call<Void> call = retrofitInterface.executeSignup(map);
 

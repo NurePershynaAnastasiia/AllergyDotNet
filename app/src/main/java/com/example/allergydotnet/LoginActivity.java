@@ -25,7 +25,7 @@ import retrofit2.Retrofit;
 public class LoginActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://localhost:3000/userLogIn/";
+    private String BASE_URL = "http://localhost:3000/userLogin";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,8 +110,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 HashMap<String, String> map = new HashMap<>();
 
-                map.put("email", textEmail);
-                map.put("password", textPassword);
+                map.put("user_email", textEmail);
+                map.put("user_password", textPassword);
 
                 Call<LoginInfo> call = retrofitInterface.executeLogin(map);
                 call.enqueue(new Callback<LoginInfo>() {
