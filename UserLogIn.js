@@ -14,11 +14,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.post('/userLogin', (req, res) => {
-    //fs.readFile('userLogin.json', 'utf8', async (err, data) => {
-        if (err) {
-            return res.status(500).json({ error: 'Error reading the file' });
-        }
-        try {
+
+
             const user_email = req.body.user_email;
             const user_password = req.body.user_password;
 
@@ -38,9 +35,7 @@ app.post('/userLogin', (req, res) => {
                     res.status(200).json({ user_id: false });
                 }
             });
-        } catch (error) {
-            res.status(400).json({ error: 'Invalid JSON file' });
-        }
+
     //});
 });
 
