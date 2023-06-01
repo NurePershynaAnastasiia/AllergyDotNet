@@ -2,6 +2,11 @@ package com.example.allergydotnet;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,12 +22,26 @@ import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.allergydotnet.util.LoginInfo;
+import com.example.allergydotnet.util.RetrofitInterface;
+import com.example.allergydotnet.util.UserProfileInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.HashMap;
+
 public class ProfileActivity extends AppCompatActivity {
-RelativeLayout layout;
+    RelativeLayout layout;
+
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "http://172.20.10.2:3000";
+
+    private TextView nameTextView = findViewById(R.id.name);
+    private TextView sub_typeTextView = findViewById(R.id.subscrtype);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -157,6 +176,55 @@ RelativeLayout layout;
             public boolean onTouch(View v, MotionEvent event) {
                 popupWindow.dismiss();
                 return true;
+            }
+        });
+
+        Intent intent = getIntent();
+        int user_id = intent.getIntExtra("user_id", 0);
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
+
+        HashMap<String, String> map = new HashMap<>();
+
+        map.put("user_id", Integer.toString(user_id));
+
+        Call<UserProfileInfo> call = retrofitInterface.executeProfile(map);
+        call.enqueue(new Callback<UserProfileInfo>() {
+            @Override
+            public void onResponse(Call<UserProfileInfo> call, Response<UserProfileInfo> response) {
+
+
+                if (response.code() == 200) {
+
+                    UserProfileInfo result = response.body();
+                    String user_name = result.getName();
+                    String user_sub = (result.getSub()? "Преміум" : "Стандартна");
+                    
+                    nameTextView.setText(user_name);
+                    sub_typeTextView.setText(user_sub);
+
+                    //AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                    //builder1.setTitle(result.getName());
+                    //builder1.setMessage(result.getEmail());
+                    //builder1.show();
+
+
+                } else if (response.code() == 404) {
+                    Toast.makeText(ProfileActivity.this, "Something went wrong",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserProfileInfo> call, Throwable t) {
+                Toast.makeText(ProfileActivity.this, t.getMessage(),
+                        Toast.LENGTH_LONG).show();
             }
         });
     }
