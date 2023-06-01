@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordEditText;
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://localhost:3000";
+    private String BASE_URL = "http://172.20.10.2:3000";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,24 +88,27 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<LoginInfo> call, Response<LoginInfo> response) {
 
+
                             if (response.code() == 200) {
 
                                 LoginInfo result = response.body();
+                                int user_id = result.getId();
+
                                 //AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
                                 //builder1.setTitle(result.getName());
                                 //builder1.setMessage(result.getEmail());
                                 //builder1.show();
 
-                                Toast.makeText(LoginActivity.this, "Cool",
+                                Toast.makeText(LoginActivity.this, "Successful login",
                                         Toast.LENGTH_LONG).show();
                                 Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
+                                myint.putExtra("user_id", user_id);
                                 startActivity(myint);
 
                             } else if (response.code() == 404) {
                                 Toast.makeText(LoginActivity.this, "Wrong Credentials",
                                         Toast.LENGTH_LONG).show();
                             }
-
                         }
 
                         @Override
