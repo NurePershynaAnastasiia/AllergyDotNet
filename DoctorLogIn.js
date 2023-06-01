@@ -23,13 +23,13 @@ app.post('/doctorLogin', (req, res) => {
         if (row) {
             if (row.doctor_password === doctor_password) {
                 if (row.isAdmin) {
-                    res.status(200).json({doctor_id: row.doctor_id, isAdmin: true});
+                    res.status(200).json({doctor_id: row.doctor_id, isAdmin: true});//доктор
 
                 } else {
-                    res.status(200).json({doctor_id: row.doctor_id, isAdmin: false});
+                    res.status(200).json({doctor_id: row.doctor_id, isAdmin: false});//адмін
                 }
             } else {
-                res.status(400).json({error: 'Invalid password'});
+                res.status(400).json({error: 'Invalid password'});//якщо пароль невірний
             }
         } else {
             res.status(200).json({doctor_id: false});//людини з таким емайлом нема
