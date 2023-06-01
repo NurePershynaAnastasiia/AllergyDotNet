@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 //
 app.post('/', (req, res) => {
    // const user_id = req.body.user_id; // Отримання user_id з тіла запиту
-    const query = 'SELECT doctor_id, doctor_name FROM Doctors'; //, doctor_price, doctor_info, dcotor_photo
+    const query = 'SELECT doctor_id, doctor_name, doctor_photo, doctor_price, doctor_info FROM Doctors';
 
     db.all(query,  (err, rows) => {
         if (err) {
