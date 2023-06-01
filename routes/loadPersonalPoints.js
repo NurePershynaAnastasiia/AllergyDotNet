@@ -6,7 +6,7 @@ const db = new sqlite3.Database('AllergyDotNet.db');
 router.post('/loadPersonalPoints', (req, res) => {
     const user_id = req.body.user_id; // Отримання user_id з тіла запиту
 
-    const query = 'SELECT a.allergen_name, a.allergen_photo, p.point_coordinates_latitude, p.point_coordinates_longitude\n' +
+    const query = 'SELECT a.allergen_name, p.point_photo, p.point_coordinates_latitude, p.point_coordinates_longitude\n' +
             'FROM Users u\n' +
             'JOIN UserAllergens ua ON u.user_id = ua.user_id\n' +
             'JOIN Allergens a ON ua.allergen_id = a.allergen_id\n' +
