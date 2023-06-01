@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.post('/listOfPoints', (req, res) => {
     const user_id = req.body.user_id; // Отримання user_id з тіла запиту
-    const query1 = 'SELECT note_id, note_name, note_text, note_date FROM Notes WHERE user_id = ?';
+    //const query1 = 'SELECT note_id, note_name, note_text, note_date FROM Notes WHERE user_id = ?';
 
     const query = 'SELECT allergen_name, allergen_photo FROM Allergens ' +
         'inner join UsersAllergens on Allergens.allergen_id = UsersAllergens.allergen_id ' +
