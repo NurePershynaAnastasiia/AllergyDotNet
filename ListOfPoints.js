@@ -17,7 +17,7 @@ app.post('/listOfPoints', (req, res) => {
             'FROM Users u\n' +
             'JOIN UserAllergens ua ON u.user_id = ua.user_id\n' +
             'JOIN Allergens a ON ua.allergen_id = a.allergen_id\n' +
-            'JOIN Points p ON a.allergen_id = p.allergen_id WHERE u.user_id = ?';
+            'JOIN Points p ON a.allergen_id = p.allergen_id WHERE u.user_id = ? AND p.point_status = \'1\'';
 
 
     //это работает или нет? просто тут ДБ ОЛЛ это странно
