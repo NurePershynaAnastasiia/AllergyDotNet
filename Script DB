@@ -2,7 +2,8 @@ CREATE TABLE Users (
 user_id INTEGER PRIMARY KEY AUTOINCREMENT,
 user_name TEXT NOT NULL,
 user_email TEXT NOT NULL,
-user_password TEXT NOT NULL
+user_password TEXT NOT NULL,
+user_sub BOOLEAN DEFAULT 0
 );
 
 CREATE TABLE Notes (
@@ -40,7 +41,9 @@ doctor_IBAN TEXT,
 doctor_photo BLOB,
 doctor_documents BLOB,
 doctor_status BOOLEAN DEFAULT 0,
-isAdmin BOOLEAN DEFAULT 0
+isAdmin BOOLEAN DEFAULT 0,
+doctor_price INTEGER,
+doctor_info TEXT
 );
 
 CREATE TABLE Points (
@@ -57,7 +60,6 @@ allergen_id INTEGER NOT NULL REFERENCES Allergens(allergen_id) ON DELETE CASCADE
 CREATE TABLE Consultations (
 consultation_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 consultation_date DATE NOT NULL,
-consultation_time TIME NOT NULL,
 user_id INTEGER REFERENCES Users(user_id) ON DELETE CASCADE,
 doctor_id INTEGER NOT NULL REFERENCES Doctors(doctor_id) ON DELETE CASCADE,
 consultation_status INTEGER NOT NULL REFERENCES ConsStatus(consultation_status_id) ON DELETE CASCADE
