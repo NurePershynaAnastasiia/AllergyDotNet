@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //
-app.post('/loadAllPoints', (req, res) => {
+app.post('/loadAllCheckedPoints', (req, res) => {
     const query = 'SELECT point_name, point_photo, point_coordinates_latitude, point_coordinates_longitude FROM Points WHERE point_status = 1';
 
     db.all(query,  (err, rows) => {
