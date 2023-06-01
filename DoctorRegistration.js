@@ -15,6 +15,10 @@ const query = `INSERT INTO Doctors (doctor_name, doctor_email, doctor_password, 
 
 app.post('/', (req, res) => {
     const doctor_name = req.body.doctor_name;
+    if (!doctor_name) {
+        return res.status(400).json({ error: 'Invalid data. Missing doctor_name' });
+    }
+
     const doctor_email = req.body.doctor_email;
     const doctor_password = req.body.doctor_password;
     const doctor_IBAN = req.body.doctor_IBAN;
