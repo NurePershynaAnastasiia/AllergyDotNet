@@ -31,11 +31,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     //// new code for work with sever
-        retrofit = new Retrofit.Builder()
+        /*retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        handleLoginInfo();
+                .build();*/
+        //handleLoginInfo();
     ///// new code for work with sever
         //EditText emailEditText = findViewById(R.id.emailEditText);
         //EditText passwordEditText = findViewById(R.id.passwordEditText);
@@ -103,42 +103,49 @@ public class LoginActivity extends AppCompatActivity {
                     passwordEditText.setError("Ви не ввели пароль");
                     passwordEditText.requestFocus();
                 } else {
-                    Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
-                    startActivity(myint);
+                    HashMap<String, String> map = new HashMap<>();
+
+                    map.put("user_email", textEmail);
+                    map.put("user_password", textPassword);
+
+                    Call<LoginInfo> call = retrofitInterface.executeLogin(map);
+                    call.enqueue(new Callback<LoginInfo>() {
+                        @Override
+                        public void onResponse(Call<LoginInfo> call, Response<LoginInfo> response) {
+
+                            if (response.code() == 200) {
+
+                                LoginInfo result = response.body();
+                                //AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                                //builder1.setTitle(result.getName());
+                                //builder1.setMessage(result.getEmail());
+                                //builder1.show();
+
+                                Toast.makeText(LoginActivity.this, "Cool",
+                                        Toast.LENGTH_LONG).show();
+                                Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
+                                startActivity(myint);
+
+                            } else if (response.code() == 404) {
+                                Toast.makeText(LoginActivity.this, "Wrong Credentials",
+                                        Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<LoginInfo> call, Throwable t) {
+                            Toast.makeText(LoginActivity.this, t.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+
+
                     //
                 }
 
-                HashMap<String, String> map = new HashMap<>();
 
-                map.put("user_email", textEmail);
-                map.put("user_password", textPassword);
-
-                Call<LoginInfo> call = retrofitInterface.executeLogin(map);
-                call.enqueue(new Callback<LoginInfo>() {
-                    @Override
-                    public void onResponse(Call<LoginInfo> call, Response<LoginInfo> response) {
-
-                        if (response.code() == 200) {
-
-                            LoginInfo result = response.body();
-                            //AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
-                            //builder1.setTitle(result.getName());
-                            //builder1.setMessage(result.getEmail());
-                            //builder1.show();
-
-                        } else if (response.code() == 404) {
-                            Toast.makeText(LoginActivity.this, "Wrong Credentials",
-                                    Toast.LENGTH_LONG).show();
-                        }
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<LoginInfo> call, Throwable t) {
-                        Toast.makeText(LoginActivity.this, t.getMessage(),
-                                Toast.LENGTH_LONG).show();
-                    }
-                });
 
             }
         });
