@@ -15,8 +15,7 @@ app.use(bodyParser.json());
 
 app.post('/', (req, res) => {
     const user_id = req.body.user_id; // Отримання user_id з тіла запиту
-    const query =
-        'SELECT Users.user_name, Users.user_sub, Notes.note_name, Notes.note_text, Allergens.allergen_name\n' +
+    const query = 'SELECT Users.user_name, Users.user_sub, Notes.note_name, Notes.note_text, Allergens.allergen_name\n' +
         'FROM Users\n' +
         'LEFT JOIN Notes ON Users.user_id = Notes.user_id\n' +
         'LEFT JOIN UserAllergens ON Users.user_id = UserAllergens.user_id\n' +
