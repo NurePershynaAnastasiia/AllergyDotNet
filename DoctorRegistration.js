@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.post('/', (req, res) => {
     fs.readFile(`newDoctor.json`, 'utf8', async (err, data) => {
         if (err) {
-            //return res.status(500).json({error: 'Error reading the file'});
+            return res.status(500).json({error: 'Error reading the file'});
         }
         try {
             const doctorData = JSON.parse(data);
