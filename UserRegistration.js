@@ -3,48 +3,36 @@ const sqlite3 = require('sqlite3').verbose();
 const fs = require('fs');
 const app = express();
 const bodyParser = require('body-parser');
-const db = new sqlite3.Database('AllergyDotNet.db');// Підключення до бази даних SQLite
-const query = `INSERT INTO Users (user_name, user_email, user_password)
-               VALUES ($user_name, $user_email, $user_password)`;
+const db = new sqlite3.Database('AllergyDotNet.db');
 
-// Розбір даних у форматі JSON
+// Parse request bodies
 app.use(express.json());
-app.use(bodyParser.urlencoded());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.post('/', (req, res) => {
-    fs.readFile(`newUser.json`, 'utf8', async (err, data) => {
-        if (err) {
-            return res.status(500).json({error: 'Error reading the file'});
-        }
-        try {
-            const userData = JSON.parse(data);
-            if (userData.user_password == userData.user_password1) {//pass comp
-                // Insert the data into the Users table
-                db.run(query, {
-                    $user_name: userData.user_name,
-                    $user_email: userData.user_email,
-                    $user_password: userData.user_password
-                }, function (err) {
-                    if (err) {
-                        console.error(err);
-                        return res.status(500).send('Error inserting data into the database');
-                    }
-                });
-                res.json({message: 'Data downloaded and inserted successfully'});
-            } else {
-                res.status(400).json({error: 'Invalid password'});
-            }
+const query = `INSERT INTO Users (user_name, user_email, user_password)
+               VALUES (?, ?, ?)`;
 
-        } catch (error) {
-            res.status(400).json({error: 'Invalid JSON file'});
-        }
-    });
+app.post('/', (req, res) => {
+    const user_name = req.body.user_name;
+    const user_email = req.body.user_email;
+    const user_password = req.body.user_password;
+    const user_password1 = req.body.user_password1;
+
+    if (user_password === user_password1) {
+        db.run(query, [user_name, user_email, user_password], function (err) {
+            if (err) {
+                console.error(err);
+                return res.status(500).send('Error inserting data into the database');
+            }
+            res.json({ message: 'Data downloaded and inserted successfully' });
+        });
+    } else {
+        res.status(400).json({ error: 'Invalid password' });
+    }
 });
 
-// Запуск сервера
-app.use(express.static(__dirname));
+// Start the server
 app.listen(3000, () => {
-    console.log('Сервер запущено на порті 3000');
+    console.log('Server is running on port 3000');
 });
