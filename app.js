@@ -26,6 +26,9 @@ const loadUserNameSub = require('./routes/loadUserNameSub');
 const loadFullNotes = require('./routes/loadFullNotes');
 const userLogin = require('./routes/userLogin');
 const userRegistration = require('./routes/userRegistration');
+const loadUserConsultations = require('./routes/loadUserConsultations ');
+const loadDoctorConsultations = require('./routes/loadDoctorConsultations');
+const loadUnCheckesDoctors = require('./routes/loadUnCheckesDoctors');
 
 /*
 app.use(changeSub);
@@ -61,6 +64,9 @@ app.use('/', loadUserNameSub);
 app.use('/', loadFullNotes);
 app.use('/', userLogin);
 app.use('/', userRegistration);
+app.use('/', loadUserConsultations);
+app.use('/', loadDoctorConsultations);
+app.use('/', loadUnCheckesDoctors);
 
 
 // Start the server
