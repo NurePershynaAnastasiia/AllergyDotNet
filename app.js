@@ -32,9 +32,11 @@ const loadUnCheckedDoctors = require('./routes/loadUnCheckedDoctors');
 const loadDoctorClients = require('./routes/loadDoctorClients');
 const addNewAllergen = require('./routes/addNewAllergen');
 const approvePoint = require('./routes/approvePoint');
+const rejectPoint = require('./routes/rejectPoint');
 const approveDoctor = require('./routes/approveDoctor');
 const loadAllAllergens = require('./routes/loadAllAllergens');
 const loadClientConsultations = require('./routes/loadClientConsultations');
+
 
 app.use('/', changeSub);
 app.use('/', createNote);
@@ -61,6 +63,7 @@ app.use('/', loadAllAllergens);
 app.use('/', loadClientConsultations);
 app.use('/', approvePoint);
 app.use('/', approveDoctor);
+app.use('/', rejectPoint);
 
 // Start the server
 app.listen(3000, () => {
