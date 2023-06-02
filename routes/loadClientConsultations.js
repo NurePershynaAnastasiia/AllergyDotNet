@@ -6,7 +6,7 @@ const router = express.Router();
 router.post('/loadClientsConsultations', (req, res) => {
     const user_id = req.body.user_id;
     const doctor_id = req.body.doctor_id;
-    const query = 'SELECT consultatin_date FROM Consultations WHERE doctor_id = ? AND consultation_status = 3 AND user_id = ?';
+    const query = 'SELECT consultation_date FROM Consultations WHERE doctor_id = ? AND consultation_status = 3 AND user_id = ?';
 
     db.all(query, [user_id, doctor_id], (err, rows) => { // Використовуйте db.all замість db.each для отримання всіх рядків
         if (err) {
