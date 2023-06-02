@@ -31,8 +31,14 @@ const loadDoctorConsultations = require('./routes/loadDoctorConsultations');
 const loadUnCheckedDoctors = require('./routes/loadUnCheckedDoctors');
 const loadDoctorClients = require('./routes/loadDoctorClients');
 const addNewAllergen = require('./routes/addNewAllergen');
+const approvePoint = require('./routes/approvePoint');
+const rejectPoint = require('./routes/rejectPoint');
+const approveDoctor = require('./routes/approveDoctor');
+const rejectDoctor = require('./routes/rejectDoctor');
 const loadAllAllergens = require('./routes/loadAllAllergens');
 const loadClientConsultations = require('./routes/loadClientConsultations');
+const canselCons = require('./routes/canselCons');
+const addCons = require('./routes/addCons');
 
 app.use('/', changeSub);
 app.use('/', createNote);
@@ -57,6 +63,12 @@ app.use('/', loadDoctorClients);
 app.use('/', addNewAllergen);
 app.use('/', loadAllAllergens);
 app.use('/', loadClientConsultations);
+app.use('/', approvePoint);
+app.use('/', approveDoctor);
+app.use('/', rejectPoint);
+app.use('/', rejectDoctor);
+app.use('/', canselCons);
+app.use('/', addCons);
 
 // Start the server
 app.listen(3000, () => {

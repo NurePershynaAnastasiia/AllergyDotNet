@@ -3,18 +3,16 @@ const sqlite3 = require('sqlite3').verbose();
 const router = express.Router();
 const db = new sqlite3.Database('AllergyDotNet.db');
 
-router.post('/loadUnCheckedPoints', (req, res) => {
-    const query = 'SELECT a.allergen_name, p.point_photo, p.point_info, p.point_id\n' +
-        'FROM Points AS p\n' +
-        'INNER JOIN Allergens AS a ON p.allergen_id = a.allergen_id\n' +
-        'WHERE p.point_status = 0;\n';
+router.post('/approveDoctor', (req, res) => {
+    const doctor_id = req.body.doctor_id;
+    const query = 'UPDATE Doctors SET doctor_status = 1 WHERE doctor_id = ?';
 
-    db.all(query,  (err, rows) => {
+    db.all(query,  [doctor_id],(err, rows) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error retrieving unchecked points from the database');
         }
-        res.json(rows);
+        res.json({ message: 'Doctor approved successfully' });
     });
 
 });
