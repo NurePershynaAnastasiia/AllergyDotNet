@@ -33,7 +33,6 @@ const loadDoctorClients = require('./routes/loadDoctorClients');
 const addNewAllergen = require('./routes/addNewAllergen');
 const loadAllAllergens = require('./routes/loadAllAllergens');
 const loadClientConsultations = require('./routes/loadClientConsultations');
-const loadAllergenPhoto = require('./routes/loadAllergenPhoto');
 
 app.use('/', changeSub);
 app.use('/', createNote);
@@ -58,8 +57,6 @@ app.use('/', loadDoctorClients);
 app.use('/', addNewAllergen);
 app.use('/', loadAllAllergens);
 app.use('/', loadClientConsultations);
-app.use('/', loadAllergenPhoto);
-
 
 // Start the server
 app.listen(3000, () => {
