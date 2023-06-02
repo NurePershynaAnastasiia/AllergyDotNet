@@ -14,7 +14,7 @@ public interface RetrofitInterface {
     @POST("/noteInfo")
     Call<NoteInfo> executeNote (@Body HashMap<String, String> map);
 
-    @POST("/userNameSub")
+    @POST("/loadUserNameSub")
     Call<UserNameSubInfo> executeUserNameSub(@Body HashMap<String, String> map);
 
     @POST("/userAlergens")

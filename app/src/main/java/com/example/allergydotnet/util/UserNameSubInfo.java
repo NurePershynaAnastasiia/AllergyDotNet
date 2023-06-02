@@ -4,7 +4,7 @@ public class UserNameSubInfo {
 
     private int user_id;
     private String user_name;
-    private boolean user_sub;
+    private int user_sub;
 
 
 
@@ -16,7 +16,7 @@ public class UserNameSubInfo {
         return user_name;
     }
 
-    public boolean getSub() {
+    public int getSub() {
         return user_sub;
     }
 

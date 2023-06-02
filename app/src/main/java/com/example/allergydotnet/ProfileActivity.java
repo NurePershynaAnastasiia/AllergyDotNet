@@ -137,7 +137,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                     UserNameSubInfo result = response.body();
                     String user_name = result.getName();
-                    String user_sub = (result.getSub()? "Преміум" : "Стандартна");
+                    String user_sub = (result.getSub() == 1? "Преміум" : "Стандартна");
 
                     /*
                     String all_notation_names = "";
