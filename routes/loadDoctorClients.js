@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/loadDoctorClients', (req, res) => {
     const doctor_id = req.body.doctor_id;
-    const query = 'SELECT User.user_name, Consultations.consultatin_date FROM Users ' +
+    const query = 'SELECT Users.user_name, Consultations.consultation_date FROM Users ' +
         'INNER JOIN Consultations ON Users.user_id = Consultations.user_id ' +
         'WHERE Consultations.doctor_id = ? AND Consultations.consultation_status = 3';
 
