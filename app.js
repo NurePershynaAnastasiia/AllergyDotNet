@@ -37,7 +37,7 @@ const approveDoctor = require('./routes/approveDoctor');
 const rejectDoctor = require('./routes/rejectDoctor');
 const loadAllAllergens = require('./routes/loadAllAllergens');
 const loadClientConsultations = require('./routes/loadClientConsultations');
-
+const canselCons = require('./routes/canselCons');
 
 app.use('/', changeSub);
 app.use('/', createNote);
@@ -66,6 +66,8 @@ app.use('/', approvePoint);
 app.use('/', approveDoctor);
 app.use('/', rejectPoint);
 app.use('/', rejectDoctor);
+app.use('/', canselCons);
+
 
 // Start the server
 app.listen(3000, () => {
