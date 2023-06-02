@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.example.allergydotnet.util.RetrofitInterface;
 import com.example.allergydotnet.util.UserNameSubInfo;
+import com.example.allergydotnet.util.UserNotationsNamesInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -138,7 +139,6 @@ public class ProfileActivity extends AppCompatActivity {
                     UserNameSubInfo result = response.body();
                     String user_name = result.getName();
                     String user_sub = (result.getSub() == 1? "Преміум" : "Стандартна");
-
                     /*
                     String all_notation_names = "";
                     for (int i = 0; i < notation_names.length; i++)
@@ -146,24 +146,15 @@ public class ProfileActivity extends AppCompatActivity {
 
                      */
 
-
                     nameTextView = findViewById(R.id.name);
                     sub_typeTextView = findViewById(R.id.subscrtype);
                     //all_notaionsTextView = findViewById(R.id.allnotaions);
 
-                    Toast.makeText(ProfileActivity.this, user_name,
-                            Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ProfileActivity.this, user_name, Toast.LENGTH_LONG).show();
 
                     nameTextView.setText(user_name);
                     sub_typeTextView.setText(user_sub);
                     //all_notaionsTextView.setText(all_notation_names);
-
-
-                    //AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
-                    //builder1.setTitle(result.getName());
-                    //builder1.setMessage(result.getEmail());
-                    //builder1.show();
-
 
                 } else if (response.code() == 404) {
                     Toast.makeText(ProfileActivity.this, "Something went wrong",
@@ -173,6 +164,50 @@ public class ProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserNameSubInfo> call, Throwable t) {
+                Toast.makeText(ProfileActivity.this, t.getMessage(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+
+        map = new HashMap<>();
+
+        map.put("user_id", Integer.toString(user_id));
+
+        Call<UserNotationsNamesInfo> call1 = retrofitInterface.executeUserNotationsNames(map);
+        call1.enqueue(new Callback<UserNotationsNamesInfo>() {
+            @Override
+            public void onResponse(Call<UserNotationsNamesInfo> call, Response<UserNotationsNamesInfo> response) {
+
+                if (response.code() == 200) {
+
+                    UserNotationsNamesInfo result = response.body();
+
+
+                    String[] all_notation_names = result.getNote_names();
+                    String notation_names = "";
+                    for (int i = 0; i < all_notation_names.length; i++)
+                        notation_names += "- " + all_notation_names[i] + "\n";
+
+
+
+                    all_notaionsTextView = findViewById(R.id.allnotaions);
+
+                    //Toast.makeText(ProfileActivity.this, user_name, Toast.LENGTH_LONG).show();
+
+                    all_notaionsTextView.setText(notation_names);
+                    //all_notaionsTextView.setText(all_notation_names);
+
+                } else if (response.code() == 404) {
+                    Toast.makeText(ProfileActivity.this, "Something went wrong",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserNotationsNamesInfo> call, Throwable t) {
                 Toast.makeText(ProfileActivity.this, t.getMessage(),
                         Toast.LENGTH_LONG).show();
             }

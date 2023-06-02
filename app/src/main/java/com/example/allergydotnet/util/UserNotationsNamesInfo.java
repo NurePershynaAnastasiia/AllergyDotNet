@@ -1,10 +1,9 @@
 package com.example.allergydotnet.util;
 
-public class UserNotationsInfo {
+public class UserNotationsNamesInfo {
 
     private int user_id;
     private String[] note_names;
-    private String[] note_texts;
 
 
 
@@ -15,5 +14,4 @@ public class UserNotationsInfo {
 
     public String[] getNote_names() { return note_names; };
 
-    public String[] getNote_texts() { return note_texts; };
 }

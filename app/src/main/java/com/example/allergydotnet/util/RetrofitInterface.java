@@ -20,6 +20,6 @@ public interface RetrofitInterface {
     @POST("/userAlergens")
     Call<UserAllegensInfo> executeUserAlergens (@Body HashMap<String, String> map);
 
-    @POST("/userNotations")
-    Call<UserNotationsInfo> executeUserNotations (@Body HashMap<String, String> map);
+    @POST("/loadNotesName")
+    Call<UserNotationsNamesInfo> executeUserNotationsNames (@Body HashMap<String, String> map);
 }
