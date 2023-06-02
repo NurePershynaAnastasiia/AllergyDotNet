@@ -6,7 +6,7 @@ const db = new sqlite3.Database('AllergyDotNet.db'); // Підключення �
 const query = `INSERT INTO Notes (note_name, note_text, note_date, user_id)
                VALUES ($note_name, $note_text, $note_date, $user_id)`;
 
-router.post('/', (req, res) => {
+router.post('/createNote', (req, res) => {
     try {
         const noteData = req.body;
 
