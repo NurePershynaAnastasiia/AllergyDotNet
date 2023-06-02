@@ -44,14 +44,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        /*retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
-         */
+
 
         //View view = getLayoutInflater().inflate(R.layout.activity_login, null);
         //AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -76,12 +76,10 @@ public class LoginActivity extends AppCompatActivity {
                     passwordEditText.setError("Ви не ввели пароль");
                     passwordEditText.requestFocus();
                 } else {
-                    Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
-                    //myint.putExtra("user_id", user_id);
-                    startActivity(myint);
 
 
-                    /*
+
+
                     HashMap<String, String> map = new HashMap<>();
 
                     map.put("user_email", textEmail);
@@ -105,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "Successful login",
                                         Toast.LENGTH_LONG).show();
                                 Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
-                                //myint.putExtra("user_id", user_id);
+                                myint.putExtra("user_id", user_id);
                                 startActivity(myint);
 
                             } else if (response.code() == 404) {
@@ -121,7 +119,6 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
 
-                     */
 
                 }
             }

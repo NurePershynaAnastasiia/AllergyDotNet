@@ -8,7 +8,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -24,25 +23,25 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.allergydotnet.util.LoginInfo;
 import com.example.allergydotnet.util.RetrofitInterface;
-import com.example.allergydotnet.util.UserProfileInfo;
+import com.example.allergydotnet.util.UserNameSubInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.HashMap;
 
 public class ProfileActivity extends AppCompatActivity {
-    RelativeLayout layout;
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://192.168.1.105:3000";
 
-    private TextView nameTextView = findViewById(R.id.name);
-    private TextView sub_typeTextView = findViewById(R.id.subscrtype);
+    private RelativeLayout layout;
 
-    private TextView all_notaionsTextView = findViewById(R.id.allnotaions);
+    private TextView nameTextView;
+    private TextView sub_typeTextView;
+
+    private TextView all_notaionsTextView;
 
     Intent intent;
     int user_id;
@@ -52,8 +51,9 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        //intent = getIntent();
-        //user_id = intent.getIntExtra("user_id", 0);
+        intent = getIntent();
+        user_id = intent.getIntExtra("user_id", 0);
+
 
         BottomNavigationView bottomNavMenu = findViewById(R.id.bottom_navigation);
         bottomNavMenu.setSelectedItemId(R.id.invisible);
@@ -74,6 +74,8 @@ public class ProfileActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
 
         ImageButton settingsBtn = findViewById(R.id.settingsbtn);
         settingsBtn.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +114,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        /*
+
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -126,25 +128,35 @@ public class ProfileActivity extends AppCompatActivity {
 
         map.put("user_id", Integer.toString(user_id));
 
-        Call<UserProfileInfo> call = retrofitInterface.executeProfile(map);
-        call.enqueue(new Callback<UserProfileInfo>() {
+        Call<UserNameSubInfo> call = retrofitInterface.executeUserNameSub(map);
+        call.enqueue(new Callback<UserNameSubInfo>() {
             @Override
-            public void onResponse(Call<UserProfileInfo> call, Response<UserProfileInfo> response) {
+            public void onResponse(Call<UserNameSubInfo> call, Response<UserNameSubInfo> response) {
 
                 if (response.code() == 200) {
 
-                    UserProfileInfo result = response.body();
+                    UserNameSubInfo result = response.body();
                     String user_name = result.getName();
                     String user_sub = (result.getSub()? "Преміум" : "Стандартна");
-                    String[] notation_names = result.getNote_names();
 
+                    /*
                     String all_notation_names = "";
                     for (int i = 0; i < notation_names.length; i++)
                         all_notation_names += "- " + notation_names[i] + "\n";
 
+                     */
+
+
+                    nameTextView = findViewById(R.id.name);
+                    sub_typeTextView = findViewById(R.id.subscrtype);
+                    //all_notaionsTextView = findViewById(R.id.allnotaions);
+
+                    Toast.makeText(ProfileActivity.this, user_name,
+                            Toast.LENGTH_LONG).show();
+
                     nameTextView.setText(user_name);
                     sub_typeTextView.setText(user_sub);
-                    all_notaionsTextView.setText(all_notation_names);
+                    //all_notaionsTextView.setText(all_notation_names);
 
 
                     //AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
@@ -160,14 +172,15 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<UserProfileInfo> call, Throwable t) {
+            public void onFailure(Call<UserNameSubInfo> call, Throwable t) {
                 Toast.makeText(ProfileActivity.this, t.getMessage(),
                         Toast.LENGTH_LONG).show();
             }
         });
 
-         */
+
     }
+
 
     private void CreateSubscriptionPopup() {
         LayoutInflater inflater= (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -255,5 +268,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
     }
+
+
 
 }
