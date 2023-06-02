@@ -25,7 +25,7 @@ import android.widget.Toast;
 
 import com.example.allergydotnet.util.RetrofitInterface;
 import com.example.allergydotnet.util.UserNameSubInfo;
-import com.example.allergydotnet.util.UserNotationsNamesInfo;
+import com.example.allergydotnet.util.UserNotationsInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -177,14 +177,14 @@ public class ProfileActivity extends AppCompatActivity {
 
         map.put("user_id", Integer.toString(user_id));
 
-        Call<ArrayList<UserNotationsNamesInfo>> call1 = retrofitInterface.executeUserNotations(map);
-        call1.enqueue(new Callback<ArrayList<UserNotationsNamesInfo>>() {
+        Call<ArrayList<UserNotationsInfo>> call1 = retrofitInterface.executeUserNotations(map);
+        call1.enqueue(new Callback<ArrayList<UserNotationsInfo>>() {
             @Override
-            public void onResponse(Call<ArrayList<UserNotationsNamesInfo>> call, Response<ArrayList<UserNotationsNamesInfo>> response) {
+            public void onResponse(Call<ArrayList<UserNotationsInfo>> call, Response<ArrayList<UserNotationsInfo>> response) {
 
                 if (response.code() == 200) {
 
-                    ArrayList<UserNotationsNamesInfo> result = response.body();
+                    ArrayList<UserNotationsInfo> result = response.body();
 
 
                     String notation_names = "";
@@ -206,7 +206,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<UserNotationsNamesInfo>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<UserNotationsInfo>> call, Throwable t) {
                 Toast.makeText(ProfileActivity.this, t.getMessage(),
                         Toast.LENGTH_LONG).show();
             }

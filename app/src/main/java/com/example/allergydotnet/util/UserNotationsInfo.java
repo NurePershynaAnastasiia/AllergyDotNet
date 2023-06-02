@@ -1,6 +1,6 @@
 package com.example.allergydotnet.util;
 
-public class UserNotationsNamesInfo {
+public class UserNotationsInfo {
 
     private String note_name;
     private String note_text;

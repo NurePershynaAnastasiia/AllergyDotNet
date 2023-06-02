@@ -3,9 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 
 public interface RetrofitInterface {
     @POST("/userLogin")
@@ -24,8 +22,8 @@ public interface RetrofitInterface {
     Call<UserAllegensInfo> executeUserAlergens (@Body HashMap<String, String> map);
 
     @POST("/loadNotesName")
-    Call<UserNotationsNamesInfo> executeUserNotationsNames (@Body ArrayList<UserNameSubInfo> arr);
+    Call<UserNotationsInfo> executeUserNotationsNames (@Body ArrayList<UserNameSubInfo> arr);
 
     @POST("/loadFullNotes")
-    Call<ArrayList<UserNotationsNamesInfo>> executeUserNotations(@Body HashMap<String, String> map);
+    Call<ArrayList<UserNotationsInfo>> executeUserNotations(@Body HashMap<String, String> map);
 }
