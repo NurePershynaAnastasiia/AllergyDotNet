@@ -21,19 +21,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:paddingBottom="80dp">
+        android:layout_marginBottom="80dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/scroll_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
-
+            <!--
                 <TextView
                     android:id="@+id/dateTextView"
                     android:layout_width="wrap_content"
@@ -49,7 +47,6 @@
                     android:id="@+id/headerTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/dateTextView"
                     android:text="Заголовок"
                     android:fontFamily="@font/gilroy_semibold"
                     android:textSize="25dp"
@@ -59,18 +56,15 @@
                     android:id="@+id/notationTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/headerTextView"
-                    android:layout_marginTop="10dp"
                     android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis massa sit amet magna luctus tincidunt. Proin rutrum semper nisi, vitae finibus est suscipit vel.  "
                     android:fontFamily="@font/gilroy_regular"
                     android:textSize="15dp"
                     android:textColor="#2E2E2E"
                     />
 
-            </RelativeLayout>
+            -->
 
-
-        </RelativeLayout>
+        </LinearLayout>
 
     </ScrollView>
 

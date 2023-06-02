@@ -142,22 +142,13 @@ public class ProfileActivity extends AppCompatActivity {
                     UserNameSubInfo result = response.body();
                     String user_name = result.getName();
                     String user_sub = (result.getSub() == 1? "Преміум" : "Стандартна");
-                    /*
-                    String all_notation_names = "";
-                    for (int i = 0; i < notation_names.length; i++)
-                        all_notation_names += "- " + notation_names[i] + "\n";
-
-                     */
 
                     nameTextView = findViewById(R.id.name);
                     sub_typeTextView = findViewById(R.id.subscrtype);
-                    //all_notaionsTextView = findViewById(R.id.allnotaions);
 
-                    //Toast.makeText(ProfileActivity.this, user_name, Toast.LENGTH_LONG).show();
 
                     nameTextView.setText(user_name);
                     sub_typeTextView.setText(user_sub);
-                    //all_notaionsTextView.setText(all_notation_names);
 
                 } else if (response.code() == 404) {
                     Toast.makeText(ProfileActivity.this, "Something went wrong",

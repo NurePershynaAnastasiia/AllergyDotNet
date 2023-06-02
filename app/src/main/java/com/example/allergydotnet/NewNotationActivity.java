@@ -25,6 +25,9 @@ import com.example.allergydotnet.util.RetrofitInterface;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -92,7 +95,8 @@ public class NewNotationActivity extends AppCompatActivity {
 
                 String noteName = newNotationName.getText().toString();
                 String noteText = newNotationText.getText().toString();
-                String currentTime = Calendar.getInstance().getTime().toString();
+                SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+                String currentTime = format1.format(Calendar.getInstance().getTime());
 
                 retrofit = new Retrofit.Builder()
                         .baseUrl(BASE_URL)
