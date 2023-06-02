@@ -34,6 +34,7 @@ const addNewAllergen = require('./routes/addNewAllergen');
 const approvePoint = require('./routes/approvePoint');
 const rejectPoint = require('./routes/rejectPoint');
 const approveDoctor = require('./routes/approveDoctor');
+const rejectDoctor = require('./routes/rejectDoctor');
 const loadAllAllergens = require('./routes/loadAllAllergens');
 const loadClientConsultations = require('./routes/loadClientConsultations');
 
@@ -64,6 +65,7 @@ app.use('/', loadClientConsultations);
 app.use('/', approvePoint);
 app.use('/', approveDoctor);
 app.use('/', rejectPoint);
+app.use('/', rejectDoctor);
 
 // Start the server
 app.listen(3000, () => {
