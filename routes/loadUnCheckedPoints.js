@@ -4,7 +4,7 @@ const router = express.Router();
 const db = new sqlite3.Database('AllergyDotNet.db');
 
 router.post('/loadUnCheckedPoints', (req, res) => {
-    const query = 'SELECT a.allergen_name, p.point_photo, p.point_info\n' +
+    const query = 'SELECT a.allergen_name, p.point_photo, p.point_info, p.point_id\n' +
         'FROM Points AS p\n' +
         'INNER JOIN Allergens AS a ON p.allergen_id = a.allergen_id\n' +
         'WHERE p.point_status = 0;\n';
