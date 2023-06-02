@@ -12,7 +12,6 @@ router.post('/userRegistration', (req, res) => {
     const user_password = req.body.user_password;
     const user_password1 = req.body.user_password1;
 
-    if (user_password === user_password1) {
         db.run(query, [user_name, user_email, user_password], function (err) {
             if (err) {
                 console.error(err);
@@ -20,9 +19,6 @@ router.post('/userRegistration', (req, res) => {
             }
             res.json({ message: 'Data downloaded and inserted successfully' });
         });
-    } else {
-        res.status(404).json({ error: 'Passwords don`t match' });
-    }
 
 });
 
