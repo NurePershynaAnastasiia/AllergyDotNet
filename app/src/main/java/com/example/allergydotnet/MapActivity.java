@@ -50,6 +50,9 @@ import java.util.List;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener {
 
+    Intent intent;
+    int user_id;
+
     private GoogleMap mMap;
 
     private HashMap<Marker, MarkerInfo> MarkersInfo = new HashMap<>();
@@ -64,6 +67,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        intent = getIntent();
+        user_id = intent.getIntExtra("user_id", 0);
+
         BottomNavigationView bottomNavMenu = findViewById(R.id.bottom_navigation);
         bottomNavMenu.setSelectedItemId(R.id.map);
 
@@ -73,12 +79,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 Intent myint;
                 if (item.getItemId() == R.id.consultations) {
                     myint = new Intent(getApplicationContext(), ConsultationsActivity.class);
+                    myint.putExtra("user_id", user_id);
                     startActivity(myint);
                 } else if (item.getItemId() == R.id.map) {
                     myint = new Intent(getApplicationContext(), MapActivity.class);
+                    myint.putExtra("user_id", user_id);
                     startActivity(myint);
                 } else if (item.getItemId() == R.id.doctors) {
                     myint = new Intent(getApplicationContext(), DoctorsActivity.class);
+                    myint.putExtra("user_id", user_id);
                     startActivity(myint);
                 }
                 return false;
@@ -91,6 +100,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
                 Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
+                myint.putExtra("user_id", user_id);
                 startActivity(myint);
             }
         });

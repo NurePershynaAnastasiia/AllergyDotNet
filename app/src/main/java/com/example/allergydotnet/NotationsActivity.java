@@ -33,6 +33,7 @@ public class NotationsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
+                myint.putExtra("user_id", user_id);
                 startActivity(myint);
             }
         });
@@ -45,12 +46,15 @@ public class NotationsActivity extends AppCompatActivity {
                 Intent myint;
                 if (item.getItemId() == R.id.consultations) {
                     myint = new Intent(getApplicationContext(), ConsultationsActivity.class);
+                    myint.putExtra("user_id", user_id);
                     startActivity(myint);
                 } else if (item.getItemId() == R.id.map) {
                     myint = new Intent(getApplicationContext(), MapActivity.class);
+                    myint.putExtra("user_id", user_id);
                     startActivity(myint);
                 } else if (item.getItemId() == R.id.doctors) {
                     myint = new Intent(getApplicationContext(), DoctorsActivity.class);
+                    myint.putExtra("user_id", user_id);
                     startActivity(myint);
                 }
                 return false;

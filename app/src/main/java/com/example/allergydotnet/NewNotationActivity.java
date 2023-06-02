@@ -46,7 +46,7 @@ public class NewNotationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_notation);
 
         intent = getIntent();
-        int user_id = intent.getIntExtra("user_id", 0);
+        user_id = intent.getIntExtra("user_id", 0);
         create_btnNote = findViewById(R.id.addbtn);
 
         BottomNavigationView bottomNavMenu = findViewById(R.id.bottom_navigation);
@@ -57,12 +57,15 @@ public class NewNotationActivity extends AppCompatActivity {
                 Intent myint;
                 if (item.getItemId() == R.id.consultations) {
                     myint = new Intent(getApplicationContext(), ConsultationsActivity.class);
+                    myint.putExtra("user_id", user_id);
                     startActivity(myint);
                 } else if (item.getItemId() == R.id.map) {
                     myint = new Intent(getApplicationContext(), MapActivity.class);
+                    myint.putExtra("user_id", user_id);
                     startActivity(myint);
                 } else if (item.getItemId() == R.id.doctors) {
                     myint = new Intent(getApplicationContext(), DoctorsActivity.class);
+                    myint.putExtra("user_id", user_id);
                     startActivity(myint);
                 }
                 return false;
@@ -75,6 +78,7 @@ public class NewNotationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
+                myint.putExtra("user_id", user_id);
                 startActivity(myint);
             }
         });
@@ -128,6 +132,7 @@ public class NewNotationActivity extends AppCompatActivity {
                                 //builder1.show();
 
                                 Intent myint = new Intent(getApplicationContext(), NotationsActivity.class);
+                                myint.putExtra("user_id", user_id);
                                 startActivity(myint);
 
                             } else if (response.code() == 404) {

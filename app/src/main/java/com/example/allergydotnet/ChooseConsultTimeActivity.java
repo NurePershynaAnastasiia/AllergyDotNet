@@ -19,11 +19,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class ChooseConsultTimeActivity extends AppCompatActivity {
+
+    Intent intent;
+    int user_id;
     PaymentsClient paymentsClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_consult_time);
+
+        intent = getIntent();
+        user_id = intent.getIntExtra("user_id", 0);
 
 
         BottomNavigationView bottomNavMenu = findViewById(R.id.bottom_navigation);
@@ -34,12 +40,15 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
                 Intent myint;
                 if (item.getItemId() == R.id.consultations) {
                     myint = new Intent(getApplicationContext(), ConsultationsActivity.class);
+                    myint.putExtra("user_id", user_id);
                     startActivity(myint);
                 } else if (item.getItemId() == R.id.map) {
                     myint = new Intent(getApplicationContext(), MapActivity.class);
+                    myint.putExtra("user_id", user_id);
                     startActivity(myint);
                 } else if (item.getItemId() == R.id.doctors) {
                     myint = new Intent(getApplicationContext(), DoctorsActivity.class);
+                    myint.putExtra("user_id", user_id);
                     startActivity(myint);
                 }
                 return false;
@@ -52,6 +61,7 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
+                myint.putExtra("user_id", user_id);
                 startActivity(myint);
             }
         });

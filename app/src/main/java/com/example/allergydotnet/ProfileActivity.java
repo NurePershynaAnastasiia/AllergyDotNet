@@ -84,6 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myint = new Intent(getApplicationContext(), SettingsActivity.class);
+                myint.putExtra("user_id", user_id);
                 startActivity(myint);
             }
         });
@@ -93,6 +94,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myint = new Intent(getApplicationContext(), RecommendationsActivity.class);
+                myint.putExtra("user_id", user_id);
                 startActivity(myint);
             }
         });
