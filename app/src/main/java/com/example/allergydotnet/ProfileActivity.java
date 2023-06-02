@@ -37,20 +37,23 @@ public class ProfileActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://172.20.10.2:3000";
+    private String BASE_URL = "http://192.168.1.105:3000";
 
     private TextView nameTextView = findViewById(R.id.name);
     private TextView sub_typeTextView = findViewById(R.id.subscrtype);
 
     private TextView all_notaionsTextView = findViewById(R.id.allnotaions);
 
-    Intent intent = getIntent();
-    int user_id = intent.getIntExtra("user_id", 0);
+    Intent intent;
+    int user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        //intent = getIntent();
+        //user_id = intent.getIntExtra("user_id", 0);
 
         BottomNavigationView bottomNavMenu = findViewById(R.id.bottom_navigation);
         bottomNavMenu.setSelectedItemId(R.id.invisible);
@@ -100,14 +103,70 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         Button notationsbtn = findViewById(R.id.notationsbtn);
-        settingsBtn.setOnClickListener(new View.OnClickListener() {
+        notationsbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myint = new Intent(getApplicationContext(), NotationsActivity.class);
-                myint.putExtra("user_id", user_id);
+                //myint.putExtra("user_id", user_id);
                 startActivity(myint);
             }
         });
+
+        /*
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
+
+        HashMap<String, String> map = new HashMap<>();
+
+        map.put("user_id", Integer.toString(user_id));
+
+        Call<UserProfileInfo> call = retrofitInterface.executeProfile(map);
+        call.enqueue(new Callback<UserProfileInfo>() {
+            @Override
+            public void onResponse(Call<UserProfileInfo> call, Response<UserProfileInfo> response) {
+
+                if (response.code() == 200) {
+
+                    UserProfileInfo result = response.body();
+                    String user_name = result.getName();
+                    String user_sub = (result.getSub()? "Преміум" : "Стандартна");
+                    String[] notation_names = result.getNote_names();
+
+                    String all_notation_names = "";
+                    for (int i = 0; i < notation_names.length; i++)
+                        all_notation_names += "- " + notation_names[i] + "\n";
+
+                    nameTextView.setText(user_name);
+                    sub_typeTextView.setText(user_sub);
+                    all_notaionsTextView.setText(all_notation_names);
+
+
+                    //AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                    //builder1.setTitle(result.getName());
+                    //builder1.setMessage(result.getEmail());
+                    //builder1.show();
+
+
+                } else if (response.code() == 404) {
+                    Toast.makeText(ProfileActivity.this, "Something went wrong",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserProfileInfo> call, Throwable t) {
+                Toast.makeText(ProfileActivity.this, t.getMessage(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
+         */
     }
 
     private void CreateSubscriptionPopup() {
@@ -195,60 +254,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        /*
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-
-        retrofitInterface = retrofit.create(RetrofitInterface.class);
-
-        HashMap<String, String> map = new HashMap<>();
-
-        map.put("user_id", Integer.toString(user_id));
-
-        Call<UserProfileInfo> call = retrofitInterface.executeProfile(map);
-        call.enqueue(new Callback<UserProfileInfo>() {
-            @Override
-            public void onResponse(Call<UserProfileInfo> call, Response<UserProfileInfo> response) {
-
-                if (response.code() == 200) {
-
-                    UserProfileInfo result = response.body();
-                    String user_name = result.getName();
-                    String user_sub = (result.getSub()? "Преміум" : "Стандартна");
-                    String[] notation_names = result.getNote_names();
-
-                    String all_notation_names = "";
-                    for (int i = 0; i < notation_names.length; i++)
-                        all_notation_names += "- " + notation_names[i] + "\n";
-
-                    nameTextView.setText(user_name);
-                    sub_typeTextView.setText(user_sub);
-                    all_notaionsTextView.setText(all_notation_names);
-
-
-                    //AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
-                    //builder1.setTitle(result.getName());
-                    //builder1.setMessage(result.getEmail());
-                    //builder1.show();
-
-
-                } else if (response.code() == 404) {
-                    Toast.makeText(ProfileActivity.this, "Something went wrong",
-                            Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UserProfileInfo> call, Throwable t) {
-                Toast.makeText(ProfileActivity.this, t.getMessage(),
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-
-         */
     }
+
 }
