@@ -18,8 +18,8 @@ public interface RetrofitInterface {
     @POST("/loadUserNameSub")
     Call<UserNameSubInfo> executeUserNameSub(@Body HashMap<String, String> map);
 
-    @POST("/userAlergens")
-    Call<UserAllegensInfo> executeUserAlergens (@Body HashMap<String, String> map);
+    @POST("/loadUserAllergens")
+    Call<ArrayList<UserAllergensInfo>> executeUserAllergens (@Body HashMap<String, String> map);
 
     @POST("/loadNotesName")
     Call<UserNotationsInfo> executeUserNotationsNames (@Body ArrayList<UserNameSubInfo> arr);

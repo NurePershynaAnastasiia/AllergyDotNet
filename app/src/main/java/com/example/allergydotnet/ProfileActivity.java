@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.allergydotnet.util.RetrofitInterface;
+import com.example.allergydotnet.util.UserAllergensInfo;
 import com.example.allergydotnet.util.UserNameSubInfo;
 import com.example.allergydotnet.util.UserNotationsInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -39,6 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
     private String BASE_URL = "http://192.168.1.105:3000";
 
     private RelativeLayout layout;
+    String user_sub;
 
     private TextView nameTextView;
     private TextView sub_typeTextView;
@@ -89,15 +91,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        Button recommendBtn = findViewById(R.id.recommendationsbtn);
-        recommendBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myint = new Intent(getApplicationContext(), RecommendationsActivity.class);
-                myint.putExtra("user_id", user_id);
-                startActivity(myint);
-            }
-        });
 
         RelativeLayout subscription_layout = findViewById(R.id.layout1_profile);
         layout = findViewById(R.id.profile_relative);
@@ -141,7 +134,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                     UserNameSubInfo result = response.body();
                     String user_name = result.getName();
-                    String user_sub = (result.getSub() == 1? "Преміум" : "Стандартна");
+                    user_sub = (result.getSub() == 1? "Преміум" : "Стандартна");
 
                     nameTextView = findViewById(R.id.name);
                     sub_typeTextView = findViewById(R.id.subscrtype);
@@ -206,6 +199,49 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
+        map = new HashMap<>();
+
+        map.put("user_id", Integer.toString(user_id));
+
+        Call<ArrayList<UserAllergensInfo>> call2 = retrofitInterface.executeUserAllergens(map);
+        call2.enqueue(new Callback<ArrayList<UserAllergensInfo>>() {
+            @Override
+            public void onResponse(Call<ArrayList<UserAllergensInfo>> call, Response<ArrayList<UserAllergensInfo>> response) {
+
+                if (response.code() == 200) {
+
+                    TextView allergensTextView = findViewById(R.id.allallergens);
+                    ArrayList<UserAllergensInfo> result = response.body();
+
+                    String allergens = "";
+                    for (int i = 0; i < result.size(); i++)
+                        allergens += "- " + result.get(i).getAllergens() + "\n";
+
+
+                    allergensTextView.setText(allergens);
+
+                } else if (response.code() == 404) {
+                    Toast.makeText(ProfileActivity.this, "Something went wrong",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<UserAllergensInfo>> call, Throwable t) {
+                Toast.makeText(ProfileActivity.this, t.getMessage(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
+        Button recommendBtn = findViewById(R.id.recommendationsbtn);
+        recommendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myint = new Intent(getApplicationContext(), RecommendationsActivity.class);
+                myint.putExtra("user_id", user_id);
+                startActivity(myint);
+            }
+        });
 
 
     }

@@ -45,7 +45,7 @@
                 android:text="Ім'я Прізвище"
                 android:layout_marginTop="200dp"
                 android:fontFamily="@font/gilroy_semibold"
-                android:textSize="30dp"
+                android:textSize="25dp"
                 android:layout_centerHorizontal="true"/>
 
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -87,7 +87,7 @@
                     android:layout_marginTop="10dp"
                     android:text="Персоналізовані рекомендації"
                     android:textSize="15dp"
-                    android:fontFamily="@font/gilroy_regular"/>
+                    android:fontFamily="@font/gilroy_regular" />
 
                 <TextView
                     android:id="@+id/activtill"
@@ -107,7 +107,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/layout2"
                 xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="380dp" android:layout_height="120dp" android:layout_below="@id/layout1_profile"
+                android:layout_width="380dp" android:layout_height="wrap_content" android:layout_below="@id/layout1_profile"
                 android:layout_centerHorizontal="true" android:background="@drawable/backgroud_border"
                 android:layout_marginTop="15dp">
 
@@ -121,6 +121,31 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     />
+
+                <TextView
+                    android:id="@+id/allallergens"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Мої алергени"
+                    android:layout_below="@id/myalerg"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/allergensbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/allallergens"
+                    android:backgroundTint="#407A61"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_alignParentRight="true"
+                    android:text="+"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/gilroy_semibold"/>
 
             </RelativeLayout>
 
