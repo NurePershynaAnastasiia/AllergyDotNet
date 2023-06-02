@@ -4,7 +4,7 @@ const router = express.Router();
 const db = new sqlite3.Database('AllergyDotNet.db');
 
 router.post('/loadUnCheckedPoints', (req, res) => {
-    const query = 'SELECT point_photo, point_coordinates_latitude, point_coordinates_longitude FROM Points WHERE point_status = 0';
+    const query = 'SELECT point_name, point_photo, point_coordinates_latitude, point_coordinates_longitude FROM Points WHERE point_status = 0';
 
     db.all(query,  (err, rows) => {
         if (err) {
