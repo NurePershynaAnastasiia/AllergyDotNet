@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button singupBtn;
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://172.20.10.2:3000";
+    private String BASE_URL = "http://192.168.1.105:3000";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
                     map.put("user_name", textName);
                     map.put("user_email", textEmail);
                     map.put("user_password", textPassword);
+
                     Call<SignupInfo> call = retrofitInterface.executeSignup(map);
 
                     call.enqueue(new Callback<SignupInfo>() {
@@ -89,9 +90,13 @@ public class RegisterActivity extends AppCompatActivity {
 
                             if (response.code() == 200) {
                                 SignupInfo result = response.body();
+
+
                                 int user_id = result.getId();
+
                                 Toast.makeText(RegisterActivity.this, "Signed up successfully",
                                         Toast.LENGTH_LONG).show();
+
                                 Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
                                 myint.putExtra("user_id", user_id);
                                 startActivity(myint);

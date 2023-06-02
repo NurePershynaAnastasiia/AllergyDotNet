@@ -32,9 +32,9 @@ import java.util.HashMap;
 public class NewNotationActivity extends AppCompatActivity {
 
 
-    Intent intent = getIntent();
-    int user_id = intent.getIntExtra("user_id", 0);
-    Button create_btnNote = findViewById(R.id.addbtn);
+    Intent intent;
+    int user_id;
+    Button create_btnNote;
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
@@ -44,6 +44,10 @@ public class NewNotationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_notation);
+
+        intent = getIntent();
+        int user_id = intent.getIntExtra("user_id", 0);
+        create_btnNote = findViewById(R.id.addbtn);
 
         BottomNavigationView bottomNavMenu = findViewById(R.id.bottom_navigation);
         bottomNavMenu.setSelectedItemId(R.id.invisible);

@@ -2,16 +2,14 @@ package com.example.allergydotnet.util;
 
 public class UserNotationsNamesInfo {
 
-    private int user_id;
-    private String[] note_names;
+    private String note_name;
+    private String note_text;
 
 
 
 
-    public int getId() {
-        return user_id;
-    }
 
-    public String[] getNote_names() { return note_names; };
+    public String getNote_names() { return note_name; };
 
+    public String getNote_texts() { return note_text; };
 }

@@ -29,6 +29,7 @@ import com.example.allergydotnet.util.UserNotationsNamesInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -110,7 +111,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myint = new Intent(getApplicationContext(), NotationsActivity.class);
-                //myint.putExtra("user_id", user_id);
+                myint.putExtra("user_id", user_id);
                 startActivity(myint);
             }
         });
@@ -176,21 +177,19 @@ public class ProfileActivity extends AppCompatActivity {
 
         map.put("user_id", Integer.toString(user_id));
 
-        Call<UserNotationsNamesInfo> call1 = retrofitInterface.executeUserNotationsNames(map);
-        call1.enqueue(new Callback<UserNotationsNamesInfo>() {
+        Call<ArrayList<UserNotationsNamesInfo>> call1 = retrofitInterface.executeUserNotations(map);
+        call1.enqueue(new Callback<ArrayList<UserNotationsNamesInfo>>() {
             @Override
-            public void onResponse(Call<UserNotationsNamesInfo> call, Response<UserNotationsNamesInfo> response) {
+            public void onResponse(Call<ArrayList<UserNotationsNamesInfo>> call, Response<ArrayList<UserNotationsNamesInfo>> response) {
 
                 if (response.code() == 200) {
 
-                    UserNotationsNamesInfo result = response.body();
+                    ArrayList<UserNotationsNamesInfo> result = response.body();
 
 
-                    String[] all_notation_names = result.getNote_names();
                     String notation_names = "";
-                    for (int i = 0; i < all_notation_names.length; i++)
-                        notation_names += "- " + all_notation_names[i] + "\n";
-
+                    for (int i = 0; i < result.size(); i++)
+                        notation_names += "- " + result.get(i).getNote_names() + "\n";
 
 
                     all_notaionsTextView = findViewById(R.id.allnotaions);
@@ -207,11 +206,13 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<UserNotationsNamesInfo> call, Throwable t) {
+            public void onFailure(Call<ArrayList<UserNotationsNamesInfo>> call, Throwable t) {
                 Toast.makeText(ProfileActivity.this, t.getMessage(),
                         Toast.LENGTH_LONG).show();
             }
         });
+
+
 
 
     }

@@ -16,13 +16,16 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class NotationsActivity extends AppCompatActivity {
 
-    Intent intent = getIntent();
-    int user_id = intent.getIntExtra("user_id", 0);
+    Intent intent;
+    int user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notations);
+
+        intent = getIntent();
+        user_id = intent.getIntExtra("user_id", 0);
 
         RelativeLayout top_menu = findViewById(R.id.top_menu);
         ImageButton toProfile = findViewById(R.id.profilebtn);
