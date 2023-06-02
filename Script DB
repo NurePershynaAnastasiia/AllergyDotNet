@@ -48,7 +48,6 @@ doctor_info TEXT
 
 CREATE TABLE Points (
 point_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-point_name TEXT NOT NULL,
 point_photo BLOB,
 point_info TEXT NOT NULL,
 point_status BOOLEAN NOT NULL,
