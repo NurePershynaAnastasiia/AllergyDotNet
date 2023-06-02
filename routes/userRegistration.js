@@ -21,7 +21,7 @@ router.post('/userRegistration', (req, res) => {
             console.error(err);
             return res.status(500).send('Error inserting data into the database');
         } else {
-            db.get(querySelect, [user_email, user_name], function (err) {
+            db.get(querySelect, [user_email, user_name], function (err,row) {
                 if (err) {
                     return res.status(500).send('Error inserting data into the database');
                 } else {
@@ -33,3 +33,4 @@ router.post('/userRegistration', (req, res) => {
 });
 
 module.exports = router;
+
