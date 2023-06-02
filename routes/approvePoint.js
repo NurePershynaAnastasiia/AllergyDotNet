@@ -7,12 +7,12 @@ router.post('/approvePoint', (req, res) => {
     const point_id = req.body.point_id;
     const query = 'UPDATE Points SET point_status = 1 WHERE point_id = ?';
 
-    db.all(query,  [point_id],(err, rows) => {
+    db.all(query, [point_id], (err, rows) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error retrieving unchecked points from the database');
         }
-        res.json({ message: 'Point approved successfully' });
+        res.json({message: 'Point approved successfully'});
     });
 
 });

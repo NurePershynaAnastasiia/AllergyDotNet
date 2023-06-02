@@ -4,7 +4,8 @@ const db = new sqlite3.Database('AllergyDotNet.db'); // Підключення �
 const router = express.Router();
 
 const querySelect = 'SELECT allergen_id FROM Allergens WHERE allergen_name = ?;';
-const query = `INSERT INTO Points (point_photo, point_info, point_coordinates_latitude, point_coordinates_longitude, allergen_id)
+const query = `INSERT INTO Points (point_photo, point_info, point_coordinates_latitude, point_coordinates_longitude,
+                                   allergen_id)
                VALUES (?, ?, ?, ?, ?)`;
 
 router.post('/createPoint', (req, res) => {

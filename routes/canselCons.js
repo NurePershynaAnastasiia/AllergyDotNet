@@ -8,12 +8,12 @@ router.post('/canselCons', (req, res) => {
     const user_id = req.body.user_id;
     const query = 'UPDATE Consultations SET consultation_status = 1 WHERE doctor_id = ? AND user_id = ?;';
 
-    db.all(query,  [doctor_id, user_id],(err, rows) => {
+    db.all(query, [doctor_id, user_id], (err, rows) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error retrieving cons from the database');
         }
-        res.json({ message: 'Consultation canceled successfully' });
+        res.json({message: 'Consultation canceled successfully'});
     });
 
 });

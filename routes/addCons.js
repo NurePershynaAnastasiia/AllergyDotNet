@@ -11,12 +11,12 @@ router.post('/addCons', (req, res) => {
     const query = 'INSERT INTO Consultations (doctor_id, user_id, consultation_date, consultation_status)\n' +
         'VALUES (?, ?, ?, 2);';
 
-    db.all(query,  [doctor_id, user_id, consultation_date],(err, rows) => {
+    db.all(query, [doctor_id, user_id, consultation_date], (err, rows) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error retrieving cons from the database');
         }
-        res.json({ message: 'Consultation added successfully' });
+        res.json({message: 'Consultation added successfully'});
     });
 
 });

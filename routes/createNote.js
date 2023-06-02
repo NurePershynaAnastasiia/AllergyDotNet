@@ -22,9 +22,9 @@ router.post('/createNote', (req, res) => {
                 return res.status(500).send('Error inserting data into the database');
             }
         });
-        res.json({ message: 'Data downloaded and inserted successfully' });
+        res.json({message: 'Data downloaded and inserted successfully'});
     } catch (error) {
-        res.status(400).json({ error: 'Invalid JSON data' });
+        res.status(400).json({error: 'Invalid JSON data'});
     }
 });
 

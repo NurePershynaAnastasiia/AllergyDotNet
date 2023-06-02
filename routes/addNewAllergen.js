@@ -11,8 +11,11 @@ router.post('/addNewAllergen', (req, res) => {
     const user_id = req.body.user_id;
 
     // Перевірка, чи існує вже така пара значень в таблиці UserAllergens
-    const queryCheckExists = `SELECT * FROM UserAllergens WHERE user_id = ? AND allergen_id = 
-                             (SELECT allergen_id FROM Allergens WHERE allergen_name = ?);`;
+    const queryCheckExists = `SELECT *
+                              FROM UserAllergens
+                              WHERE user_id = ?
+                                AND allergen_id =
+                                    (SELECT allergen_id FROM Allergens WHERE allergen_name = ?);`;
     db.get(queryCheckExists, [user_id, allergen_name], (err, row) => {
         if (err) {
             console.error(err);
