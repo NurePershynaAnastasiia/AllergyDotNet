@@ -32,6 +32,7 @@ const loadUnCheckedDoctors = require('./routes/loadUnCheckedDoctors');
 const loadDoctorClients = require('./routes/loadDoctorClients');
 const addNewAllergen = require('./routes/addNewAllergen');
 const loadAllAllergens = require('./routes/loadAllAllergens');
+const loadClientConsultations = require('./routes/loadClientConsultations');
 
 app.use('/', changeSub);
 app.use('/', createNote);
@@ -55,6 +56,7 @@ app.use('/', loadUnCheckedDoctors);
 app.use('/', loadDoctorClients);
 app.use('/', addNewAllergen);
 app.use('/', loadAllAllergens);
+app.use('/', loadClientConsultations);
 
 // Start the server
 app.listen(3000, () => {
