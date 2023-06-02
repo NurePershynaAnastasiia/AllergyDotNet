@@ -29,24 +29,9 @@ const userRegistration = require('./routes/userRegistration');
 const loadUserConsultations = require('./routes/loadUserConsultations ');
 const loadDoctorConsultations = require('./routes/loadDoctorConsultations');
 const loadUnCheckesDoctors = require('./routes/loadUnCheckesDoctors');
-
-/*
-app.use(changeSub);
-app.use(createNote);
-app.use(createPoint);
-app.use(doctorLogIn);
-app.use(doctorRegistration);
-app.use(loadAllCheckedPoints);
-app.use(loadUnCheckedPoints);
-app.use(loadDoctors);
-app.use(loadNotesName);
-app.use(loadPersonalPoints);
-app.use(loadPersonalRecomendations);
-app.use(loadUserAllergens);
-app.use(loadUserNameSub);
-app.use(loadFullNotes);
-app.use(userLogin);
-app.use(userRegistration);*/
+const loadDoctorClients = require('./routes/loadDoctorClients');
+const addNewAllergen = require('./routes/addNewAllergen');
+const loadAllAllergens = require('./routes/loadAllAllergens');
 
 app.use('/', changeSub);
 app.use('/', createNote);
@@ -67,7 +52,9 @@ app.use('/', userRegistration);
 app.use('/', loadUserConsultations);
 app.use('/', loadDoctorConsultations);
 app.use('/', loadUnCheckesDoctors);
-
+app.use('/', loadDoctorClients);
+app.use('/', addNewAllergen);
+app.use('/', loadAllAllergens);
 
 // Start the server
 app.listen(3000, () => {
