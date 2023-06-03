@@ -119,46 +119,18 @@ public class RecommendationsActivity extends AppCompatActivity {
                         TextView nameTextView = new TextView(RecommendationsActivity.this);
                         nameTextView.setText(result.get(i).getAllergens().toString());
                         nameTextView.setTextColor(Color.parseColor("#000000"));
-                        nameTextView.setTextSize(20);
+                        nameTextView.setBackgroundColor(Color.parseColor("#D5D8DE"));
+                        nameTextView.setTextSize(23);
                         //info
                         TextView infoTextView = new TextView(RecommendationsActivity.this);
                         infoTextView.setText(result.get(i).getAllergensInfo().toString());
                         infoTextView.setTextColor(Color.parseColor("#2E2E2E"));
                         infoTextView.setTextSize(15);
-                        //photo
-                        ImageView imageView = new ImageView(RecommendationsActivity.this);
-                        imageView.setBackgroundResource(R.drawable.temp_img);
-                        imageView.setMaxHeight(10);
-                        imageView.setMaxWidth(10);
-                        imageView.setMinimumHeight(10);
-                        imageView.setMinimumWidth(10);
-                        imageView.setAdjustViewBounds(true);
-
-
-                        /*
-                        // Exclude Blob from serialization
-                        Blob blob = result.get(i).getAllergen_photo();
-                        byte[] imageBytes;
-
-                        try {
-                            imageBytes = blob.getBytes(1, (int) blob.length());
-                        } catch (SQLException e) {
-                            throw new RuntimeException(e);
-                        }
-
-                        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-
-                        imageView.setImageBitmap(bitmap);
-
-                        scrollLayout.addView(imageView);
-
-                         */
-
 
 
                         scrollLayout.addView(nameTextView);
                         scrollLayout.addView(infoTextView);
-                        //scrollLayout.addView(imageView);
+                        scrollLayout.addView(new TextView(RecommendationsActivity.this));
 
                     }
 
