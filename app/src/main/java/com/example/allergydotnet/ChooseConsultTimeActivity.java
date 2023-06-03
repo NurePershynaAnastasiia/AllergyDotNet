@@ -187,6 +187,13 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
                 snackbar.show();
             }
         });
+        ImageView paybtn = findViewById(R.id.paybtn);
+        paybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
