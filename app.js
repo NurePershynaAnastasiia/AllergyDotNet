@@ -41,6 +41,8 @@ const cancelCons = require('./routes/cancelCons');
 const addCons = require('./routes/addCons');
 const loadDoctorInfo = require('./routes/loadDoctorInfo');
 const loadDoctorMobile = require('./routes/loadDoctorMobile');
+const changeDoctorInfo = require('./routes/changeDoctorInfo');
+
 
 app.use('/', changeSub);
 app.use('/', createNote);
@@ -73,6 +75,7 @@ app.use('/', cancelCons);
 app.use('/', addCons);
 app.use('/', loadDoctorInfo);
 app.use('/', loadDoctorMobile);
+app.use('/', changeDoctorInfo);
 
 // Start the server
 app.listen(3000, () => {
