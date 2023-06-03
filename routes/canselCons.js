@@ -13,7 +13,7 @@ router.post('/canselCons', (req, res) => {
             console.error(err);
             return res.status(500).send('Error retrieving cons from the database');
         }
-        res.json({message: 'Consultation canceled successfully'});
+        res.status(200).json({message: 'Consultation canceled successfully'});
     });
 
 });
