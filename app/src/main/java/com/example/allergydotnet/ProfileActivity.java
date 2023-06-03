@@ -243,9 +243,47 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-
+        Button allergensbtn = findViewById(R.id.allergensbtn);
+        allergensbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateAllergenPopup();
+            }
+        });
     }
 
+    private void CreateAllergenPopup() {
+        LayoutInflater inflater= (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popUpView=inflater.inflate(R.layout.popup_add_allergen,null);
+        int width = ViewGroup.LayoutParams.MATCH_PARENT;
+        int height = ViewGroup.LayoutParams.MATCH_PARENT;
+        boolean focusable = true;
+        PopupWindow popupWindow = new PopupWindow(popUpView,width,height,focusable);
+        layout.post(new Runnable() {
+            @Override
+            public void run() {
+                popupWindow.showAtLocation(layout, Gravity.BOTTOM,0,0);
+
+            }
+        });
+        Button AddButton;
+        AddButton = popUpView.findViewById(R.id.addbtn);
+
+        AddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //HERE WE ADD ALLERGEN
+                popupWindow.dismiss();
+            }
+        });
+        popUpView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                return true;
+            }
+        });
+    }
 
     private void CreateSubscriptionPopup() {
         LayoutInflater inflater= (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
