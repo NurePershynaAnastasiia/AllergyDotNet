@@ -12,9 +12,8 @@ router.post('/doctorRegistration', (req, res) => {
     const doctor_password = req.body.doctor_password;
     const doctor_IBAN = req.body.doctor_IBAN;
     const doctor_documents = req.body.doctor_documents;
-    const doctor_password1 = req.body.doctor_password1;
 
-    if (doctor_password === doctor_password1) {
+
         db.run(query, [doctor_name, doctor_email, doctor_password, doctor_IBAN, doctor_documents], function (err) {
             if (err) {
                 console.error(err);
@@ -22,9 +21,6 @@ router.post('/doctorRegistration', (req, res) => {
             }
             res.json({ message: 'Data downloaded and inserted successfully' });
         });
-    } else {
-        res.status(404).json({ error: 'Invalid password' });
-    }
 });
 
 module.exports = router;
