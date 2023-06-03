@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".ProfileActivity"
+    android:id="@+id/consLayout">
     <include layout="@layout/top_menu"/>
 
     <TextView
@@ -19,16 +20,21 @@
 
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="80dp"
-        android:paddingBottom="80dp">
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/scroll_layout"
             android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--
 
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -121,8 +127,9 @@
 
             </RelativeLayout>
 
+            -->
 
-        </RelativeLayout>
+        </LinearLayout>
 
     </ScrollView>
 

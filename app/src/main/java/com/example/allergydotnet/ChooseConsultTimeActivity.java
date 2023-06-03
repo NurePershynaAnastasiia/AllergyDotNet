@@ -58,10 +58,13 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
     private TextView tvTime;
     private Handler handler;
     private Runnable runnable;
-    LinearLayout linearLayout;
+    RelativeLayout relLayout;
 
     TextView nameTextView;
     TextView infoTextView;
+
+    TextView priceTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,11 +130,13 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
 
                     nameTextView = findViewById(R.id.nameTextView);
                     infoTextView = findViewById(R.id.infoTextView);
+                    priceTextView = findViewById(R.id.priceTextView);
 
                     DoctorInfo result = response.body();
 
                     nameTextView.setText(result.getName());
                     infoTextView.setText(result.getInfo());
+                    priceTextView.setText(Integer.toString(result.getPrice()) + "грн.");
 
                 } else if (response.code() == 404) {
                     Toast.makeText(ChooseConsultTimeActivity.this, "Something went wrong" + Integer.toString(doctor_id),
@@ -162,7 +167,7 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
 //        });
         calendarView = findViewById(R.id.calendarView);
         //tvTime = findViewById(R.id.tv_time);
-        linearLayout = findViewById(R.id.layout);
+        relLayout = findViewById(R.id.mainLayout);
 
         handler = new Handler();
         runnable = new Runnable() {
@@ -177,7 +182,7 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
 
-                Snackbar snackbar = Snackbar.make(linearLayout, "Selected Date: " + (month + 1) + "-" + dayOfMonth + "-" + year, Snackbar.LENGTH_LONG)
+                Snackbar snackbar = Snackbar.make(relLayout, "Selected Date: " + (month + 1) + "-" + dayOfMonth + "-" + year, Snackbar.LENGTH_LONG)
                         .setAction("OK", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

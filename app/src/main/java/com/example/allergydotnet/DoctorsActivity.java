@@ -131,6 +131,7 @@ public class DoctorsActivity extends AppCompatActivity {
                         priceTextView.setTextColor(Color.parseColor("#407A61"));
                         //image
                         //ImageView photoImageView = new ImageView(DoctorsActivity.this);
+                        //photoImageView.setBackgroundResource(R.drawable.doctor_image);
                         //photoImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                         //photoImageView.setAdjustViewBounds(true);
 
@@ -150,7 +151,7 @@ public class DoctorsActivity extends AppCompatActivity {
                             }
                         });
 
-
+                        //scrollLayout.addView(photoImageView);
                         scrollLayout.addView(nameTextView);
                         scrollLayout.addView(priceTextView);
                         scrollLayout.addView(infoTextView);

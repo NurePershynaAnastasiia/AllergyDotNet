@@ -38,4 +38,10 @@ public interface RetrofitInterface {
 
     @POST("/addNewAllergen")
     Call<AllergensNamesInfo> executeAddAllergen(@Body HashMap<String, String> map);
+
+    @POST("/loadUserConsultations")
+    Call<ArrayList<UserConsultsInfo>> executeLoadUserConsultationsn(@Body HashMap<String, String> map);
+
+    @POST("/cancelCons")
+    Call<UserConsultsInfo> executeCancelCons(@Body HashMap<String, String> map);
 }

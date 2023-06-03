@@ -113,7 +113,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:textColor="@color/white"
-            android:text="XXX грн."
+            android:text="100 грн."
             android:textStyle="italic"
             android:layout_gravity="left"
             android:fontFamily="@font/gilroy_regular"
