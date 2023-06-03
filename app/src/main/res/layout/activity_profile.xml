@@ -129,7 +129,7 @@
                     android:text="Мої алергени"
                     android:layout_below="@id/myalerg"
                     android:fontFamily="@font/gilroy_regular"
-                    android:textSize="15dp"
+                    android:textSize="20dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
                     />
@@ -153,7 +153,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/layout3"
                 xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="380dp" android:layout_height="200dp" android:layout_below="@id/layout2"
+                android:layout_width="380dp" android:layout_height="wrap_content" android:layout_below="@id/layout2"
                 android:layout_centerHorizontal="true" android:background="@drawable/backgroud_border"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="20dp">
@@ -176,7 +176,7 @@
                     android:text="Мої нотатки"
                     android:layout_below="@id/mynot"
                     android:fontFamily="@font/gilroy_regular"
-                    android:textSize="15dp"
+                    android:textSize="20dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
                     />
@@ -192,6 +192,7 @@
                     android:layout_alignParentRight="true"
                     android:text="Детальніше"
                     android:textSize="15dp"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/gilroy_regular"/>
 
             </RelativeLayout>

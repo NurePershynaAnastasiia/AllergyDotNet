@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
@@ -111,6 +112,8 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 popupWindow.dismiss();
+                Toast.makeText(SettingsActivity.this, "Листа успішно надіслано",
+                        Toast.LENGTH_LONG).show();
             }
         });
         popUpView.setOnTouchListener(new View.OnTouchListener() {
