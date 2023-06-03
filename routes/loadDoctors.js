@@ -4,7 +4,7 @@ const router = express.Router();
 const db = new sqlite3.Database('AllergyDotNet.db');
 
 router.post('/loadDoctors', (req, res) => {
-    const query = 'SELECT doctor_id, doctor_name, doctor_photo, doctor_price, doctor_info FROM Doctors';
+    const query = 'SELECT doctor_id, doctor_name, doctor_photo, doctor_price, doctor_info FROM Doctors WHERE isAdmin = 0 AND doctor_status = 1';
 
     db.all(query,  (err, rows) => {
         if (err) {
