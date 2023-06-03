@@ -3,7 +3,7 @@ const sqlite3 = require('sqlite3').verbose();
 const router = express.Router();
 const db = new sqlite3.Database('AllergyDotNet.db');
 
-router.post('/canselCons', (req, res) => {
+router.post('/cancelCons', (req, res) => {
     const consultation_id = req.body.consultation_id;
     const query = 'UPDATE Consultations SET consultation_status = 1 WHERE consultation_id = ?;';
 
