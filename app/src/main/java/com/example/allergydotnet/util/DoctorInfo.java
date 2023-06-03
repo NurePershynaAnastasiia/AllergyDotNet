@@ -15,7 +15,6 @@ public class DoctorInfo {
 
 
 
-
     public int getId() {
         return doctor_id;
     }

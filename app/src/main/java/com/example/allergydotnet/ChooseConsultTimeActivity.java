@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.example.allergydotnet.util.DoctorInfo;
+import com.example.allergydotnet.util.LoginInfo;
+import com.example.allergydotnet.util.RetrofitInterface;
 import com.google.android.gms.wallet.IsReadyToPayRequest;
 import com.google.android.gms.wallet.PaymentsClient;
 import com.google.android.gms.wallet.Wallet;
@@ -18,6 +22,11 @@ import com.google.android.gms.wallet.WalletConstants;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import androidx.appcompat.app.AppCompatActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,14 +34,21 @@ import android.view.View;
 import android.widget.CalendarView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class ChooseConsultTimeActivity extends AppCompatActivity {
+
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "http://192.168.1.105:3000";
 
     Intent intent;
     int user_id, doctor_id;
@@ -42,6 +58,9 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
     private Handler handler;
     private Runnable runnable;
     LinearLayout linearLayout;
+
+    TextView nameTextView;
+    TextView infoTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +104,46 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
                 startActivity(myint);
             }
         });
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        retrofitInterface = retrofit.create(RetrofitInterface .class);
+
+
+        HashMap<String, String> map = new HashMap<>();
+
+        map.put("doctor_id", Integer.toString(doctor_id));
+
+        Call<DoctorInfo> call1 = retrofitInterface.executeDoctorInfo(map);
+        call1.enqueue(new Callback<DoctorInfo>() {
+            @Override
+            public void onResponse(Call<DoctorInfo> call, Response<DoctorInfo> response) {
+
+                if (response.code() == 200) {
+
+                    nameTextView = findViewById(R.id.nameTextView);
+                    infoTextView = findViewById(R.id.infoTextView);
+
+                    DoctorInfo result = response.body();
+
+                    nameTextView.setText(result.getName());
+                    infoTextView.setText(result.getInfo());
+
+                } else if (response.code() == 404) {
+                    Toast.makeText(ChooseConsultTimeActivity.this, "Something went wrong" + Integer.toString(doctor_id),
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<DoctorInfo> call, Throwable t) {
+                Toast.makeText(ChooseConsultTimeActivity.this, t.getMessage(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
 
 //        Button paybtn = findViewById(R.id.paybtn);
 //
@@ -146,4 +205,7 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
         String currentTime = sdf.format(new Date());
         //tvTime.setText(currentTime);
     }
+
+
+
 }
