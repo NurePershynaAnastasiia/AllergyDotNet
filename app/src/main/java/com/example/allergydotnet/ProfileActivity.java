@@ -438,7 +438,7 @@ public class ProfileActivity extends AppCompatActivity {
                         popupWindow.showAtLocation(layout, Gravity.BOTTOM,0,0);
                     }
                 });
-                Button payButton = newPopupView.findViewById(R.id.paybtn);
+                ImageView payButton = newPopupView.findViewById(R.id.paybtn);
                 payButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

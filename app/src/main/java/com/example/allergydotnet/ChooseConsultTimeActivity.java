@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.google.android.gms.wallet.IsReadyToPayRequest;
@@ -83,6 +84,14 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
                 Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
                 myint.putExtra("user_id", user_id);
                 startActivity(myint);
+            }
+        });
+
+        ImageView paybtn = findViewById(R.id.paybtn);
+        paybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

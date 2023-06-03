@@ -58,22 +58,31 @@
             android:layout_gravity="center"
             android:textSize="20dp"/>
 
-        <com.google.android.material.button.MaterialButton
+        <ImageView
             android:id="@+id/paybtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/gilroy_regular"
-            android:text="Сплатити гугл пей"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:layout_gravity="center"
-            app:cornerRadius="100dp" />
+            android:layout_width="246dp"
+            android:layout_height="77dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="60dp"
+            android:gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img"/>
+        <!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/paybtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginStart="15dp"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:layout_marginEnd="15dp"-->
+<!--            android:layout_marginBottom="15dp"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            android:fontFamily="@font/gilroy_regular"-->
+<!--            android:text="Сплатити гугл пей"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="20dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            app:cornerRadius="100dp" />-->
 
     </LinearLayout>
 </RelativeLayout>
