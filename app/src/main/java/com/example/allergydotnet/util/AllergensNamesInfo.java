@@ -2,14 +2,9 @@ package com.example.allergydotnet.util;
 
 import java.sql.Blob;
 
-public class UserAllergensInfo {
-
+public class AllergensNamesInfo {
     private int user_id;
     private String allergen_name;
-
-    private String allergen_info;
-
-
 
 
     public int getId() {
@@ -18,8 +13,5 @@ public class UserAllergensInfo {
 
 
     public String getAllergens() { return allergen_name; };
-
-    public String getAllergensInfo() { return allergen_info; };
-
 
 }

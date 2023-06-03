@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#6A6A6A"
     android:id="@+id/popup_add_allergen">
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,7 +10,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="200dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/popup_background"
         android:orientation="vertical"
         android:padding="20dp">
@@ -44,7 +43,7 @@
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@+id/image_add"
             android:layout_centerHorizontal="true"
@@ -52,13 +51,13 @@
             android:layout_marginBottom="15dp"
             android:background="#F8F1F4"
             android:textColor="#27353C"
-            android:textColorHint="#8FA2AB"
+            android:dropDownWidth="250dp"
             />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/temp_img"/>
+            android:src="@drawable/cherry_blossom"/>
 
         <TextView
             android:layout_width="wrap_content"

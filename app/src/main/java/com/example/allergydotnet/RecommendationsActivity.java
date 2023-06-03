@@ -9,6 +9,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -26,6 +28,8 @@ import com.example.allergydotnet.util.UserNotationsInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -122,20 +126,39 @@ public class RecommendationsActivity extends AppCompatActivity {
                         infoTextView.setTextColor(Color.parseColor("#2E2E2E"));
                         infoTextView.setTextSize(15);
                         //photo
-                        ImageView imgViev = new ImageView(RecommendationsActivity.this);
-                        imgViev.setBackgroundResource(R.drawable.temp_img);
-                        imgViev.setMaxHeight(10);
-                        imgViev.setMaxWidth(10);
-                        imgViev.setMinimumHeight(10);
-                        imgViev.setMinimumWidth(10);
-                        //imgViev.setAdjustViewBounds(true);
+                        ImageView imageView = new ImageView(RecommendationsActivity.this);
+                        imageView.setBackgroundResource(R.drawable.temp_img);
+                        imageView.setMaxHeight(10);
+                        imageView.setMaxWidth(10);
+                        imageView.setMinimumHeight(10);
+                        imageView.setMinimumWidth(10);
+                        imageView.setAdjustViewBounds(true);
 
+
+                        /*
+                        // Exclude Blob from serialization
+                        Blob blob = result.get(i).getAllergen_photo();
+                        byte[] imageBytes;
+
+                        try {
+                            imageBytes = blob.getBytes(1, (int) blob.length());
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+
+                        imageView.setImageBitmap(bitmap);
+
+                        scrollLayout.addView(imageView);
+
+                         */
 
 
 
                         scrollLayout.addView(nameTextView);
                         scrollLayout.addView(infoTextView);
-                        scrollLayout.addView(imgViev);
+                        //scrollLayout.addView(imageView);
 
                     }
 

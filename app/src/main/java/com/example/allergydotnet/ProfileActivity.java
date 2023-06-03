@@ -9,6 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,13 +17,17 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.allergydotnet.util.AllergensNamesInfo;
 import com.example.allergydotnet.util.RetrofitInterface;
 import com.example.allergydotnet.util.UserAllergensInfo;
 import com.example.allergydotnet.util.UserNameSubInfo;
@@ -44,6 +49,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     private TextView nameTextView;
     private TextView sub_typeTextView;
+
+    Spinner spinner;
 
     private TextView all_notaionsTextView;
 
@@ -154,7 +161,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserNameSubInfo> call, Throwable t) {
-                Toast.makeText(ProfileActivity.this, t.getMessage(),
+                Toast.makeText(ProfileActivity.this, "Name" + t.getMessage(),
                         Toast.LENGTH_LONG).show();
             }
         });
@@ -196,7 +203,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ArrayList<UserNotationsInfo>> call, Throwable t) {
-                Toast.makeText(ProfileActivity.this, t.getMessage(),
+                Toast.makeText(ProfileActivity.this, "Notes" + t.getMessage(),
                         Toast.LENGTH_LONG).show();
             }
         });
@@ -231,7 +238,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ArrayList<UserAllergensInfo>> call, Throwable t) {
-                Toast.makeText(ProfileActivity.this, t.getMessage(),
+                Toast.makeText(ProfileActivity.this, "Allergens" + t.getMessage(),
                         Toast.LENGTH_LONG).show();
             }
         });
@@ -257,15 +264,20 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void CreateAllergenPopup() {
         LayoutInflater inflater= (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popUpView=inflater.inflate(R.layout.popup_add_allergen,null);
+        View popUpView = inflater.inflate(R.layout.popup_add_allergen,null);
         int width = ViewGroup.LayoutParams.MATCH_PARENT;
         int height = ViewGroup.LayoutParams.MATCH_PARENT;
         boolean focusable = true;
         PopupWindow popupWindow = new PopupWindow(popUpView,width,height,focusable);
+
+
+
         layout.post(new Runnable() {
             @Override
             public void run() {
                 popupWindow.showAtLocation(layout, Gravity.BOTTOM,0,0);
+
+
 
             }
         });
@@ -276,6 +288,34 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //HERE WE ADD ALLERGEN
+                HashMap<String, String> map = new HashMap<>();
+
+                map.put("user_id", Integer.toString(user_id));
+                map.put("allergen_name", spinner.getSelectedItem().toString());
+
+                Call<AllergensNamesInfo> call = retrofitInterface.executeAddAllergen(map);
+                call.enqueue(new Callback<AllergensNamesInfo>() {
+                    @Override
+                    public void onResponse(Call<AllergensNamesInfo> call, Response<AllergensNamesInfo> response) {
+
+                        if (response.code() == 200) {
+
+                        } else if (response.code() == 404) {
+                            Toast.makeText(ProfileActivity.this, "Something went wrong",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<AllergensNamesInfo> call, Throwable t) {
+                        Toast.makeText(ProfileActivity.this, "Popup allergens add" + t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                Intent myint = new Intent(getApplicationContext(), ProfileActivity.class);
+                myint.putExtra("user_id", user_id);
+                startActivity(myint);
                 popupWindow.dismiss();
             }
         });
@@ -286,6 +326,49 @@ public class ProfileActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        //fill allergens from db
+
+        HashMap<String, String> map = new HashMap<>();
+
+        map.put("user_id", Integer.toString(user_id));
+
+        Call<ArrayList<AllergensNamesInfo>> call = retrofitInterface.executeAllergenNamesInfo(map);
+
+        call.enqueue(new Callback<ArrayList<AllergensNamesInfo>>() {
+            @Override
+            public void onResponse(Call<ArrayList<AllergensNamesInfo>> call, Response<ArrayList<AllergensNamesInfo>> response) {
+
+                if (response.code() == 200) {
+
+
+                    spinner = popUpView.findViewById(R.id.spinner);
+                    ArrayList<String> spinnerArray = new ArrayList<String>();
+                    ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(ProfileActivity.this, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
+                    ArrayList<AllergensNamesInfo> result = response.body();
+
+
+                    for (int i = 0; i < result.size(); i++){
+                        spinnerArray.add(result.get(i).getAllergens().toString());
+                    }
+
+                    spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinner.setAdapter(spinnerArrayAdapter);
+
+                } else if (response.code() == 404) {
+                    Toast.makeText(ProfileActivity.this, "Something went wrong",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<AllergensNamesInfo>> call, Throwable t) {
+                Toast.makeText(ProfileActivity.this, "popup allergens display" + t.getMessage(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
+
     }
 
     private void CreateSubscriptionPopup() {
