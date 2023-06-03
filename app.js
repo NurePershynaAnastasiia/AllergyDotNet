@@ -40,6 +40,7 @@ const loadClientConsultations = require('./routes/loadClientConsultations');
 const canselCons = require('./routes/canselCons');
 const addCons = require('./routes/addCons');
 const loadDoctorInfo = require('./routes/loadDoctorInfo');
+const loadDoctorMobile = require('./routes/loadDoctorMobile');
 
 app.use('/', changeSub);
 app.use('/', createNote);
@@ -71,6 +72,7 @@ app.use('/', rejectDoctor);
 app.use('/', canselCons);
 app.use('/', addCons);
 app.use('/', loadDoctorInfo);
+app.use('/', loadDoctorMobile);
 
 // Start the server
 app.listen(3000, () => {
