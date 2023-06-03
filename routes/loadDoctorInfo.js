@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.post('/loadDoctorInfo', (req, res) => {
     const doctor_id = req.body.doctor_id; // Отримання user_id з тіла запиту
-    const query = 'SELECT doctor_id, doctor_name, doctor_email, doctor_IBAN, doctor_photo, ' +
-        'doctor_documents, doctor_status,  doctor_price, doctor_info FROM Doctors';
+    const query = 'SELECT doctor_name, doctor_email, doctor_IBAN, doctor_photo, ' +
+        'doctor_documents, doctor_status,  doctor_price, doctor_info FROM Doctors WHERE doctor_id = ?';
 
     db.all(query, [doctor_id], (err, rows) => {
         if (err) {
