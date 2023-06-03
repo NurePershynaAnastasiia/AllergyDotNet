@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>Registration</title>
+  </head>
+  <body>
+    <img class="img" src="./photos/авторизация.svg"></img>
+
+    <div class="out">
+      <img src="photos/reg.png" class="imgReg" />
+      
+
+      <div class="form">
+        <h2 class="reg">Реєстрація</h2>
+      <form class="register">
+        <label for="name">ПІБ</label><br />
+        <input
+        class="input_text"
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Повне ім'я"
+        /><br />
+        <label for="email">Пошта</label><br />
+        <input
+        class="input_text"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Адреса ел. пошти"
+        /><br />
+
+        <label for="password">Пароль</label><br />
+        <input
+        class="input_text"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Введіть пароль"
+        /><br />
+        <label for="password1">Підтвердження пароля</label><br />
+        <input
+        class="input_text"
+          type="password"
+          id="password1"
+          name="password1"
+          placeholder="Введіть пароль ще раз"
+        /><br />
+
+        <label for="docs"><div><p>Додати документи</p></div></label><br />
+        <input id="docs" type="file" name="docs" class="docs" /><br />
+      </form>
+      
+      <input class="submit" type="submit" value="Створити акаунт" /><br />
+      <nav class="links"> 
+      <a href="link">Продовжити з <b>Google</b></a>
+      <a href="link">Вже маєте акаунт? <b>Увійти</b></a>
+      </nav>
+    </div></div>
+  </body>
+</html>
