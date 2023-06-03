@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.consultations {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 8vw;
+    left: 20vw;
+    width: 70%;
+
+    .block {
+        overflow-y: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2vw;
+        width: 100%;
+        height: 100%;
+        background: #F8F1F4;
+        border-radius: 50px;
+        align-items: center;
+
+
+        .ph_and_name {
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2vw;
+
+            img {
+                height: 100px;
+                border-radius: 30px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+
+        .date_and_btn {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2vw;
+
+            p {
+                font-size: 14px;
+            }
+
+            .dis {
+                border: none;
+                color: white;
+                font-size: 14px;
+                background: #407A61;
+                border-radius: 30px;
+                height: 30px;
+                padding-left: 15px;
+                padding-right: 15px;
+
+            }
+
+            .done {
+                border: none;
+                color: white;
+                font-size: 14px;
+                background: #B3CD98;
+                border-radius: 30px;
+                height: 30px;
+                padding: 5px;
+            }
+
+            .not {
+                border: none;
+                color: white;
+                font-size: 14px;
+                background: #9E4444;
+                border-radius: 30px;
+                height: 30px;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+.search {
+    margin-bottom: 2vw;
+    width: 100%;
+    height: 20%;
+
+    .b_search {
+
+        padding: 10px;
+        padding-left: 20px;
+        font-size: 16px;
+        width: 90%;
+        background-color: #F8F1F4;
+        border: none;
+        border-radius: 50px 50px 0px 50px;
+    }
+
+    .submit {
+
+        background-color: #275362;
+        border-radius: 0px 50px;
+        width: 100px;
+        padding: 5px;
+        font-size: 16px;
+        color: white;
+    }
+
+}
