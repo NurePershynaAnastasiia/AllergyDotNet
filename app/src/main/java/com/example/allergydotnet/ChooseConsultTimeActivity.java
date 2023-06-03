@@ -21,7 +21,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class ChooseConsultTimeActivity extends AppCompatActivity {
 
     Intent intent;
-    int user_id;
+    int user_id, doctor_id;
     PaymentsClient paymentsClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,7 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
 
         intent = getIntent();
         user_id = intent.getIntExtra("user_id", 0);
+        doctor_id = intent.getIntExtra("doctor_id", 0);
 
 
         BottomNavigationView bottomNavMenu = findViewById(R.id.bottom_navigation);

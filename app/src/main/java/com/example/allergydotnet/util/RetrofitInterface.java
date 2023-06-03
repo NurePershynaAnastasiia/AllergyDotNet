@@ -26,4 +26,7 @@ public interface RetrofitInterface {
 
     @POST("/loadFullNotes")
     Call<ArrayList<UserNotationsInfo>> executeUserNotations(@Body HashMap<String, String> map);
+
+    @POST("/loadDoctors")
+    Call<ArrayList<DoctorInfo>> executeDoctorsInfo();
 }
