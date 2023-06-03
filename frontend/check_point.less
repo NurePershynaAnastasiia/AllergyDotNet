@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.check_point {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 8vw;
+    left: 20vw;
+    width: 70%;
+    overflow-y: auto;
+
+    img {
+        height: 200px;
+        border-radius: 30px;
+    }
+}
+
+.search {
+
+    width: 100%;
+
+    .b_search {
+
+        padding: 10px;
+        padding-left: 20px;
+        font-size: 16px;
+        width: 90%;
+        background-color: #F8F1F4;
+        border: none;
+        border-radius: 50px 50px 0px 50px;
+    }
+
+    .submit {
+
+        background-color: #275362;
+        border-radius: 0px 50px;
+        width: 100px;
+        padding: 5px;
+        font-size: 16px;
+        color: white;
+    }
+}
+
+.row {
+
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    gap: 20px;
+}
+
+.info {
+
+    display: flex;
+    flex-direction: column;
+
+
+    h1 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 300;
+    }
+}
+
+.yes_no {
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+
+
+    button {
+        padding: 5px 20px 5px 20px;
+        font-size: 14px;
+        border-radius: 30px;
+        border: none;
+        color: white;
+        margin-bottom: 20px;
+
+    }
+}
+
+.yes {
+    background: #B3CD98;
+}
+
+.no {
+    background: #9E4444;
+}
