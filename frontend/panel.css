@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.panel {
+  padding-top: 100px;
+  top: 5vw;
+  bottom: 8vw;
+  position: fixed;
+  width: 30vh;
+  z-index: 1;
+  background-image: url("/photos/panel.svg");
+  background-repeat: no-repeat;
+}
+.p_button {
+  font-size: 15px;
+  font-family: Gilroy;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: none;
+  background: rgba(5, 11, 8, 0.46);
+  border-radius: 0px 0px 20px 0px;
+  color: white;
+}
+.exit {
+  font-size: 14px;
+  margin-top: 8.5vw;
+  margin-left: 0.5vw;
+  background-color: transparent;
+  border: none;
+  color: white;
+  text-decoration: underline;
+}
+.d_button {
+  display: flex;
+}
+.door {
+  margin-top: 8.5vw;
+  margin-left: 0.5vw;
+  height: 28px;
+  width: 18px;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 10px;
+}
+.active {
+  font-size: 15px;
+  font-family: Gilroy;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: none;
+  background: rgba(255, 255, 255, 0.46);
+  border-radius: 0px 0px 20px 0px;
+  color: black;
+}
