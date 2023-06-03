@@ -39,6 +39,7 @@ const loadAllAllergens = require('./routes/loadAllAllergens');
 const loadClientConsultations = require('./routes/loadClientConsultations');
 const canselCons = require('./routes/canselCons');
 const addCons = require('./routes/addCons');
+const loadDoctorInfo = require('./routes/loadDoctorInfo');
 
 app.use('/', changeSub);
 app.use('/', createNote);
@@ -69,6 +70,7 @@ app.use('/', rejectPoint);
 app.use('/', rejectDoctor);
 app.use('/', canselCons);
 app.use('/', addCons);
+app.use('/', loadDoctorInfo);
 
 // Start the server
 app.listen(3000, () => {
