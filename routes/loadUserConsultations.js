@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/loadUserConsultations', (req, res) => {
     const user_id = req.body.user_id; // Отримання user_id з тіла запиту
-    const query = 'SELECT Consultations.consultation_date, ConsStatus.consultation_status, Doctors.doctor_name, Doctors.doctor_photo FROM Consultations ' +
+    const query = 'SELECT Consultations.consultation_date, ConsStatus.consultation_status, Doctors.doctor_name FROM Consultations ' +
         'INNER JOIN ConsStatus ON Consultations.consultation_status = ConsStatus.consultation_status_id ' +
         'INNER JOIN Doctors ON Consultations.doctor_id = Doctors.doctor_id WHERE Consultations.user_id = ? ';
 
