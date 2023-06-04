@@ -10,7 +10,7 @@ CREATE TABLE Notes (
 note_id INTEGER PRIMARY KEY AUTOINCREMENT,
 note_name TEXT NOT NULL,
 note_text TEXT,
-note_date,
+note_date TEXT,
 user_id INTEGER NOT NULL REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE Points (
 point_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 point_photo BLOB,
 point_info TEXT NOT NULL,
-point_status BOOLEAN NOT NULL,
+point_status BOOLEAN DEFAULT 0,
 point_coordinates_latitude TEXT NOT NULL,
 point_coordinates_longitude TEXT NOT NULL,
 allergen_id INTEGER NOT NULL REFERENCES Allergens(allergen_id) ON DELETE CASCADE
