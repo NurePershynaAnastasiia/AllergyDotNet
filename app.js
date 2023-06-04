@@ -42,7 +42,7 @@ const addCons = require('./routes/addCons');
 const loadDoctorInfo = require('./routes/loadDoctorInfo');
 const loadDoctorMobile = require('./routes/loadDoctorMobile');
 const changeDoctorInfo = require('./routes/changeDoctorInfo');
-
+const loadUserInfo = require('./routes/loadUserInfo');
 
 app.use('/', changeSub);
 app.use('/', createNote);
@@ -76,6 +76,7 @@ app.use('/', addCons);
 app.use('/', loadDoctorInfo);
 app.use('/', loadDoctorMobile);
 app.use('/', changeDoctorInfo);
+app.use('/', loadUserInfo);
 
 // Start the server
 app.listen(3000, () => {
