@@ -19,7 +19,7 @@ router.post('/doctorRegistration', (req, res) => {
                 console.error(err);
                 return res.status(500).send('Error inserting data into the database');
             }
-            res.json({ message: 'Data downloaded and inserted successfully' });
+            res.status(200).json({ message: 'Data downloaded and inserted successfully' });
         });
 });
 

@@ -10,7 +10,7 @@ router.post('/loadDoctorClients', (req, res) => {
         'WHERE Consultations.doctor_id = ? AND Consultations.consultation_status = 3';
 
 
-    db.all(query, [doctor_id], (err, rows) => { // Використовуйте db.all замість db.each для отримання всіх рядків
+    db.all(query, [doctor_id], (err, rows) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error retrieving notes from the database');

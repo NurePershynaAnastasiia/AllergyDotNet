@@ -6,7 +6,7 @@ const db = new sqlite3.Database('AllergyDotNet.db');
 router.post('/loadAllAllergens', (req, res) => {
     const query = 'SELECT allergen_name FROM Allergens;';
 
-    db.all(query, (err, rows) => { // Використовуйте db.all замість db.each для отримання всіх рядків
+    db.all(query, (err, rows) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error retrieving notes from the database');

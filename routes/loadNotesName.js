@@ -7,7 +7,7 @@ router.post('/loadNotesName', (req, res) => {
     const user_id = req.body.user_id; // Отримання user_id з тіла запиту
     const query = 'SELECT note_name FROM Notes WHERE user_id = ?';
 
-    db.all(query, [user_id], (err, rows) => { // Використовуйте db.all замість db.each для отримання всіх рядків
+    db.all(query, [user_id], (err, rows) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error retrieving notes from the database');

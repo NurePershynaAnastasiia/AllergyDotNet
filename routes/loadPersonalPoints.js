@@ -13,8 +13,7 @@ router.post('/loadPersonalPoints', (req, res) => {
             'JOIN Points p ON a.allergen_id = p.allergen_id WHERE u.user_id = ? AND p.point_status = \'1\'';
 
 
-    //это работает или нет? просто тут ДБ ОЛЛ это странно
-    db.all(query, [user_id], (err, rows) => { // Використовуйте db.all замість db.each для отримання всіх рядків
+    db.all(query, [user_id], (err, rows) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error retrieving points from the database');

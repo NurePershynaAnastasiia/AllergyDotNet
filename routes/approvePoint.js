@@ -12,7 +12,7 @@ router.post('/approvePoint', (req, res) => {
             console.error(err);
             return res.status(500).send('Error retrieving unchecked points from the database');
         }
-        res.json({message: 'Point approved successfully'});
+        res.status(200).json({message: 'Point approved successfully'});
     });
 
 });

@@ -10,7 +10,7 @@ router.post('/loadUserConsultations', (req, res) => {
         'INNER JOIN Doctors ON Consultations.doctor_id = Doctors.doctor_id WHERE Consultations.user_id = ? ';
 
 
-    db.all(query, [user_id], (err, rows) => { // Використовуйте db.all замість db.each для отримання всіх рядків
+    db.all(query, [user_id], (err, rows) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error retrieving consultations from the database');

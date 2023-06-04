@@ -8,7 +8,7 @@ router.post('/loadClientsConsultations', (req, res) => {
     const doctor_id = req.body.doctor_id;
     const query = 'SELECT consultation_date FROM Consultations WHERE doctor_id = ? AND consultation_status = 3 AND user_id = ?';
 
-    db.all(query, [user_id, doctor_id], (err, rows) => { // Використовуйте db.all замість db.each для отримання всіх рядків
+    db.all(query, [user_id, doctor_id], (err, rows) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error retrieving notes from the database');

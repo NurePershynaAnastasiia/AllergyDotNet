@@ -11,7 +11,7 @@ router.post('/loadUnCheckedDoctors', (req, res) => {
             console.error(err);
             return res.status(500).send('Error retrieving unchecked points from the database');
         }
-        res.json(rows);
+        res.status(200).json(rows);
     });
 
 });

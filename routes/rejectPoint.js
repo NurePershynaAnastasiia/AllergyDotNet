@@ -12,7 +12,7 @@ router.post('/rejectPoint', (req, res) => {
             console.error(err);
             return res.status(500).send('Error retrieving unchecked points from the database');
         }
-        res.json({ message: 'Point rejected successfully' });
+        res.status(200).json({ message: 'Point rejected successfully' });
     });
 
 });
