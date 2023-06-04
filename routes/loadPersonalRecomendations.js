@@ -9,7 +9,7 @@ router.post('/loadPersonalRecomendations', (req, res) => {
         'inner join UserAllergens on Allergens.allergen_id = UserAllergens.allergen_id ' +
         'inner join Users on UserAllergens.user_id = Users.user_id WHERE Users.user_id = ?;';
 
-    db.all(query, [user_id], (err, rows) => { // Використовуйте db.all замість db.each для отримання всіх рядків
+    db.all(query, [user_id], (err, rows) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error retrieving notes from the database');
@@ -20,3 +20,4 @@ router.post('/loadPersonalRecomendations', (req, res) => {
 });
 
 module.exports = router;
+
