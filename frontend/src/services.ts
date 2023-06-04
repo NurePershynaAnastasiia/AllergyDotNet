@@ -173,6 +173,8 @@ export async function loadDoctorConsultations(
   user_name: string
   consultation_date: string
   user_id: number
+  consultation_id: number
+  consultation_status: string
 }> | null> {
   try {
     const response = await fetch(`${ADRESS}/loadDoctorConsultations`, {
@@ -247,6 +249,7 @@ export async function loadUserInfo(
   user_id: number
 ): Promise<{
   allergens: Array<{
+    allergen_id: number
     allergen_name: string
     allergen_info: string
     allergen_photo: string
@@ -289,7 +292,10 @@ export async function loadDoctorInfo(
   doctor_name: string
   doctor_email: string
   doctor_IBAN: string
-  doctor_photo: Blob
+  doctor_photo: any
+  doctor_documents: any
+  doctor_price: number
+  doctor_info: string
 } | null> {
   try {
     const response = await fetch(`${ADRESS}/loadDoctorInfo`, {

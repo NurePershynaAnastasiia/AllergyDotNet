@@ -18,7 +18,8 @@ h1 {
   font-weight: 800;
 }
 .last_clients {
-  height: 100%;
+  height: auto;
+  width: auto;
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -26,6 +27,8 @@ h1 {
   margin-top: 2vw;
 }
 .last_clients .client {
+  position: static;
+  display: block;
   width: auto;
   padding: 10px;
   text-decoration: none;
