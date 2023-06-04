@@ -12,6 +12,7 @@ import { Profile } from './pages/Profile'
 import { Consultations } from './pages/Consultations'
 import { Plate } from './pages/Plate'
 
+
 const App: React.FC = () => {
   return (
     <BrowserRouter>

@@ -2,8 +2,11 @@ import { NavLink } from 'react-router-dom'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { SideBar } from '../components/SideBar'
+import { useProtected } from '../hooks/useProtected'
 
 export function Clients() {
+  useProtected()
+
   return (
     <>
       <Header />

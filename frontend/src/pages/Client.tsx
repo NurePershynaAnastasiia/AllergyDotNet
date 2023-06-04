@@ -2,8 +2,11 @@ import { Accordion } from '../components/Accordion'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { SideBar } from '../components/SideBar'
+import { useProtected } from '../hooks/useProtected'
 
 export function Client() {
+  useProtected()
+
   return (
     <>
       <Header />
