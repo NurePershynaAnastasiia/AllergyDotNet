@@ -1,4 +1,4 @@
-export const ADRESS = 'http://localhost:3000'
+export const ADRESS = 'http://localhost:3001'
 
 const DOCTOR_ID = 'doctor_ID'
 
@@ -11,7 +11,7 @@ export async function logIn(
   password: string
 ): Promise<{ doctor_id: number } | null> {
   try {
-    const response = await fetch(`${ADRESS}/doctorLogIn`, {
+    const response = await fetch(`${ADRESS}/doctorLogin`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
