@@ -128,54 +128,6 @@ public class RecommendationsActivity extends AppCompatActivity {
                         infoTextView.setText(result.get(i).getAllergensInfo().toString());
                         infoTextView.setTextColor(Color.parseColor("#2E2E2E"));
                         infoTextView.setTextSize(15);
-                        //photo
-                        ImageView imageView = new ImageView(RecommendationsActivity.this);
-                        imageView.setBackgroundResource(R.drawable.temp_img);
-                        imageView.setMaxHeight(10);
-                        imageView.setMaxWidth(10);
-                        imageView.setMinimumHeight(10);
-                        imageView.setMinimumWidth(10);
-                        imageView.setAdjustViewBounds(true);
-
-
-                        /*
-                        // Exclude Blob from serialization
-                        Blob blob = result.get(i).getAllergen_photo();
-                        byte[] imageBytes;
-
-                        try {
-                            imageBytes = blob.getBytes(1, (int) blob.length());
-                        } catch (SQLException e) {
-                            throw new RuntimeException(e);
-                        }
-
-                        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-
-                        imageView.setImageBitmap(bitmap);
-
-                        scrollLayout.addView(imageView);
-
-                         */
-
-//                        Blob blob = result.get(i).getAllergen_photo();
-//                        byte[] imageBytes;
-//
-//                        try (InputStream inputStream = blob.getBinaryStream()) {
-//                            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//                            byte[] buffer = new byte[4096];
-//                            int bytesRead;
-//                            while ((bytesRead = inputStream.read(buffer)) != -1) {
-//                                outputStream.write(buffer, 0, bytesRead);
-//                            }
-//                            imageBytes = outputStream.toByteArray();
-//                        } catch (SQLException | IOException e) {
-//                            throw new RuntimeException(e);
-//                        }
-//
-//                        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-//                        imageView.setImageBitmap(bitmap);
-//                        scrollLayout.addView(imageView);
-
 
 
                         scrollLayout.addView(nameTextView);

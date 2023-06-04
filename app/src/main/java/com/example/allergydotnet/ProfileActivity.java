@@ -328,11 +328,8 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         //fill allergens from db
-
         HashMap<String, String> map = new HashMap<>();
-
         map.put("user_id", Integer.toString(user_id));
-
         Call<ArrayList<AllergensNamesInfo>> call = retrofitInterface.executeAllergenNamesInfo(map);
 
         call.enqueue(new Callback<ArrayList<AllergensNamesInfo>>() {
@@ -341,17 +338,14 @@ public class ProfileActivity extends AppCompatActivity {
 
                 if (response.code() == 200) {
 
-
                     spinner = popUpView.findViewById(R.id.spinner);
                     ArrayList<String> spinnerArray = new ArrayList<String>();
                     ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(ProfileActivity.this, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
                     ArrayList<AllergensNamesInfo> result = response.body();
 
-
                     for (int i = 0; i < result.size(); i++){
                         spinnerArray.add(result.get(i).getAllergens().toString());
                     }
-
                     spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner.setAdapter(spinnerArrayAdapter);
 

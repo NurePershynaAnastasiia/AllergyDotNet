@@ -15,7 +15,9 @@ import android.widget.RelativeLayout;
 
 import com.example.allergydotnet.util.DoctorInfo;
 import com.example.allergydotnet.util.LoginInfo;
+import com.example.allergydotnet.util.NewConsultInfo;
 import com.example.allergydotnet.util.RetrofitInterface;
+import com.example.allergydotnet.util.UserConsultsInfo;
 import com.google.android.gms.wallet.IsReadyToPayRequest;
 import com.google.android.gms.wallet.PaymentsClient;
 import com.google.android.gms.wallet.Wallet;
@@ -50,6 +52,8 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://192.168.1.105:3000";
+
+    String consult_date;
 
     Intent intent;
     int user_id, doctor_id;
@@ -151,6 +155,8 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
         });
 
 
+
+
 //        Button paybtn = findViewById(R.id.paybtn);
 //
 //        Wallet.WalletOptions walletOptions = new Wallet.WalletOptions.Builder()
@@ -182,6 +188,11 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
 
+                String  curDate = String.valueOf(dayOfMonth);
+                String  Year = String.valueOf(year);
+                String  Month = String.valueOf(month);
+                consult_date = curDate + "-" + Month + "-" + Year;
+
                 Snackbar snackbar = Snackbar.make(relLayout, "Selected Date: " + (month + 1) + "-" + dayOfMonth + "-" + year, Snackbar.LENGTH_LONG)
                         .setAction("OK", new View.OnClickListener() {
                             @Override
@@ -196,6 +207,45 @@ public class ChooseConsultTimeActivity extends AppCompatActivity {
         paybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                retrofit = new Retrofit.Builder()
+                        .baseUrl(BASE_URL)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+
+                retrofitInterface = retrofit.create(RetrofitInterface.class);
+
+
+                HashMap<String, String> map = new HashMap<>();
+
+                map.put("user_id", Integer.toString(user_id));
+                map.put("doctor_id", Integer.toString(doctor_id));
+                map.put("consultation_date", consult_date);
+
+                Call<NewConsultInfo> call = retrofitInterface.executeAddCons(map);
+
+                call.enqueue(new Callback<NewConsultInfo>() {
+                    @Override
+                    public void onResponse(Call<NewConsultInfo> call, Response<NewConsultInfo> response) {
+
+                        if (response.code() == 200) {
+                            Intent myint = new Intent(getApplicationContext(), ConsultationsActivity.class);
+                            myint.putExtra("user_id", user_id);
+                            startActivity(myint);
+                            Toast.makeText(ChooseConsultTimeActivity.this, "Консультацію успішно додано",
+                                    Toast.LENGTH_LONG).show();
+                        } else if (response.code() == 404) {
+                            Toast.makeText(ChooseConsultTimeActivity.this, "Something went wrong",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<NewConsultInfo> call, Throwable t) {
+                        Toast.makeText(ChooseConsultTimeActivity.this, t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
 
             }
         });
