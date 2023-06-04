@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1 {
+  font-size: 30px;
+  font-weight: 800;
+  position: fixed;
+  top: 8vw;
+  left: 23vw;
+}
+.client {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  top: 12vw;
+  left: 23vw;
+  width: 70%;
+}
+.client .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+  width: 20%;
+}
+.client .wrapper h3 {
+  font-size: 18px;
+  margin-bottom: 1vw;
+}
+.client .wrapper p {
+  font-size: 14px;
+}
+.client .wrapper .allergen {
+  background: #B3CD98;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-radius: 22px;
+  text-align: center;
+  width: 80%;
+  color: white;
+}
+.client .wrapper .last_cons {
+  padding-top: 1vw;
+  border-top: 1px solid black;
+}
+.client .wrapper .last_cons .con {
+  background: #F8F1F4;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-radius: 22px;
+  text-align: center;
+  width: 80%;
+}
+.client .notes {
+  padding-left: 2vw;
+  border-left: 1px solid black;
+}
+.client .notes h3 {
+  font-size: 18px;
+  margin-bottom: 1vw;
+}
+.client .notes h4 {
+  color: #407A61;
+  font-size: 16px;
+  text-decoration: underline;
+}
+.client .notes .text {
+  font-size: 14px;
+  color: #275362;
+}

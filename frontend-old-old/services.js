@@ -160,14 +160,14 @@ export async function loadDoctorConsultations(doctor_id) {
     }
 }
 
-export async function loadUnCheckedDoctors() {
+export async function loadDoctorConsultations(doctor_id) {
     try {
-        const response = await fetch(`${ADRESS}/loadUnCheckedDoctors`, {
+        const response = await fetch(`${ADRESS}/loadDoctorConsultations`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
-            body: JSON.stringify({}),
+            body: JSON.stringify({doctor_id:doctor_id}),
         });
         if (response.ok) {
             const result = await response.json();
@@ -179,144 +179,3 @@ export async function loadUnCheckedDoctors() {
         return null;
     }
 }
-
-export async function loadUnCheckedPoints() {
-    try {
-        const response = await fetch(`${ADRESS}/loadUnCheckedPoints`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({}),
-        });
-        if (response.ok) {
-            const result = await response.json();
-            return result;
-        } 
-
-        return null;
-    } catch {
-        return null;
-    }
-}
-
-export async function loadUserInfo(user_id) {
-    try {
-        const response = await fetch(`${ADRESS}/loadUserInfo`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({user_id: user_id}),
-        });
-        if (response.ok) {
-            const result = await response.json();
-            return result;
-        } 
-
-        return null;
-    } catch {
-        return null;
-    }
-}
-
-export async function loadDoctorInfo(doctor_id) {
-    try {
-        const response = await fetch(`${ADRESS}/loadDoctorInfo`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({doctor_id: doctor_id}),
-        });
-        if (response.ok) {
-            const result = await response.json();
-            return result;
-        } 
-
-        return null;
-    } catch {
-        return null;
-    }
-}
-
-export async function loadNotesName(user_id) {
-    try {
-        const response = await fetch(`${ADRESS}/loadNotesName`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({user_id: user_id}),
-        });
-        if (response.ok) {
-            const result = await response.json();
-            return result;
-        } 
-
-        return null;
-    } catch {
-        return null;
-    }
-}
-
-export async function loadFullNotes(user_id) {
-    try {
-        const response = await fetch(`${ADRESS}/loadFullNotes`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({user_id: user_id}),
-        });
-        if (response.ok) {
-            const result = await response.json();
-            return result;
-        } 
-
-        return null;
-    } catch {
-        return null;
-    }
-}
-
-export async function cancelCons(consultation_id) {
-    try {
-        const response = await fetch(`${ADRESS}/cancelCons`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({consultation_id: consultation_id}),
-        });
-        if (response.ok) {
-            
-            return true;
-        } 
-
-        return false;
-    } catch {
-        return null;
-    }
-}
-
-export async function changeDoctorInfo(doctor_id, doctor_photo, doctor_price, doctor_info) {
-    try {
-        const response = await fetch(`${ADRESS}/changeDoctorInfo`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({doctor_id: doctor_id, doctor_photo: doctor_photo, doctor_price:doctor_price, doctor_info:doctor_info}),
-        });
-        if (response.ok) {
-            return true;
-        }
-
-        return false;
-    } catch {
-        return null;
-    }
-}
-
-
