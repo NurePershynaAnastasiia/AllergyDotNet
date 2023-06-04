@@ -25,6 +25,14 @@ body .out {
   background-color: #b3cd98;
   border-radius: 25px;
 }
+body .out h2 {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+body .out a {
+  text-decoration: none;
+  color: #275362;
+}
 body .imgReg {
   border-radius: 25px;
   display: block;
@@ -49,10 +57,6 @@ body .form_a {
   right: 0;
   left: 48vw;
 }
-body a {
-  text-decoration: none;
-  color: #275362;
-}
 body .input_text {
   margin-bottom: 0.6em;
   font-size: medium;
@@ -61,9 +65,6 @@ body .input_text {
   border-radius: 5px;
   width: 300px;
   height: 48px;
-}
-body h2 {
-  margin-bottom: 12px;
 }
 body .submit {
   background-color: #275362;

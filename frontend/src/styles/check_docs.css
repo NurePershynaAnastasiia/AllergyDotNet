@@ -13,7 +13,7 @@
   width: 70%;
   overflow-y: auto;
 }
-.check_docs .text_info h1 {
+.check_docs .text_info h1.check_docs_h {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 10px;
@@ -24,7 +24,7 @@
   font-style: italic;
   font-weight: 300;
 }
-.check_docs .serts h2 {
+.check_docs .serts h2.check_docs_h {
   font-size: 18px;
   font-weight: 600;
   margin-top: 30px;
@@ -51,10 +51,10 @@
   color: white;
   margin-bottom: 20px;
 }
-.check_docs .search {
+.check_docs .search_check_docs {
   width: 100%;
 }
-.check_docs .search .b_search {
+.check_docs .search_check_docs .b_search {
   padding: 10px;
   padding-left: 20px;
   font-size: 16px;
@@ -63,7 +63,7 @@
   border: none;
   border-radius: 50px 50px 0px 50px;
 }
-.check_docs .search .submit {
+.check_docs .search_check_docs .submit {
   background-color: #275362;
   border-radius: 0px 50px;
   width: 100px;

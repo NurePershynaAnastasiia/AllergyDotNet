@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-h1 {
+h1.client_h {
     font-size: 30px;
     font-weight: 800;
     position: fixed;
@@ -26,9 +26,10 @@ h1 {
         flex-direction: column;
         gap: 2vw;
         width: 20%;
+        border-right: 1px solid black;
 
 
-        h3 {
+        h3.client_h {
             font-size: 18px;
             margin-bottom: 1vw;
         }
@@ -70,14 +71,15 @@ h1 {
 
     .notes {
         padding-left: 2vw;
-        border-left: 1px solid black;
+        height: auto;
 
-        h3 {
+        h3.client_h {
             font-size: 18px;
             margin-bottom: 1vw;
         }
 
-        h4 {
+        h4.client_h {
+            cursor: pointer;
             color: #407A61;
             font-size: 16px;
             text-decoration: underline;

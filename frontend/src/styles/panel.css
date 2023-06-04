@@ -13,6 +13,9 @@
   background-image: url("../../public/photos/panel.svg");
   background-repeat: no-repeat;
 }
+.panel a {
+  text-decoration: none;
+}
 .p_button {
   font-size: 15px;
   font-family: Gilroy;

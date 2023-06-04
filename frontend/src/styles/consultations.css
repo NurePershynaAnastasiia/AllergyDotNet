@@ -73,12 +73,12 @@
   height: 30px;
   padding: 5px;
 }
-.search {
+.search_consultations {
   margin-bottom: 2vw;
   width: 100%;
   height: 20%;
 }
-.search .b_search {
+.search_consultations .b_search {
   padding: 10px;
   padding-left: 20px;
   font-size: 16px;
@@ -87,7 +87,7 @@
   border: none;
   border-radius: 50px 50px 0px 50px;
 }
-.search .submit {
+.search_consultations .submit {
   background-color: #275362;
   border-radius: 0px 50px;
   width: 100px;

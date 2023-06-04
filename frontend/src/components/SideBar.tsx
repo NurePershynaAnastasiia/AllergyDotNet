@@ -4,16 +4,32 @@ export function SideBar() {
   return (
     <div className="panel">
       <div className="buttons">
-        <NavLink className="p_button profile_button" to={'/profile'}>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? 'active' : 'p_button profile_button'
+          }
+          to={'/profile'}
+        >
           Профіль
         </NavLink>
-        <NavLink className="p_button consults" to={'/'}>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? 'active' : 'p_button consults'
+          }
+          to={'/consultations'}
+        >
           Мої консультації
         </NavLink>
-        <NavLink className="p_button plot" to={'/'}>
+        <NavLink
+          className={({ isActive }) => (isActive ? 'active' : 'p_button plot')}
+          to={'/plate'}
+        >
           Графік консультацій
         </NavLink>
-        <NavLink className="active" to={'/'}>
+        <NavLink
+          className={({ isActive }) => (isActive ? 'active' : 'p_button')}
+          to={'/clients'}
+        >
           Клієнти
         </NavLink>
       </div>

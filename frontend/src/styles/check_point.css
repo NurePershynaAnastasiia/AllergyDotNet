@@ -17,10 +17,10 @@
   height: 200px;
   border-radius: 30px;
 }
-.search {
+.search_check_point {
   width: 100%;
 }
-.search .b_search {
+.search_check_point .b_search {
   padding: 10px;
   padding-left: 20px;
   font-size: 16px;
@@ -29,7 +29,7 @@
   border: none;
   border-radius: 50px 50px 0px 50px;
 }
-.search .submit {
+.search_check_point .submit {
   background-color: #275362;
   border-radius: 0px 50px;
   width: 100px;
@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
 }
-.info h1 {
+.info h1.check_point_h1 {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 10px;
