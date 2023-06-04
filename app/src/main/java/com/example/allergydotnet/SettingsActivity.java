@@ -124,4 +124,34 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void CreateDeclineConsultPopup() {
+        LayoutInflater inflater= (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popUpView=inflater.inflate(R.layout.popup_decline_consult,null);
+        int width = ViewGroup.LayoutParams.MATCH_PARENT;
+        int height = ViewGroup.LayoutParams.MATCH_PARENT;
+        boolean focusable = true;
+        PopupWindow popupWindow = new PopupWindow(popUpView,width,height,focusable);
+        layout.post(new Runnable() {
+            @Override
+            public void run() {
+                popupWindow.showAtLocation(layout, Gravity.BOTTOM,0,0);
+            }
+        });
+        Button SendButton = popUpView.findViewById(R.id.sendbtn);
+
+        SendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        popUpView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                return true;
+            }
+        });
+    }
 }

@@ -28,6 +28,9 @@ import com.example.allergydotnet.util.UserNotationsInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -153,6 +156,25 @@ public class RecommendationsActivity extends AppCompatActivity {
                         scrollLayout.addView(imageView);
 
                          */
+
+//                        Blob blob = result.get(i).getAllergen_photo();
+//                        byte[] imageBytes;
+//
+//                        try (InputStream inputStream = blob.getBinaryStream()) {
+//                            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//                            byte[] buffer = new byte[4096];
+//                            int bytesRead;
+//                            while ((bytesRead = inputStream.read(buffer)) != -1) {
+//                                outputStream.write(buffer, 0, bytesRead);
+//                            }
+//                            imageBytes = outputStream.toByteArray();
+//                        } catch (SQLException | IOException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//
+//                        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+//                        imageView.setImageBitmap(bitmap);
+//                        scrollLayout.addView(imageView);
 
 
 

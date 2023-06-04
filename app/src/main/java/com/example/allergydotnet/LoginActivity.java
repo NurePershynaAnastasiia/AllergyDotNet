@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordEditText;
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.168.1.105:3000";
+    private String BASE_URL = "http://192.168.1.5:3000";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

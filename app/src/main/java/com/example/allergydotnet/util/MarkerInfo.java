@@ -23,6 +23,13 @@ public class MarkerInfo implements Serializable {
         this.hash = hash;
     }
 
+    public MarkerInfo(int id, double longtitude, double latitude, String title) {
+        this.id = id;
+        this.title = title;
+        this.longtitude = longtitude;
+        this.latitude = latitude;
+    }
+
     public int getId() {
         return id;
     }

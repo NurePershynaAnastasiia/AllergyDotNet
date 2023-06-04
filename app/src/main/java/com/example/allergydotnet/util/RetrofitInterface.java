@@ -44,4 +44,7 @@ public interface RetrofitInterface {
 
     @POST("/cancelCons")
     Call<UserConsultsInfo> executeCancelCons(@Body HashMap<String, String> map);
+
+    @POST("/loadAllCheckedPoints")
+    Call<ArrayList<PointInfo>> executeCheckedPoints(@Body HashMap<String, String> map);
 }
