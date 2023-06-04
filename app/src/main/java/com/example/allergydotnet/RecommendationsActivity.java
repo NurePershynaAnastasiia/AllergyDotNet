@@ -122,6 +122,7 @@ public class RecommendationsActivity extends AppCompatActivity {
                         TextView nameTextView = new TextView(RecommendationsActivity.this);
                         nameTextView.setText(result.get(i).getAllergens().toString());
                         nameTextView.setTextColor(Color.parseColor("#000000"));
+                        nameTextView.setBackgroundColor(Color.parseColor("#D5D8DE"));
                         nameTextView.setTextSize(20);
                         //info
                         TextView infoTextView = new TextView(RecommendationsActivity.this);
@@ -132,6 +133,7 @@ public class RecommendationsActivity extends AppCompatActivity {
 
                         scrollLayout.addView(nameTextView);
                         scrollLayout.addView(infoTextView);
+                        scrollLayout.addView(new TextView(RecommendationsActivity.this));
                         //scrollLayout.addView(imageView);
 
                     }

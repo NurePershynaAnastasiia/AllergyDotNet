@@ -240,8 +240,6 @@ public class ConsultationsActivity extends AppCompatActivity {
                         public void onResponse(Call<UserConsultsInfo> call, Response<UserConsultsInfo> response) {
 
                             if (response.code() == 200) {
-                                Toast.makeText(ConsultationsActivity.this, "Cool",
-                                        Toast.LENGTH_LONG).show();
 
                             } else if (response.code() == 404) {
                                 Toast.makeText(ConsultationsActivity.this, "Something went wrong" + Integer.toString(consult_id) ,
